@@ -1,7 +1,8 @@
-= Address Book (Level 3)
+= $AVE IT
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://travis-ci.org/AY1920S2-CS2103T-T10-3/main[image:https://travis-ci.org/AY1920S2-CS2103T-T10-3/main.svg?branch=master[Build Status]]
+https://ci.appveyor.com/project/zwasd/main[image:https://ci.appveyor.com/api/projects/status/2h52s7lj155mavgc?svg=true[Build status]]
 https://coveralls.io/github/AY1920S2-CS2103T-T10-3/main?branch=master[image:https://coveralls.io/repos/github/AY1920S2-CS2103T-T10-3/main/badge.svg?branch=master[Coverage Status]]
 
 
@@ -13,9 +14,9 @@ ifndef::env-github[]
 image::images/Ui.png[width="600"]
 endif::[]
 
-* This is a desktop Address Book application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
-* It is a Java sample application intended for students learning Software Engineering while using Java as the main programming language.
-* It is *written in OOP fashion*. It provides a *reasonably well-written* code example that is *significantly bigger* (around 6 KLoC)than what students usually write in beginner-level SE modules.
+* $AVE IT is a desktop budget management application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
+* The application is aimed towards tertiary students who likes to type a lot.
+* As tertiary students are at a stage without a fixed income, they can use this to manage their spending.
 
 == Site Map
 
@@ -27,8 +28,6 @@ endif::[]
 
 == Acknowledgements
 
-* Some parts of this sample application were inspired by the excellent http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
-_Marco Jakob_.
-* Libraries used: https://openjfx.io/[JavaFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/junit-team/junit5[JUnit5]
+* The application is based on Address Book Level 3 from SE-EDU initiative at https://se-education.org .
 
 == Licence : link:LICENSE[MIT]

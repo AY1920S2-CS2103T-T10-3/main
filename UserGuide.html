@@ -13,20 +13,26 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
+<li><a href="#viewing-help-code-help-c-command-code">3.1. Viewing help : <code>help [-c COMMAND]</code></a></li>
 <li><a href="#adding-a-expenditure-code-add-code">3.2. Adding a expenditure: <code>add</code></a></li>
 <li><a href="#editing-a-expenditure-code-edit-code">3.3. Editing a expenditure : <code>edit</code></a></li>
 <li><a href="#locating-expenditure-by-keyword-code-find-code">3.4. Locating expenditure by keyword: <code>find</code></a></li>
 <li><a href="#deleting-a-expenditure-code-delete-code">3.5. Deleting a expenditure : <code>delete</code></a></li>
 <li><a href="#set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-repeat">3.6. Set a fixed recurring ( recurs every <code>NUMBER PERIOD</code> )  expenditure: repeat</a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#clearing-all-entries-code-reset-code">3.7. Clearing all entries : <code>reset</code></a></li>
 <li><a href="#exiting-the-program-code-bye-code">3.8. Exiting the program : <code>bye</code></a></li>
 <li><a href="#saving-the-data">3.9. Saving the data</a></li>
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-summary">5. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#basic-operation">5.1. Basic operation</a></li>
+<li><a href="#account-operation">5.2. Account Operation</a></li>
+<li><a href="#report-operation">5.3. Report Operation</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -49,7 +55,7 @@ As tertiary students are at a stage without a fixed income, they can use this to
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>$AVEIT.jar</code> coming soon.</p>
+<p>Download the latest <code>$AVE IT.jar</code> coming soon.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for $AVE IT application.</p>
@@ -113,7 +119,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-c-command-code"><a class="link" href="#viewing-help-code-help-c-command-code">3.1. Viewing help : <code>help [-c COMMAND]</code></a></h3>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
@@ -268,7 +274,7 @@ Deletes the expenditure with ID 1 if it is in the results of the <code>find</cod
 <h3 id="set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-repeat"><a class="link" href="#set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-repeat">3.6. Set a fixed recurring ( recurs every <code>NUMBER PERIOD</code> )  expenditure: repeat</a></h3>
 <div class="paragraph">
 <p>Sets an expenditure that will automatically be added every interval which expires at specified date.<br>
-Format: <code>rep -i INFO -a AMT [-t TAG] [-d DATE] [-interval Number DAY/WEEK/MONTH] [-e EXPIRE_DATE]</code></p>
+Format: <code>Repeat -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -286,10 +292,10 @@ Format: <code>rep -i INFO -a AMT [-t TAG] [-d DATE] [-interval Number DAY/WEEK/M
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-reset-code"><a class="link" href="#clearing-all-entries-code-reset-code">3.7. Clearing all entries : <code>reset</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from $AVE IT . Once cleared, entries cannot be recovered.<br>
-Format: <code>clear</code></p>
+Format: <code>reset</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -326,31 +332,99 @@ There is no need to save manually.</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="basic-operation"><a class="link" href="#basic-operation">5.1. Basic operation</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add -i INFO -a AMT   [-t TAG] [-d DATE].</code><br>
-e.g.  <code>add -i chicken rice -a $4.50 [-t food] [-d 24/12/2020]</code></p>
+<p><strong>Add</strong> <code>Add -i INFO -a AMT   [-t TAG] [-d DATE(DDMMYYYY)]</code><br>
+e.g.  <code>Add -i chicken rice -a $4.50 [-t food] [-d 24/12/2020]</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Delete</strong> : <code>Delete ID</code><br>
+e.g. <code>Delete 2B4E</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p><strong>Edit</strong> : <code>Edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE(DDMMYYYY)]</code><br>
+e.g. <code>Edit 2 [-i veg rice] [-a $4.00] [-t] [-d 20/12/2020]</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]</code><br>
-e.g. <code>edit 2 [-i veg rice] [-a $4.00] [-t] [-d 20/12/2020]</code></p>
+<p><strong>Find</strong> : <code>Find -k KEYWORD</code><br>
+e.g. <code>Find James Jake</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find -k KEYWORD</code><br>
-e.g. <code>find James Jake</code></p>
+<p><strong>Go</strong> : 'Go -d DATE'`<br>
+e.g. <code>Go 31-01-2020</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
+<li>
+<p><strong>Repeat</strong> : <code>Repeat -i INFO -a AMT -d DATE(MMYYYY) -p INTERVAL MONTH [-t TAG]</code><br>
+e.g. <code>Repeat -i bus concession -a 50 -d 02-2020 -p 5 -t transport</code></p>
+</li>
+<li>
+<p><strong>Reset</strong> : <code>Reset</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>Redo</code></p>
+</li>
+<li>
+<p><strong>SetBudget</strong> : <code>SetBudget -a AMT -d DATE(MMYYYY)</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>Undo</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>e.g. ` SetBudget -a 400 -d 02-2020`</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="account-operation"><a class="link" href="#account-operation">5.2. Account Operation</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>AddAcc</strong> : <code>AddAcc "ACCOUNT NAME"</code><br>
+e.g. <code>AddAcc Personal</code></p>
+</li>
+<li>
+<p><strong>Checkout</strong> : <code>Checkout "ACCOUNT NAME"</code><br>
+e.g. <code>Checkout Personal</code></p>
+</li>
+<li>
+<p><strong>DeleteAcc</strong> : <code>DeleteAcc "ACCOUNT NAME"</code><br>
+e.g. <code>DeleteAcc Personal</code></p>
+</li>
+<li>
+<p><strong>AddAcc</strong> : <code>AddAcc "ACCOUNT NAME"</code><br>
+e.g. <code>AddACC Personal</code></p>
+</li>
+<li>
+<p><strong>ViewAcc</strong> : <code>Acc</code><br></p>
+</li>
+<li>
+<p><strong>Rename</strong> : <code>Rename [-a "OLD ACCOUNT NAME" "NEW ACCOUNT NAME] [-t "OLD TAG" "NEW TAG"]</code><br>
+e.g. <code>Rename -a personal non-personal</code> and <code>Rename -t transport bus</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-03 08:16:26 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="report-operation"><a class="link" href="#report-operation">5.3. Report Operation</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ExportReport</strong> : <code>ExportReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"</code><br>
+e.g. <code>ExportReport -sd 01-02-2020 -ed 03-02-2020</code></p>
+</li>
+<li>
+<p><strong>ViewReport</strong> : <code>ViewReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"</code><br>
+e.g. <code>ViewReport -sd 01-02-2020 -ed 03-02-2020</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-05 02:08:47 UTC</div></div></div></body></html>

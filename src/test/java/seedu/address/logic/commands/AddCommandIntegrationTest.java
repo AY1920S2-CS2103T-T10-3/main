@@ -1,16 +1,17 @@
 package seedu.address.logic.commands;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import seedu.address.model.AccountManager;
-import seedu.address.model.Model;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.expenditure.Expenditure;
-import seedu.address.testutil.PersonBuilder;
-
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Person;
+import seedu.address.testutil.PersonBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code AddCommand}.
@@ -21,24 +22,24 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new AccountManager(getTypicalAddressBook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     }
 
     @Test
     public void execute_newPerson_success() {
-        Expenditure validExpenditure = new PersonBuilder().build();
+        Person validPerson = new PersonBuilder().build();
 
-        Model expectedModel = new AccountManager(model.getAccount(), new UserPrefs());
-        expectedModel.addPerson(validExpenditure);
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.addPerson(validPerson);
 
-        assertCommandSuccess(new AddCommand(validExpenditure), model,
-                String.format(AddCommand.MESSAGE_SUCCESS, validExpenditure), expectedModel);
+        assertCommandSuccess(new AddCommand(validPerson), model,
+                String.format(AddCommand.MESSAGE_SUCCESS, validPerson), expectedModel);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Expenditure expenditureInList = model.getAccount().getAccountList().get(0);
-        assertCommandFailure(new AddCommand(expenditureInList), model, AddCommand.MESSAGE_DUPLICATE_PERSON);
+        Person personInList = model.getAddressBook().getPersonList().get(0);
+        assertCommandFailure(new AddCommand(personInList), model, AddCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
 }

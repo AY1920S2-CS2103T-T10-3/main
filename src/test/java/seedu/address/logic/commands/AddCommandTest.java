@@ -1,24 +1,27 @@
 package seedu.address.logic.commands;
 
-import javafx.collections.ObservableList;
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Account;
-import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAccount;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.expenditure.Expenditure;
-import seedu.address.testutil.PersonBuilder;
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.testutil.Assert.assertThrows;
+import org.junit.jupiter.api.Test;
+
+import javafx.collections.ObservableList;
+import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AddressBook;
+import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.Person;
+import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
 
@@ -30,27 +33,27 @@ public class AddCommandTest {
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Expenditure validExpenditure = new PersonBuilder().build();
+        Person validPerson = new PersonBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validExpenditure).execute(modelStub);
+        CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validExpenditure), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validExpenditure), modelStub.personsAdded);
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Expenditure validExpenditure = new PersonBuilder().build();
-        AddCommand addCommand = new AddCommand(validExpenditure);
-        ModelStub modelStub = new ModelStubWithPerson(validExpenditure);
+        Person validPerson = new PersonBuilder().build();
+        AddCommand addCommand = new AddCommand(validPerson);
+        ModelStub modelStub = new ModelStubWithPerson(validPerson);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Expenditure alice = new PersonBuilder().withName("Alice").build();
-        Expenditure bob = new PersonBuilder().withName("Bob").build();
+        Person alice = new PersonBuilder().withName("Alice").build();
+        Person bob = new PersonBuilder().withName("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
@@ -67,7 +70,7 @@ public class AddCommandTest {
         // null -> returns false
         assertFalse(addAliceCommand.equals(null));
 
-        // different expenditure -> returns false
+        // different person -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
@@ -106,85 +109,85 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Expenditure expenditure) {
+        public void addPerson(Person person) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAccount(ReadOnlyAccount newData) {
+        public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAccount getAccount() {
+        public ReadOnlyAddressBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean hasPerson(Expenditure expenditure) {
+        public boolean hasPerson(Person person) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Expenditure target) {
+        public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Expenditure target, Expenditure editedExpenditure) {
+        public void setPerson(Person target, Person editedPerson) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Expenditure> getFilteredPersonList() {
+        public ObservableList<Person> getFilteredPersonList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Expenditure> predicate) {
+        public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
 
     /**
-     * A Model stub that contains a single expenditure.
+     * A Model stub that contains a single person.
      */
     private class ModelStubWithPerson extends ModelStub {
-        private final Expenditure expenditure;
+        private final Person person;
 
-        ModelStubWithPerson(Expenditure expenditure) {
-            requireNonNull(expenditure);
-            this.expenditure = expenditure;
+        ModelStubWithPerson(Person person) {
+            requireNonNull(person);
+            this.person = person;
         }
 
         @Override
-        public boolean hasPerson(Expenditure expenditure) {
-            requireNonNull(expenditure);
-            return this.expenditure.isSamePerson(expenditure);
+        public boolean hasPerson(Person person) {
+            requireNonNull(person);
+            return this.person.isSamePerson(person);
         }
     }
 
     /**
-     * A Model stub that always accept the expenditure being added.
+     * A Model stub that always accept the person being added.
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Expenditure> personsAdded = new ArrayList<>();
+        final ArrayList<Person> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Expenditure expenditure) {
-            requireNonNull(expenditure);
-            return personsAdded.stream().anyMatch(expenditure::isSamePerson);
+        public boolean hasPerson(Person person) {
+            requireNonNull(person);
+            return personsAdded.stream().anyMatch(person::isSamePerson);
         }
 
         @Override
-        public void addPerson(Expenditure expenditure) {
-            requireNonNull(expenditure);
-            personsAdded.add(expenditure);
+        public void addPerson(Person person) {
+            requireNonNull(person);
+            personsAdded.add(person);
         }
 
         @Override
-        public ReadOnlyAccount getAccount() {
-            return new Account();
+        public ReadOnlyAddressBook getAddressBook() {
+            return new AddressBook();
         }
     }
 

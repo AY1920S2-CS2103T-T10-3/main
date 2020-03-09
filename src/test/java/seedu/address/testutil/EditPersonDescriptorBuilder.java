@@ -1,16 +1,16 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.expenditure.Amount;
-import seedu.address.model.expenditure.Date;
-import seedu.address.model.expenditure.Expenditure;
-import seedu.address.model.expenditure.Id;
-import seedu.address.model.expenditure.Info;
-import seedu.address.model.tag.Tag;
-
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Tag;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -28,46 +28,46 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Returns an {@code EditPersonDescriptor} with fields containing {@code expenditure}'s details
+     * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
      */
-    public EditPersonDescriptorBuilder(Expenditure expenditure) {
+    public EditPersonDescriptorBuilder(Person person) {
         descriptor = new EditPersonDescriptor();
-        descriptor.setInfo(expenditure.getInfo());
-        descriptor.setAmount(expenditure.getAmount());
-        descriptor.setDate(expenditure.getDate());
-        descriptor.setId(expenditure.getId());
-        descriptor.setTags(expenditure.getTags());
+        descriptor.setName(person.getName());
+        descriptor.setPhone(person.getPhone());
+        descriptor.setEmail(person.getEmail());
+        descriptor.setAddress(person.getAddress());
+        descriptor.setTags(person.getTags());
     }
 
     /**
      * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withName(String name) {
-        descriptor.setInfo(new Info(name));
+        descriptor.setName(new Name(name));
         return this;
     }
 
     /**
-     * Sets the {@code Amount} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Phone} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withPhone(String phone) {
-        descriptor.setAmount(new Amount(phone));
+        descriptor.setPhone(new Phone(phone));
         return this;
     }
 
     /**
-     * Sets the {@code Date} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
-        descriptor.setDate(new Date(email));
+        descriptor.setEmail(new Email(email));
         return this;
     }
 
     /**
-     * Sets the {@code Id} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withAddress(String address) {
-        descriptor.setId(new Id(address));
+        descriptor.setAddress(new Address(address));
         return this;
     }
 

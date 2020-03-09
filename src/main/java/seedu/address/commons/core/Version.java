@@ -1,10 +1,10 @@
 package seedu.address.commons.core;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents a version with major, minor and patch number
@@ -47,7 +47,6 @@ public class Version implements Comparable<Version> {
 
     /**
      * Parses a version number string in the format V1.2.3.
-     *
      * @param versionString version number string
      * @return a Version object
      */

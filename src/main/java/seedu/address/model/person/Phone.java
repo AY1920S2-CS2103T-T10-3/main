@@ -1,26 +1,26 @@
-package seedu.address.model.expenditure;
+package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Expenditure's phone number in the address book.
+ * Represents a Person's phone number in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
  */
-public class Amount {
+public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Amount numbers should only contain numbers, and it should be at least 3 digits long";
+            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
     public static final String VALIDATION_REGEX = "\\d{3,}";
     public final String value;
 
     /**
-     * Constructs a {@code Amount}.
+     * Constructs a {@code Phone}.
      *
      * @param phone A valid phone number.
      */
-    public Amount(String phone) {
+    public Phone(String phone) {
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
         value = phone;
@@ -41,8 +41,8 @@ public class Amount {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Amount // instanceof handles nulls
-                && value.equals(((Amount) other).value)); // state check
+                || (other instanceof Phone // instanceof handles nulls
+                && value.equals(((Phone) other).value)); // state check
     }
 
     @Override

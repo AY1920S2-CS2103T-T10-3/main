@@ -1,12 +1,11 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.HelpCommand.SHOWING_HELP_MESSAGE;
-
 import org.junit.jupiter.api.Test;
-
 import seedu.address.model.AccountManager;
 import seedu.address.model.Model;
+
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.HelpCommand.SHOWING_HELP_MESSAGE;
 
 public class HelpCommandTest {
     private Model model = new AccountManager();

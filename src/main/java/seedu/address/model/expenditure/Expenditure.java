@@ -1,13 +1,13 @@
 package seedu.address.model.expenditure;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.address.model.tag.Tag;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.tag.Tag;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Represents a Expenditure in the id book.
@@ -61,7 +61,7 @@ public class Expenditure {
     }
 
     /**
-     * Returns true if both persons of the same info have at least one other identity field that is the same.
+     * Returns true if both persons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Expenditure otherExpenditure) {

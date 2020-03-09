@@ -87,7 +87,7 @@ Format: `edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]`
 Examples:
 
 * `edit 1 -i veg rice` +
-Edits the info of expenditure with ID 1 to veg rice.
+Edits the name of expenditure with ID 1 to veg rice.
 * `edit 2 -t` +
 Clears tag of expenditure with ID.
 

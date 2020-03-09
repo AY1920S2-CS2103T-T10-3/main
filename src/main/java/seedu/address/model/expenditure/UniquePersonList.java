@@ -1,15 +1,15 @@
 package seedu.address.model.expenditure;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
-import java.util.Iterator;
-import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.expenditure.exceptions.DuplicatePersonException;
 import seedu.address.model.expenditure.exceptions.PersonNotFoundException;
+
+import java.util.Iterator;
+import java.util.List;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -17,7 +17,7 @@ import seedu.address.model.expenditure.exceptions.PersonNotFoundException;
  * persons uses Expenditure#isSamePerson(Expenditure) for equality so as to ensure that the expenditure being added or updated is
  * unique in terms of identity in the UniquePersonList. However, the removal of a expenditure uses Expenditure#equals(Object) so
  * as to ensure that the expenditure with exactly the same fields will be removed.
- *
+ * <p>
  * Supports a minimal set of list operations.
  *
  * @see Expenditure#isSamePerson(Expenditure)
@@ -113,7 +113,7 @@ public class UniquePersonList implements Iterable<Expenditure> {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UniquePersonList // instanceof handles nulls
-                        && internalList.equals(((UniquePersonList) other).internalList));
+                && internalList.equals(((UniquePersonList) other).internalList));
     }
 
     @Override

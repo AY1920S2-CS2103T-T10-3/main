@@ -28,7 +28,7 @@ There are two ways to run tests.
 * Open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
 
 [NOTE]
-See <<UsingGradle#, UsingGradle.adoc>> for more info on how to run tests using Gradle.
+See <<UsingGradle#, UsingGradle.adoc>> for more name on how to run tests using Gradle.
 
 == Types of tests
 

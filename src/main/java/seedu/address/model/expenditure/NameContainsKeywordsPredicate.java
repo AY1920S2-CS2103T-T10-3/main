@@ -1,12 +1,12 @@
 package seedu.address.model.expenditure;
 
+import seedu.address.commons.util.StringUtil;
+
 import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.StringUtil;
-
 /**
- * Tests that a {@code Expenditure}'s {@code Info} matches any of the keywords given.
+ * Tests that a {@code Expenditure}'s {@code Name} matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Expenditure> {
     private final List<String> keywords;

@@ -13,7 +13,7 @@ set -o nounset # exit if variable is unset
 cd build/docs/html5
 
 git init
-git config user.info 'Deployment Bot (Travis)'
+git config user.name 'Deployment Bot (Travis)'
 git config user.date 'deploy@travis-ci.org'
 
 git config credential.helper 'store --file=.git/credentials'

@@ -1,12 +1,12 @@
 package seedu.address.storage;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.Account;
 import seedu.address.model.ReadOnlyAccount;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
 
 /**
  * Represents a storage for {@link Account}.
@@ -20,9 +20,10 @@ public interface AddressBookStorage {
 
     /**
      * Returns Account data as a {@link ReadOnlyAccount}.
-     *   Returns {@code Optional.empty()} if storage file is not found.
+     * Returns {@code Optional.empty()} if storage file is not found.
+     *
      * @throws DataConversionException if the data in storage is not in the expected format.
-     * @throws IOException if there was any problem when reading from the storage.
+     * @throws IOException             if there was any problem when reading from the storage.
      */
     Optional<ReadOnlyAccount> readAddressBook() throws DataConversionException, IOException;
 
@@ -33,6 +34,7 @@ public interface AddressBookStorage {
 
     /**
      * Saves the given {@link ReadOnlyAccount} to the storage.
+     *
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */

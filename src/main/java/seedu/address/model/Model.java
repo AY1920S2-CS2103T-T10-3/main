@@ -1,17 +1,19 @@
 package seedu.address.model;
 
-import java.nio.file.Path;
-import java.util.function.Predicate;
-
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.expenditure.Expenditure;
+
+import java.nio.file.Path;
+import java.util.function.Predicate;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Expenditure> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     /**
@@ -49,7 +51,9 @@ public interface Model {
      */
     void setAccount(ReadOnlyAccount account);
 
-    /** Returns the Account */
+    /**
+     * Returns the Account
+     */
     ReadOnlyAccount getAccount();
 
     /**
@@ -76,11 +80,14 @@ public interface Model {
      */
     void setPerson(Expenditure target, Expenditure editedExpenditure);
 
-    /** Returns an unmodifiable view of the filtered expenditure list */
+    /**
+     * Returns an unmodifiable view of the filtered expenditure list
+     */
     ObservableList<Expenditure> getFilteredPersonList();
 
     /**
      * Updates the filter of the filtered expenditure list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Expenditure> predicate);

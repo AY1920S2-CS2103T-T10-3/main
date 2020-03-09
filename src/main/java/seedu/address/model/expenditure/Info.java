@@ -21,7 +21,7 @@ public class Info {
     public final String fullName;
 
     /**
-     * Constructs a {@code Info}.
+     * Constructs a {@code Name}.
      *
      * @param name A valid name.
      */

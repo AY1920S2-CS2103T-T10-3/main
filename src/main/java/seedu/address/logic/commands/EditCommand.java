@@ -1,12 +1,16 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.expenditure.Amount;
+import seedu.address.model.expenditure.Date;
+import seedu.address.model.expenditure.Expenditure;
+import seedu.address.model.expenditure.Id;
+import seedu.address.model.expenditure.Info;
+import seedu.address.model.tag.Tag;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -14,17 +18,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.expenditure.Id;
-import seedu.address.model.expenditure.Amount;
-import seedu.address.model.expenditure.Date;
-import seedu.address.model.expenditure.Expenditure;
-import seedu.address.model.expenditure.Info;
-import seedu.address.model.tag.Tag;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 /**
  * Edits the details of an existing expenditure in the id book.
@@ -54,7 +50,7 @@ public class EditCommand extends Command {
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param index of the expenditure in the filtered expenditure list to edit
+     * @param index                of the expenditure in the filtered expenditure list to edit
      * @param editPersonDescriptor details to edit the expenditure with
      */
     public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
@@ -131,7 +127,8 @@ public class EditCommand extends Command {
         private Id id;
         private Set<Tag> tags;
 
-        public EditPersonDescriptor() {}
+        public EditPersonDescriptor() {
+        }
 
         /**
          * Copy constructor.

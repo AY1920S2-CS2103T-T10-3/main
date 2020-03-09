@@ -1,4 +1,4 @@
-= $aveIt - Developer Guide
+= $AVE IT - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -279,13 +279,13 @@ Refer to the guide <<DevOps#, here>>.
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
+* has a need to manage expenditure
 * prefer desktop apps over other types
 * can type fast
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*: manage expenditure faster than a typical mouse/GUI driven app
 
 [appendix]
 == User Stories
@@ -295,17 +295,30 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
+
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |add a new person |
+|`* * *` |lazy user |have an intuitive UI |spend less time navigating
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* * *`| multi-role user|have multiple disjoint accounts |use the app to track expenditure for different role
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *` |as a project director of my school club |create a partition between personal and project spending |keep track of personal spending as well as project spending, so that I can have an easier time keeping track of financial information
 
-|`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
+|`* * *` |project leader |generate an expenditure report |document all the expenditure for future reference
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`* * *` |busy and clumsy student |have a feature of undo and redo  |recover my data from mistakes
+
+|`* * *` |visual user |see the overview of my spending |have a clearer insight on my spending
+
+|`* * *` |time conscious user |take note of the time for each expenditure|plan my days to be in line with my spending
+
+|`* * *` |night owl |have a dark theme |protect my eyes at night
+
+|`* *` |disorganized user |categorize my expenditure |view my spending habit
+
+|`* *` |someone who is not mathematically inclined |have numbers that are intuitive  |understand it easily
+
+|`* *` |user with many spending in the list |sort the expenditure|keep the expenditure organize
 |=======================================================================
 
 _{More to be added}_
@@ -313,33 +326,272 @@ _{More to be added}_
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `$AVE IT` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Add
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to add a spending. Format: `Add -i INFO -a AMT [-t tag] [-d DATE] `
+2.  `$AVE IT` will acknowledge and assign this expenditure an unique ID.
+3.  If tag is not specified during the instruction, `$AVE IT` will auto assign it to be `others`
 +
+
 Use case ends.
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 1. Wrong Format.
 +
+Use case back to step 1.
+
+[discrete]
+=== Use case: Delete
+
+*MSS*
+
+1.  User requests to delete a spending. Format: `Delete UniqueID`
+2.  `$AVE IT` will acknowledge.
+3.  If tag is not specified during the instruction, `$AVE IT` will auto assign it to be `others`
++
+
 Use case ends.
 
-* 3a. The given index is invalid.
-+
+*Extensions*
+
 [none]
-** 3a1. AddressBook shows an error message.
+* 1. Wrong Format.
+* 2. Invalid ID.
 +
-Use case resumes at step 2.
+Use case back to step 1.
+
+[discrete]
+=== Use case: Repeat
+
+*MSS*
+
+1.  User requests to add an fix spending per month. Format: `Repeat -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]`
+2.  `$AVE IT` will acknowledge and assign it with unique ID.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1. Wrong Format.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: Edit
+
+*MSS*
+
+1.  User requests to edit information for a spending. Format: `Edit ID [-i INFO] [-a AMT] [-t tag] [-d Date]`
+2.  `$AVE IT` will acknowledge.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1. Wrong Format.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: Go
+
+*MSS*
+
+1.  User requests to view other date. Format: `Go -d date(DDMMYYYY)`
+2.  `$AVE IT` will acknowledge and update the view.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1. Wrong Format.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: Find
+
+*MSS*
+
+1.  User requests to find certain task with relevant keyword. Format: `Find -k KEYWORD [-t TAG]`
+2.  `$AVE IT` will acknowledge and response with a list of relevant data.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1. Wrong Format.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: Go
+
+*MSS*
+
+1.  User needs help. Format: `Help [-c COMMAND]`
+2.  `$AVE IT` will acknowledge and list the respective command guideline.
++
+
+Use case ends.
+
+[discrete]
+=== Use case: SetBudget
+
+*MSS*
+
+1.  User requests to set a budget for a certain month. Format: `SetBudget -a AMT -d DATE(MMYYYY)`
+2.  `$AVE IT` will acknowledge.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1. Wrong Format.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: AddAcc
+
+*MSS*
+
+1.  User requests to set up a disjoint account for other purpose. Format: `AddAcc "ACCOUNT NAME"`
+2.  `$AVE IT` will acknowledge and create a new account.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Wrong Format.
+* 1b. Duplicate account name.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: Checkout
+
+*MSS*
+
+1.  User requests to switch between accounts. Format: `Checkout "ACCOUNT NAME`.
+2.  `$AVE IT` will acknowledge.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Wrong Format.
+* 1b. Invalid account name.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: Acc
+
+*MSS*
+
+1.  User requests to view all accounts. Format: `acc`.
+2.  `$AVE IT` will acknowledge and list out all the existing accounts.
++
+
+Use case ends.
+
+[discrete]
+=== Use case: DeleteAcc
+
+*MSS*
+
+1.  User requests to delete an accounts. Format: `DeleteAcc "ACCOUNT NAME`.
+2.  `$AVE IT` will acknowledge.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Wrong Format.
+* 1b. Invalid account name.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: Rename
+
+*MSS*
+
+1.  User requests to rename account or existing tag. Format: `Rename [-a "OLD ACCOUNT NAME" "NEW ACCOUNT NAME] [-t "OLD TAG" "NEW TAG"] `.
+2.  `$AVE IT` will acknowledge.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Wrong Format.
+* 1b. Invalid account name.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: ViewReport
+
+*MSS*
+
+1.  User requests to view report of their spending for a specific time. Format: `ViewReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"`.
+2.  `$AVE IT` will acknowledge and generate a report for them to view.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Wrong Format.
+* 1b. Invalid Date.
++
+Use case back to step 1.
+
+[discrete]
+=== Use case: ExportReport
+
+*MSS*
+
+1.  User requests to export a report of their spending in a specific time. Format: ExportReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"`.
+2.  `$AVE IT` will acknowledge, generate a report and export it to desktop.
++
+
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Wrong Format.
+* 1b. Invalid account name.
++
+Use case back to step 1.
 
 _{More to be added}_
 
@@ -347,7 +599,8 @@ _{More to be added}_
 == Non Functional Requirements
 
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
-.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+.  Should be able to hold up to 1000 expenditures without a noticeable sluggishness in performance for typical usage.
+.  Should be able to hold up to 100 accounts without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 _{More to be added}_
@@ -358,8 +611,6 @@ _{More to be added}_
 [[mainstream-os]] Mainstream OS::
 Windows, Linux, Unix, OS-X
 
-[[private-contact-detail]] Private contact detail::
-A contact detail that is not meant to be shared with others
 
 [appendix]
 == Product Survey
@@ -402,15 +653,15 @@ These instructions only provide a starting point for testers to work on; testers
 
 _{ more test cases ... }_
 
-=== Deleting a person
+=== Deleting an expenditure
 
-. Deleting a person while all persons are listed
+. Deleting an expenditure while all expenditure are listed
 
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+.. Prerequisites: List all expenditure using the `list` command. Multiple expenditure in the list.
 .. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   Expected: First expenditure is deleted from the list. Details of the deleted expenditure shown in the status message. Timestamp in the status bar is updated.
 .. Test case: `delete 0` +
-   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   Expected: No expenditure is deleted. Error details shown in the status message. Status bar remains the same.
 .. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
    Expected: Similar to previous.
 

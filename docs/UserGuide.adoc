@@ -24,7 +24,7 @@ As tertiary students are at a stage without a fixed income, they can use this to
 == Quick Start
 
 .  Ensure you have Java `11` or above installed in your Computer.
-.  Download the latest `$AVEIT.jar` coming soon.
+.  Download the latest `$AVE IT.jar` coming soon.
 .  Copy the file to the folder you want to use as the home folder for $AVE IT application.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
@@ -53,7 +53,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 ====
 
-=== Viewing help : `help`
+=== Viewing help : `help [-c COMMAND]`
 
 Format: `help`
 
@@ -130,19 +130,19 @@ delete 1` +
 Deletes the expenditure with ID 1 if it is in the results of the `find` command.
 // end::delete[]
 
-=== Set a fixed recurring ( recurs every ‘NUMBER PERIOD’ )  expenditure
+=== Set a fixed recurring ( recurs every `NUMBER PERIOD` )  expenditure: repeat
 
 Sets an expenditure that will automatically be added every interval which expires at specified date. +
-Format: `rep -i INFO -a AMT [-t TAG] [-d DATE] [-interval Number DAY/WEEK/MONTH] [-e EXPIRE_DATE]`
+Format: `Repeat -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]`
 
 ****
 * The default interval is set to `monthly`.
 * The AMT must be positive and less than 10 million.
 ****
-=== Clearing all entries : `clear`
+=== Clearing all entries : `reset`
 
 Clears all entries from $AVE IT . Once cleared, entries cannot be recovered. +
-Format: `clear`
+Format: `reset`
 
 === Exiting the program : `bye`
 
@@ -166,14 +166,45 @@ _{explain how the user can enable/disable data encryption}_
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous $AVE IT folder.
 
 == Command Summary
-
-* *Add* `add -i INFO -a AMT   [-t TAG] [-d DATE].` +
-e.g.  `add -i chicken rice -a $4.50 [-t food] [-d 24/12/2020]`
-* *Clear* : `clear`
-* *Delete* : `delete INDEX` +
-e.g. `delete 3`
-* *Edit* : `edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]` +
-e.g. `edit 2 [-i veg rice] [-a $4.00] [-t] [-d 20/12/2020]`
-* *Find* : `find -k KEYWORD` +
-e.g. `find James Jake`
+=== Basic operation
+* *Add* `Add -i INFO -a AMT   [-t TAG] [-d DATE(DDMMYYYY)]` +
+e.g.  `Add -i chicken rice -a $4.50 [-t food] [-d 24/12/2020]`
+* *Delete* : `Delete ID` +
+e.g. `Delete 2B4E`
+* *Edit* : `Edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE(DDMMYYYY)]` +
+e.g. `Edit 2 [-i veg rice] [-a $4.00] [-t] [-d 20/12/2020]`
+* *Find* : `Find -k KEYWORD` +
+e.g. `Find James Jake`
+* *Go* : 'Go -d DATE'` +
+e.g. `Go 31-01-2020`
 * *Help* : `help`
+* *Repeat* : `Repeat -i INFO -a AMT -d DATE(MMYYYY) -p INTERVAL MONTH [-t TAG]` +
+e.g. `Repeat -i bus concession -a 50 -d 02-2020 -p 5 -t transport`
+* *Reset* : `Reset`
+* *Redo* : `Redo`
+* *SetBudget* : `SetBudget -a AMT -d DATE(MMYYYY)`
+* *Undo* : `Undo`
+
+e.g. ` SetBudget -a 400 -d 02-2020`
+
+=== Account Operation
+* *AddAcc* : `AddAcc "ACCOUNT NAME"` +
+e.g. `AddAcc Personal`
+* *Checkout* : `Checkout "ACCOUNT NAME"` +
+e.g. `Checkout Personal`
+* *DeleteAcc* : `DeleteAcc "ACCOUNT NAME"` +
+e.g. `DeleteAcc Personal`
+* *AddAcc* : `AddAcc "ACCOUNT NAME"` +
+e.g. `AddACC Personal`
+* *ViewAcc* : `Acc` +
+* *Rename* : `Rename [-a "OLD ACCOUNT NAME" "NEW ACCOUNT NAME] [-t "OLD TAG" "NEW TAG"]` +
+e.g. `Rename -a personal non-personal` and `Rename -t transport bus`
+
+=== Report Operation
+* *ExportReport* : `ExportReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"` +
+e.g. `ExportReport -sd 01-02-2020 -ed 03-02-2020`
+* *ViewReport* : `ViewReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"` +
+e.g. `ViewReport -sd 01-02-2020 -ed 03-02-2020`
+
+
+

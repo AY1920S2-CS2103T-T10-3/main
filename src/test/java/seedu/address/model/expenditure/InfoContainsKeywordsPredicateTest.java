@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.expenditure;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.PersonBuilder;
 
-public class NameContainsKeywordsPredicateTest {
+public class InfoContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
@@ -34,7 +34,7 @@ public class NameContainsKeywordsPredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different person -> returns false
+        // different expenditure -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 

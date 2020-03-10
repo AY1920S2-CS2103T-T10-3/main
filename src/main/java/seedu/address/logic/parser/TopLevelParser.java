@@ -16,11 +16,15 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.expenditure.AddCommandParser;
+import seedu.address.logic.parser.expenditure.DeleteCommandParser;
+import seedu.address.logic.parser.expenditure.EditCommandParser;
+import seedu.address.logic.parser.expenditure.FindCommandParser;
 
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class TopLevelParser {
 
     /**
      * Used for initial separation of command word and args.

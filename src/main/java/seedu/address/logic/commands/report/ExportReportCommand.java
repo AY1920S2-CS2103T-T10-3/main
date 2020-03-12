@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.expenditure;
+package seedu.address.logic.commands.report;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;

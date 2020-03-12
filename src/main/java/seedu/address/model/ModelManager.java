@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -21,6 +22,7 @@ public class ModelManager implements Model {
 
     private final AccountList accountList;
     private final UserPrefs userPrefs;
+    private final ObservableList<Expenditure> expenditures;
     private final FilteredList<Expenditure> filteredExpenditures;
 
     /**
@@ -32,12 +34,11 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with address book: " + accountList + " and user prefs " + userPrefs);
 
-//        this.account = new Account(account);
         this.userPrefs = new UserPrefs(userPrefs);
         this.accountList = new AccountList(accountList);
 
-        filteredExpenditures = new FilteredList<>(this.accountList.getExpenditureList());
-
+        expenditures = FXCollections.observableArrayList(this.accountList.getExpenditureList());
+        filteredExpenditures = expenditures.filtered(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     public ModelManager() {
@@ -132,6 +133,19 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredExpenditures.setPredicate(predicate);
     }
+
+    @Override
+    public boolean updateActiveAccount(String accountName) {
+        if (!accountList.updateActiveAccount(accountName)) {
+            return false;
+        } else {
+            expenditures.clear();
+            expenditures.addAll(accountList.getExpenditureList());
+            updateFilteredExpenditureList(PREDICATE_SHOW_ALL_PERSONS);
+            return true;
+        }
+    }
+
 
     @Override
     public boolean equals(Object obj) {

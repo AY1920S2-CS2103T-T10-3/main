@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.report;
 
-import seedu.address.logic.commands.expenditure.ExportReportCommand;
+import seedu.address.logic.commands.report.ExportReportCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 

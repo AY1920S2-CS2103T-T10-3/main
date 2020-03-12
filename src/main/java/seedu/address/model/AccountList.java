@@ -1,11 +1,14 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.expenditure.Expenditure;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -75,6 +78,15 @@ public class AccountList implements ReadOnlyAccountList, ReadOnlyAccount {
 
     public Account getActiveAccount() {
         return activeAccount;
+    }
+
+    public boolean updateActiveAccount(String accountName){
+        if (!accounts.containsKey(accountName)) {
+            return false;
+        } else {
+            activeAccount = accounts.get(accountName);
+            return true;
+        }
     }
 
     @Override

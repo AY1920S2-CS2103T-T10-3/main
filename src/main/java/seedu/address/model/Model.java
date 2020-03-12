@@ -85,4 +85,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExpenditureList(Predicate<Expenditure> predicate);
+
+    boolean updateActiveAccount(String accountName);
 }

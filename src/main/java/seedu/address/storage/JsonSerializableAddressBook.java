@@ -17,19 +17,19 @@ import seedu.address.model.expenditure.Expenditure;
 /**
  * An Immutable Account that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "saveit")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate expenditure(s).";
+    public static final String MESSAGE_DUPLICATE_EXPENDITURE = "Expenditures list contains duplicate expenditure(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedExpenditure> expenditures = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableAddressBook(@JsonProperty("expenditures") List<JsonAdaptedExpenditure> expenditures) {
+        this.expenditures.addAll(expenditures);
     }
 
     /**
@@ -38,7 +38,8 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAccount source) {
-        persons.addAll(source.getExpenditureList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        expenditures.addAll(source.getExpenditureList().stream().map(JsonAdaptedExpenditure::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -48,12 +49,12 @@ class JsonSerializableAddressBook {
      */
     public Account toModelType() throws IllegalValueException {
         Account account = new Account();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Expenditure expenditure = jsonAdaptedPerson.toModelType();
-            if (account.hasAccount(expenditure)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+        for (JsonAdaptedExpenditure jsonAdaptedExpenditure : expenditures) {
+            Expenditure expenditure = jsonAdaptedExpenditure.toModelType();
+            if (account.hasExpenditure(expenditure)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_EXPENDITURE);
             }
-            account.addAccount(expenditure);
+            account.addExpenditure(expenditure);
 
         }
         return account;

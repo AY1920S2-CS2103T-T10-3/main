@@ -94,17 +94,17 @@ public class ModelManager implements Model {
 
     public boolean hasExpenditure(Expenditure expenditure) {
         requireNonNull(expenditure);
-        return account.hasAccount(expenditure);
+        return account.hasExpenditure(expenditure);
     }
 
     @Override
     public void deleteExpenditure(Expenditure target) {
-        account.removeAccount(target);
+        account.removeExpenditure(target);
     }
 
     @Override
     public void addExpenditure(Expenditure expenditure) {
-        account.addAccount(expenditure);
+        account.addExpenditure(expenditure);
 
         updateFilteredExpenditureList(PREDICATE_SHOW_ALL_PERSONS);
     }
@@ -112,7 +112,7 @@ public class ModelManager implements Model {
     @Override
     public void setExpenditure(Expenditure target, Expenditure editedExpenditure) {
         requireAllNonNull(target, editedExpenditure);
-        account.setPerson(target, editedExpenditure);
+        account.setExpenditure(target, editedExpenditure);
     }
 
     //=========== Filtered Expenditure List Accessors =============================================================

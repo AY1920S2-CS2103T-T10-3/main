@@ -1,5 +1,5 @@
 {
-  "persons": [ {
+  "expenditures": [ {
     "info": "Person with invalid info field: Ha!ns Mu@ster",
     "id": "9482424",
     "amount": 3.14,

@@ -44,7 +44,7 @@ public class Account implements ReadOnlyAccount {
      * {@code expenditures} must not contain duplicate expenditures.
      */
 
-    public void setAccount(List<Expenditure> expenditures) {
+    public void setExpenditures(List<Expenditure> expenditures) {
         this.persons.setPersons(expenditures);
     }
 
@@ -53,7 +53,7 @@ public class Account implements ReadOnlyAccount {
      */
     public void resetData(ReadOnlyAccount newData) {
         requireNonNull(newData);
-        setAccount(newData.getExpenditureList());
+        setExpenditures(newData.getExpenditureList());
     }
 
     //// expenditure-level operations
@@ -62,7 +62,7 @@ public class Account implements ReadOnlyAccount {
      * Returns true if a expenditure with the same identity as {@code expenditure} exists in the address book.
      */
 
-    public boolean hasAccount(Expenditure expenditure) {
+    public boolean hasExpenditure(Expenditure expenditure) {
         requireNonNull(expenditure);
         return persons.contains(expenditure);
     }
@@ -72,9 +72,8 @@ public class Account implements ReadOnlyAccount {
      * Adds a expenditure to the address book.
      * The expenditure must not already exist in the address book.
      */
-    public void addAccount(Expenditure p) {
-
-        persons.add(p);
+    public void addExpenditure(Expenditure expenditure) {
+        persons.add(expenditure);
     }
 
     /**
@@ -83,7 +82,7 @@ public class Account implements ReadOnlyAccount {
      * The expenditure identity of {@code editedExpenditure} must not be the same as another
      * existing expenditure in the address book.
      */
-    public void setPerson(Expenditure target, Expenditure editedExpenditure) {
+    public void setExpenditure(Expenditure target, Expenditure editedExpenditure) {
         requireNonNull(editedExpenditure);
 
         persons.setPerson(target, editedExpenditure);
@@ -93,7 +92,7 @@ public class Account implements ReadOnlyAccount {
      * Removes {@code key} from this {@code Account}.
      * {@code key} must exist in the address book.
      */
-    public void removeAccount(Expenditure key) {
+    public void removeExpenditure(Expenditure key) {
         persons.remove(key);
     }
 

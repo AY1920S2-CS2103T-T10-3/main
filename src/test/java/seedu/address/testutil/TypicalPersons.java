@@ -65,7 +65,7 @@ public class TypicalPersons {
     public static Account getTypicalAddressBook() {
         Account ab = new Account();
         for (Expenditure expenditure : getTypicalPersons()) {
-            ab.addAccount(expenditure);
+            ab.addExpenditure(expenditure);
         }
         return ab;
     }

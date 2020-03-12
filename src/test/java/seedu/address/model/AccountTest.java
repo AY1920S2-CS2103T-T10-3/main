@@ -54,26 +54,26 @@ public class AccountTest {
 
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> account.hasAccount(null));
+        assertThrows(NullPointerException.class, () -> account.hasExpenditure(null));
     }
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(account.hasAccount(ALICE));
+        assertFalse(account.hasExpenditure(ALICE));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        account.addAccount(ALICE);
-        assertTrue(account.hasAccount(ALICE));
+        account.addExpenditure(ALICE);
+        assertTrue(account.hasExpenditure(ALICE));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        account.addAccount(ALICE);
+        account.addExpenditure(ALICE);
         Expenditure editedAlice = new PersonBuilder(ALICE).withDate(VALID_DATE_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(account.hasAccount(editedAlice));
+        assertTrue(account.hasExpenditure(editedAlice));
     }
 
     @Test

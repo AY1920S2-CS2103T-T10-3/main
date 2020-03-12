@@ -26,7 +26,7 @@ public class AddressBookBuilder {
      * Adds a new {@code Expenditure} to the {@code Account} that we are building.
      */
     public AddressBookBuilder withPerson(Expenditure expenditure) {
-        account.addAccount(expenditure);
+        account.addExpenditure(expenditure);
         return this;
     }
 

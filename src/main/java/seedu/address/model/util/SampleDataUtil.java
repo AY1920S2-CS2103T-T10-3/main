@@ -39,7 +39,7 @@ public class SampleDataUtil {
     public static ReadOnlyAccount getSampleAddressBook() {
         Account sampleAb = new Account();
         for (Expenditure sampleExpenditure : getSamplePersons()) {
-            sampleAb.addAccount(sampleExpenditure);
+            sampleAb.addExpenditure(sampleExpenditure);
 
         }
         return sampleAb;

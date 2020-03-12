@@ -28,7 +28,7 @@ public class ExpAddCommandIntegrationTest {
     @Test
     public void execute_newPerson_success() {
         Expenditure validExpenditure = new PersonBuilder().build();
-        Model expectedModel = new ModelManager(model.getAccount(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAccountList(), new UserPrefs());
         expectedModel.addExpenditure(validExpenditure);
 
 
@@ -38,7 +38,7 @@ public class ExpAddCommandIntegrationTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Expenditure expenditureInList = model.getAccount().getExpenditureList().get(0);
+        Expenditure expenditureInList = model.getAccountList().getExpenditureList().get(0);
         assertCommandFailure(new ExpAddCommand(expenditureInList), model, ExpAddCommand.MESSAGE_DUPLICATE_PERSON);
     }
 

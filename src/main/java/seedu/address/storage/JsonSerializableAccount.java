@@ -18,28 +18,31 @@ import seedu.address.model.expenditure.Expenditure;
  * An Immutable Account that is serializable to JSON format.
  */
 @JsonRootName(value = "saveit")
-class JsonSerializableAddressBook {
+class JsonSerializableAccount {
 
     public static final String MESSAGE_DUPLICATE_EXPENDITURE = "Expenditures list contains duplicate expenditure(s).";
 
     private final List<JsonAdaptedExpenditure> expenditures = new ArrayList<>();
+    private final String accountName;
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAccount} with the given expenditures and accountName.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("expenditures") List<JsonAdaptedExpenditure> expenditures) {
+    public JsonSerializableAccount(@JsonProperty("accountName") String accountName, @JsonProperty("expenditures") List<JsonAdaptedExpenditure> expenditures) {
+        this.accountName = accountName;
         this.expenditures.addAll(expenditures);
     }
 
     /**
-     * Converts a given {@code ReadOnlyAccount} into this class for Jackson use.
+     * Converts a given {@code Account} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableAccount}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAccount source) {
+    public JsonSerializableAccount(Account source) {
         expenditures.addAll(source.getExpenditureList().stream().map(JsonAdaptedExpenditure::new)
                 .collect(Collectors.toList()));
+        accountName = source.getAccountName();
     }
 
     /**
@@ -48,7 +51,7 @@ class JsonSerializableAddressBook {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public Account toModelType() throws IllegalValueException {
-        Account account = new Account();
+        Account account = new Account(accountName);
         for (JsonAdaptedExpenditure jsonAdaptedExpenditure : expenditures) {
             Expenditure expenditure = jsonAdaptedExpenditure.toModelType();
             if (account.hasExpenditure(expenditure)) {

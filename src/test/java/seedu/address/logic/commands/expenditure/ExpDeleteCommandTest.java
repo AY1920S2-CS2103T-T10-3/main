@@ -33,7 +33,7 @@ public class ExpDeleteCommandTest {
 
         String expectedMessage = String.format(ExpDeleteCommand.MESSAGE_DELETE_EXPENDITURE_SUCCESS,
                         expenditureToDelete);
-        ModelManager expectedModel = new ModelManager(model.getAccount(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getAccountList(), new UserPrefs());
         expectedModel.deleteExpenditure(expenditureToDelete);
 
         assertCommandSuccess(expDeleteCommand, model, expectedMessage, expectedModel);
@@ -56,7 +56,7 @@ public class ExpDeleteCommandTest {
 
         String expectedMessage = String.format(ExpDeleteCommand.MESSAGE_DELETE_EXPENDITURE_SUCCESS,
                         expenditureToDelete);
-        Model expectedModel = new ModelManager(model.getAccount(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAccountList(), new UserPrefs());
         expectedModel.deleteExpenditure(expenditureToDelete);
         showNoPerson(expectedModel);
 
@@ -69,7 +69,7 @@ public class ExpDeleteCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAccount().getExpenditureList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getAccountList().getExpenditureList().size());
 
         ExpDeleteCommand expDeleteCommand = new ExpDeleteCommand(outOfBoundIndex);
 

@@ -47,10 +47,10 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code account}.
      */
-    void setAccount(ReadOnlyAccount account);
+    void setAccountList(ReadOnlyAccountList accountList);
 
     /** Returns the Account */
-    ReadOnlyAccount getAccount();
+    ReadOnlyAccountList getAccountList();
 
     /**
      * Returns true if a expenditure with the same identity as {@code expenditure} exists in the address book.

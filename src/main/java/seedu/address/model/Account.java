@@ -15,6 +15,7 @@ import seedu.address.model.expenditure.UniquePersonList;
 public class Account implements ReadOnlyAccount {
 
     private final UniquePersonList persons;
+    private final String accountName;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -27,14 +28,24 @@ public class Account implements ReadOnlyAccount {
         persons = new UniquePersonList();
     }
 
-    public Account() {}
+    public Account() {
+        accountName = null;
+    }
+
+    public Account(String accountName) {
+        this.accountName = accountName;
+    }
 
     /**
      * Creates an Account using the Persons in the {@code toBeCopied}
      */
-    public Account(ReadOnlyAccount toBeCopied) {
-        this();
+    public Account(Account toBeCopied) {
+        this(toBeCopied.accountName);
         resetData(toBeCopied);
+    }
+
+    public String getAccountName() {
+        return accountName;
     }
 
     //// list overwrite operations

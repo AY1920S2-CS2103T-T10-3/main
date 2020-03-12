@@ -15,6 +15,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 
 import seedu.address.model.ReadOnlyAccount;
+import seedu.address.model.ReadOnlyAccountList;
 import seedu.address.model.expenditure.Expenditure;
 
 import seedu.address.storage.Storage;
@@ -45,7 +46,7 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAccount());
+            storage.saveAddressBook(model.getAccountList());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -54,8 +55,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAccount getAddressBook() {
-        return model.getAccount();
+    public ReadOnlyAccountList getAddressBook() {
+        return model.getAccountList();
     }
 
     @Override

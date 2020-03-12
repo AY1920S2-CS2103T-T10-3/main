@@ -116,12 +116,12 @@ public class ExpAddCommandTest {
         }
 
         @Override
-        public void setAccount(ReadOnlyAccount newData) {
+        public void setAccountList(ReadOnlyAccount newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAccount getAccount() {
+        public ReadOnlyAccount getAccountList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -188,7 +188,7 @@ public class ExpAddCommandTest {
         }
 
         @Override
-        public ReadOnlyAccount getAccount() {
+        public ReadOnlyAccount getAccountList() {
             return new Account();
         }
     }

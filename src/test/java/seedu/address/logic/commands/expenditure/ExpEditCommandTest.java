@@ -45,7 +45,7 @@ public class ExpEditCommandTest {
 
         String expectedMessage = String.format(ExpEditCommand.MESSAGE_EDIT_EXPENDITURE_SUCCESS, editedExpenditure);
 
-        Model expectedModel = new ModelManager(new Account(model.getAccount()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(model.getAccountList()), new UserPrefs());
         expectedModel.setExpenditure(model.getFilteredExpenditureList().get(0), editedExpenditure);
 
         assertCommandSuccess(expEditCommand, model, expectedMessage, expectedModel);
@@ -66,7 +66,7 @@ public class ExpEditCommandTest {
 
         String expectedMessage = String.format(ExpEditCommand.MESSAGE_EDIT_EXPENDITURE_SUCCESS, editedExpenditure);
 
-        Model expectedModel = new ModelManager(new Account(model.getAccount()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(model.getAccountList()), new UserPrefs());
         expectedModel.setExpenditure(lastExpenditure, editedExpenditure);
 
         assertCommandSuccess(expEditCommand, model, expectedMessage, expectedModel);
@@ -81,7 +81,7 @@ public class ExpEditCommandTest {
 
         String expectedMessage = String.format(ExpEditCommand.MESSAGE_EDIT_EXPENDITURE_SUCCESS, editedExpenditure);
 
-        Model expectedModel = new ModelManager(new Account(model.getAccount()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(model.getAccountList()), new UserPrefs());
 
         assertCommandSuccess(expEditCommand, model, expectedMessage, expectedModel);
     }
@@ -98,7 +98,7 @@ public class ExpEditCommandTest {
 
         String expectedMessage = String.format(ExpEditCommand.MESSAGE_EDIT_EXPENDITURE_SUCCESS, editedExpenditure);
 
-        Model expectedModel = new ModelManager(new Account(model.getAccount()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(model.getAccountList()), new UserPrefs());
         expectedModel.setExpenditure(model.getFilteredExpenditureList().get(0), editedExpenditure);
 
         assertCommandSuccess(expEditCommand, model, expectedMessage, expectedModel);
@@ -117,7 +117,7 @@ public class ExpEditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         // edit expenditure in filtered list into a duplicate in address book
-        Expenditure expenditureInList = model.getAccount().getExpenditureList().get(INDEX_SECOND_PERSON.getZeroBased());
+        Expenditure expenditureInList = model.getAccountList().getExpenditureList().get(INDEX_SECOND_PERSON.getZeroBased());
         ExpEditCommand expEditCommand = new ExpEditCommand(INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder(expenditureInList).build());
 
@@ -142,7 +142,7 @@ public class ExpEditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAccount().getExpenditureList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getAccountList().getExpenditureList().size());
 
         ExpEditCommand expEditCommand = new ExpEditCommand(outOfBoundIndex,
                 new EditPersonDescriptorBuilder().withInfo(VALID_INFO_BOB).build());

@@ -7,6 +7,7 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.Account;
 import seedu.address.model.ReadOnlyAccount;
+import seedu.address.model.ReadOnlyAccountList;
 
 /**
  * Represents a storage for {@link Account}.
@@ -24,23 +25,23 @@ public interface AddressBookStorage {
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */
-    Optional<ReadOnlyAccount> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyAccountList> readAddressBook() throws DataConversionException, IOException;
 
     /**
      * @see #getAddressBookFilePath()
      */
-    Optional<ReadOnlyAccount> readAddressBook(Path filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyAccountList> readAddressBook(Path filePath) throws DataConversionException, IOException;
 
     /**
-     * Saves the given {@link ReadOnlyAccount} to the storage.
+     * Saves the given {@link ReadOnlyAccountList} to the storage.
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyAccount addressBook) throws IOException;
+    void saveAddressBook(ReadOnlyAccountList addressBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyAccount)
+     * @see #saveAddressBook(ReadOnlyAccountList)
      */
-    void saveAddressBook(ReadOnlyAccount addressBook, Path filePath) throws IOException;
+    void saveAddressBook(ReadOnlyAccountList addressBook, Path filePath) throws IOException;
 
 }

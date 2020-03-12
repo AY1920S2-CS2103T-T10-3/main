@@ -12,7 +12,9 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
+import seedu.address.model.AccountList;
 import seedu.address.model.ReadOnlyAccount;
+import seedu.address.model.ReadOnlyAccountList;
 
 /**
  * A class to access Account data stored as a json file on the hard disk.
@@ -32,7 +34,7 @@ public class JsonAddressBookStorage implements AddressBookStorage {
     }
 
     @Override
-    public Optional<ReadOnlyAccount> readAddressBook() throws DataConversionException {
+    public Optional<ReadOnlyAccountList> readAddressBook() throws DataConversionException {
         return readAddressBook(filePath);
     }
 
@@ -42,11 +44,11 @@ public class JsonAddressBookStorage implements AddressBookStorage {
      * @param filePath location of the data. Cannot be null.
      * @throws DataConversionException if the file is not in the correct format.
      */
-    public Optional<ReadOnlyAccount> readAddressBook(Path filePath) throws DataConversionException {
+    public Optional<ReadOnlyAccountList> readAddressBook(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableAddressBook> jsonAddressBook = JsonUtil.readJsonFile(
-                filePath, JsonSerializableAddressBook.class);
+        Optional<JsonSerializableAccountList> jsonAddressBook = JsonUtil.readJsonFile(
+                filePath, JsonSerializableAccountList.class);
         if (!jsonAddressBook.isPresent()) {
             return Optional.empty();
         }
@@ -60,21 +62,21 @@ public class JsonAddressBookStorage implements AddressBookStorage {
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAccount addressBook) throws IOException {
+    public void saveAddressBook(ReadOnlyAccountList addressBook) throws IOException {
         saveAddressBook(addressBook, filePath);
     }
 
     /**
-     * Similar to {@link #saveAddressBook(ReadOnlyAccount)}.
+     * Similar to {@link #saveAddressBook(ReadOnlyAccountList)}.
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveAddressBook(ReadOnlyAccount addressBook, Path filePath) throws IOException {
+    public void saveAddressBook(ReadOnlyAccountList addressBook, Path filePath) throws IOException {
         requireNonNull(addressBook);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableAddressBook(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableAccountList(addressBook), filePath);
     }
 
 }

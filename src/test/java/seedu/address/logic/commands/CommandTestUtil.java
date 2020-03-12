@@ -109,11 +109,11 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
 
-        Account expectedAccount = new Account(actualModel.getAccount());
+        Account expectedAccount = new Account(actualModel.getAccountList());
         List<Expenditure> expectedFilteredList = new ArrayList<>(actualModel.getFilteredExpenditureList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAccount, actualModel.getAccount());
+        assertEquals(expectedAccount, actualModel.getAccountList());
         assertEquals(expectedFilteredList, actualModel.getFilteredExpenditureList());
     }
     /**

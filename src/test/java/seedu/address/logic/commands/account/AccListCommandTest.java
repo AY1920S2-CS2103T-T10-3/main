@@ -23,7 +23,7 @@ public class AccListCommandTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        expectedModel = new ModelManager(model.getAccount(), new UserPrefs());
+        expectedModel = new ModelManager(model.getAccountList(), new UserPrefs());
     }
 
     @Test

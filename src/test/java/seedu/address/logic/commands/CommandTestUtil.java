@@ -19,6 +19,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.expenditure.ExpEditCommand.EditExpenditureDescriptor;
 import seedu.address.model.Account;
+import seedu.address.model.AccountList;
 import seedu.address.model.Model;
 import seedu.address.model.expenditure.Expenditure;
 import seedu.address.model.expenditure.InfoContainsKeywordsPredicate;
@@ -109,11 +110,11 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
 
-        Account expectedAccount = new Account(actualModel.getAccountList());
+        AccountList expectedAccountList = new AccountList(actualModel.getAccountList());
         List<Expenditure> expectedFilteredList = new ArrayList<>(actualModel.getFilteredExpenditureList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAccount, actualModel.getAccountList());
+        assertEquals(expectedAccountList, actualModel.getAccountList());
         assertEquals(expectedFilteredList, actualModel.getFilteredExpenditureList());
     }
     /**

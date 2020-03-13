@@ -1,8 +1,11 @@
 {
-  "expenditures": [ {
-    "info": "Person with invalid info field: Ha!ns Mu@ster",
-    "id": "9482424",
-    "amount": 3.14,
-    "date" : "2019-09-11"
+  "accounts" : [ {
+    "accountName": "default",
+    "expenditures": [ {
+        "info": "Person with invalid info field: Ha!ns Mu@ster",
+        "id": "9482424",
+        "amount": 3.14,
+        "date" : "2019-09-11"
+    } ]
   } ]
 }

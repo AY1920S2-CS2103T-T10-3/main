@@ -1,17 +1,21 @@
 package seedu.address.storage;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.Account;
 import seedu.address.model.AccountList;
 import seedu.address.model.ReadOnlyAccountList;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
+/**
+ * An Immutable AccountList that is serializable to JSON format.
+ */
 @JsonRootName(value = "saveit")
 public class JsonSerializableAccountList {
 
@@ -43,8 +47,8 @@ public class JsonSerializableAccountList {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public AccountList toModelType() throws IllegalValueException {
-        AccountList accountList = new AccountList();
-        for (JsonSerializableAccount jsonAdaptedAccount: accounts){
+        AccountList accountList = new AccountList(false);
+        for (JsonSerializableAccount jsonAdaptedAccount: accounts) {
             Account account = jsonAdaptedAccount.toModelType();
             if (accountList.hasAccount(account)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ACCOUNT);

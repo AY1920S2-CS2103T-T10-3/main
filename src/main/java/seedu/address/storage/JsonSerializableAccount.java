@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 
 import seedu.address.model.Account;
-import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.expenditure.Expenditure;
 
 /**
@@ -29,7 +28,8 @@ class JsonSerializableAccount {
      * Constructs a {@code JsonSerializableAccount} with the given expenditures and accountName.
      */
     @JsonCreator
-    public JsonSerializableAccount(@JsonProperty("accountName") String accountName, @JsonProperty("expenditures") List<JsonAdaptedExpenditure> expenditures) {
+    public JsonSerializableAccount(@JsonProperty("accountName") String accountName,
+                                   @JsonProperty("expenditures") List<JsonAdaptedExpenditure> expenditures) {
         this.accountName = accountName;
         this.expenditures.addAll(expenditures);
     }

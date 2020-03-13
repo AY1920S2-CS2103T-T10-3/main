@@ -14,7 +14,6 @@ import seedu.address.logic.parser.TopLevelParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 
-import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyAccountList;
 import seedu.address.model.expenditure.Expenditure;
 

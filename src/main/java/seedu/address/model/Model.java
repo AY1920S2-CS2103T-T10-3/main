@@ -53,27 +53,27 @@ public interface Model {
     ReadOnlyAccountList getAccountList();
 
     /**
-     * Returns true if a expenditure with the same identity as {@code expenditure} exists in the address book.
+     * Returns true if a expenditure with the same identity as {@code expenditure} exists in the internal list.
      */
     boolean hasExpenditure(Expenditure expenditure);
 
     /**
      * Deletes the given expenditure.
-     * The expenditure must exist in the address book.
+     * The expenditure must exist in the internal list.
      */
     void deleteExpenditure(Expenditure target);
 
     /**
      * Adds the given expenditure.
-     * {@code expenditure} must not already exist in the address book.
+     * {@code expenditure} must not already exist in the internal list.
      */
     void addExpenditure(Expenditure expenditure);
 
     /**
      * Replaces the given expenditure {@code target} with {@code editedExpenditure}.
-     * {@code target} must exist in the address book.
+     * {@code target} must exist in the internal list.
      * The expenditure identity of {@code editedExpenditure} must not be the same as
-     * another existing expenditure in the address book.
+     * another existing expenditure in the internal list.
      */
     void setExpenditure(Expenditure target, Expenditure editedExpenditure);
 

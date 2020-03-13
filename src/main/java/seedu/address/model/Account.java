@@ -111,8 +111,9 @@ public class Account implements ReadOnlyAccount {
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        // return persons.asUnmodifiableObservableList().size() + " persons";
         // TODO: refine later
+        return "Account: " + accountName;
     }
 
     @Override
@@ -124,6 +125,7 @@ public class Account implements ReadOnlyAccount {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Account // instanceof handles nulls
+                && accountName.equals(((Account) other).accountName)
                 && persons.equals(((Account) other).persons));
     }
 

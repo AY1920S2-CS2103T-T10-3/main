@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalExpenditures.ALICE;
+import static seedu.address.testutil.TypicalExpenditures.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,7 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.expenditure.InfoContainsKeywordsPredicate;
-import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.AccountBuilder;
+import seedu.address.testutil.AccountListBuilder;
 
 public class ModelManagerTest {
 
@@ -26,7 +27,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new Account(), new Account(modelManager.getAccountList()));
+        assertEquals(new AccountList(true), new AccountList(modelManager.getAccountList()));
     }
 
     @Test
@@ -95,13 +96,14 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        Account account = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
-        Account differentAccount = new Account();
+        Account account = new AccountBuilder("account").withExpenditure(ALICE).withExpenditure(BENSON).build();
+        AccountList accountList = new AccountListBuilder().withAccount(account).build();
+        AccountList differentAccountList = new AccountList(false);
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(account, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(account, userPrefs);
+        modelManager = new ModelManager(accountList, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(accountList, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -114,12 +116,12 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different account -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAccount, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(differentAccountList, userPrefs)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getInfo().fullInfo.split("\\s+");
         modelManager.updateFilteredExpenditureList(new InfoContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(account, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(accountList, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredExpenditureList(PREDICATE_SHOW_ALL_PERSONS);
@@ -127,6 +129,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(account, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(accountList, differentUserPrefs)));
     }
 }

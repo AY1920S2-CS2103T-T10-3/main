@@ -18,11 +18,13 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Account;
+import seedu.address.model.AccountList;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAccount;
+import seedu.address.model.ReadOnlyAccountList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.expenditure.Expenditure;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ExpenditureBuilder;
 
 public class ExpAddCommandTest {
 
@@ -34,7 +36,7 @@ public class ExpAddCommandTest {
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingExpenditureAdded modelStub = new ModelStubAcceptingExpenditureAdded();
-        Expenditure validPerson = new PersonBuilder().build();
+        Expenditure validPerson = new ExpenditureBuilder().build();
 
         CommandResult commandResult = new ExpAddCommand(validPerson).execute(modelStub);
 
@@ -44,7 +46,7 @@ public class ExpAddCommandTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Expenditure validExpenditure = new PersonBuilder().build();
+        Expenditure validExpenditure = new ExpenditureBuilder().build();
         ExpAddCommand expAddCommand = new ExpAddCommand(validExpenditure);
         ModelStub modelStub = new ModelStubWithExpenditure(validExpenditure);
 
@@ -54,8 +56,8 @@ public class ExpAddCommandTest {
 
     @Test
     public void equals() {
-        Expenditure alice = new PersonBuilder().withInfo("Alice").build();
-        Expenditure bob = new PersonBuilder().withInfo("Bob").build();
+        Expenditure alice = new ExpenditureBuilder().withInfo("Alice").build();
+        Expenditure bob = new ExpenditureBuilder().withInfo("Bob").build();
         ExpAddCommand addAliceCommand = new ExpAddCommand(alice);
         ExpAddCommand addBobCommand = new ExpAddCommand(bob);
 
@@ -116,12 +118,12 @@ public class ExpAddCommandTest {
         }
 
         @Override
-        public void setAccountList(ReadOnlyAccount newData) {
+        public void setAccountList(ReadOnlyAccountList newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAccount getAccountList() {
+        public ReadOnlyAccountList getAccountList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -147,6 +149,11 @@ public class ExpAddCommandTest {
 
         @Override
         public void updateFilteredExpenditureList(Predicate<Expenditure> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean updateActiveAccount(String accountName) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -188,8 +195,9 @@ public class ExpAddCommandTest {
         }
 
         @Override
-        public ReadOnlyAccount getAccountList() {
-            return new Account();
+        public ReadOnlyAccountList getAccountList() {
+//            return new AccountList();
+            return null;
         }
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.expenditure.exceptions.DuplicatePersonException;
+import seedu.address.model.expenditure.exceptions.DuplicateExpenditureException;
 import seedu.address.model.expenditure.exceptions.PersonNotFoundException;
 
 /**
@@ -46,7 +46,7 @@ public class UniqueExpenditureList implements Iterable<Expenditure> {
     public void add(Expenditure toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateExpenditureException();
         }
         internalList.add(toAdd);
     }
@@ -66,7 +66,7 @@ public class UniqueExpenditureList implements Iterable<Expenditure> {
         }
 
         if (!target.isSamePerson(editedExpenditure) && contains(editedExpenditure)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateExpenditureException();
         }
 
         internalList.set(index, editedExpenditure);
@@ -95,7 +95,7 @@ public class UniqueExpenditureList implements Iterable<Expenditure> {
     public void setExpenditures(List<Expenditure> expenditures) {
         requireAllNonNull(expenditures);
         if (!personsAreUnique(expenditures)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateExpenditureException();
         }
 
         internalList.setAll(expenditures);

@@ -25,8 +25,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalPersons.AMY;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalExpenditures.AMY;
+import static seedu.address.testutil.TypicalExpenditures.BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -39,14 +39,14 @@ import seedu.address.model.expenditure.Id;
 import seedu.address.model.expenditure.Info;
 
 import seedu.address.model.tag.Tag;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ExpenditureBuilder;
 
 public class ExpAddCommandParserTest {
     private ExpAddCommandParser parser = new ExpAddCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Expenditure expectedExpenditure = new PersonBuilder(BOB).withTags(VALID_TAG_FRIEND).build();
+        Expenditure expectedExpenditure = new ExpenditureBuilder(BOB).withTags(VALID_TAG_FRIEND).build();
 
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + INFO_DESC_BOB + ID_DESC_BOB + AMOUNT_DESC_BOB
                 + DATE_DESC_BOB + TAG_DESC_FRIEND, new ExpAddCommand(expectedExpenditure));
@@ -68,7 +68,7 @@ public class ExpAddCommandParserTest {
                 + DATE_DESC_BOB + TAG_DESC_FRIEND, new ExpAddCommand(expectedExpenditure));
 
         // multiple tags - all accepted
-        Expenditure expectedExpenditureMultipleTags = new PersonBuilder(BOB)
+        Expenditure expectedExpenditureMultipleTags = new ExpenditureBuilder(BOB)
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
 
@@ -80,7 +80,7 @@ public class ExpAddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Expenditure expectedExpenditure = new PersonBuilder(AMY).withTags().build();
+        Expenditure expectedExpenditure = new ExpenditureBuilder(AMY).withTags().build();
         assertParseSuccess(parser, INFO_DESC_AMY + ID_DESC_AMY + AMOUNT_DESC_AMY + DATE_DESC_AMY,
                 new ExpAddCommand(expectedExpenditure));
     }

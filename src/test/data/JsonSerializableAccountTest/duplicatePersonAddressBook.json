@@ -1,14 +1,17 @@
 {
-  "expenditures": [ {
-    "info": "Alice Pauline",
-    "id": "94351253",
-    "amount": 3.14,
-    "date": "2019-09-11",
-    "tagged": [ "friends" ]
-  }, {
-    "info": "Alice Pauline",
-    "id": "94351253",
-    "amount": 3.14,
-    "date": "2019-09-11"
+  "accounts" : [ {
+    "accountName": "default",
+    "expenditures": [ {
+      "info": "Alice Pauline",
+      "id": "94351253",
+      "amount": 3.14,
+      "date": "2019-09-11",
+      "tagged": [ "friends" ]
+    } , {
+      "info": "Alice Pauline",
+      "id": "94351253",
+      "amount": 3.14,
+      "date": "2019-09-11"
+    } ]
   } ]
 }

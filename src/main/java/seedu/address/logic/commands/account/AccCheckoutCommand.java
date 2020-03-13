@@ -26,7 +26,7 @@ public class AccCheckoutCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        if (!model.updateActiveAccount(accountName)){
+        if (!model.updateActiveAccount(accountName)) {
             throw new CommandException(Messages.MESSAGE_INVALID_ACCOUNT_NAME);
         }
         return new CommandResult(String.format(MESSAGE_CHECKOUT_SUCCESS, accountName));

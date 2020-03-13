@@ -6,26 +6,26 @@ import seedu.address.model.expenditure.Expenditure;
 
 
 /**
- * A utility class to help with building Addressbook objects.
+ * A utility class to help with building Account objects.
  * Example usage: <br>
- *     {@code Account ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
+ *     {@code Account ab = new AccountBuilder().withPerson("John", "Doe").build();}
  */
-public class AddressBookBuilder {
+public class AccountBuilder {
 
     private Account account;
 
-    public AddressBookBuilder() {
-        account = new Account();
+    public AccountBuilder(String accountName) {
+        account = new Account(accountName);
     }
 
-    public AddressBookBuilder(Account account) {
+    public AccountBuilder(Account account) {
         this.account = account;
     }
 
     /**
      * Adds a new {@code Expenditure} to the {@code Account} that we are building.
      */
-    public AddressBookBuilder withPerson(Expenditure expenditure) {
+    public AccountBuilder withExpenditure(Expenditure expenditure) {
         account.addExpenditure(expenditure);
         return this;
     }

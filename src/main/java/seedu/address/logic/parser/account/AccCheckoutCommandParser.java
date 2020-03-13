@@ -1,14 +1,10 @@
 package seedu.address.logic.parser.account;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.address.logic.commands.account.AccCheckoutCommand;
-import seedu.address.logic.commands.expenditure.ExpFindCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.expenditure.InfoContainsKeywordsPredicate;
-
-import java.util.Arrays;
-
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 /**
  * Parse change account.

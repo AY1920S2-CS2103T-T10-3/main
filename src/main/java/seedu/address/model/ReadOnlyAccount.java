@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.expenditure.Expenditure;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of an account.
  */
 public interface ReadOnlyAccount {
 

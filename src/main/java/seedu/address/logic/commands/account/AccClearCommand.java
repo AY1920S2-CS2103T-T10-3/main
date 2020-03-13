@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.model.Account;
 import seedu.address.model.Model;
 
 /**
@@ -19,8 +18,8 @@ public class AccClearCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-//        model.setAccount(new Account());
-//        return new CommandResult(MESSAGE_SUCCESS);
+        // model.setAccount(new Account());
+        // return new CommandResult(MESSAGE_SUCCESS);
         return new CommandResult("NOT IMPLEMENTED YET");
     }
 }

@@ -27,7 +27,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.expenditure.Expenditure;
 import seedu.address.model.expenditure.InfoContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ExpenditureBuilder;
 import seedu.address.testutil.PersonUtil;
 
 public class TopLevelParserTest {
@@ -36,7 +36,7 @@ public class TopLevelParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Expenditure expenditure = new PersonBuilder().build();
+        Expenditure expenditure = new ExpenditureBuilder().build();
         ExpAddCommand command = (ExpAddCommand) parser.parseCommand(PersonUtil.getAddCommand(expenditure));
         assertEquals(new ExpAddCommand(expenditure), command);
     }
@@ -57,7 +57,7 @@ public class TopLevelParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Expenditure person = new PersonBuilder().build();
+        Expenditure person = new ExpenditureBuilder().build();
         EditExpenditureDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
         ExpEditCommand command = (ExpEditCommand) parser.parseCommand(ExpEditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));

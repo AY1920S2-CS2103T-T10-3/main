@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalExpenditures.ALICE;
+import static seedu.address.testutil.TypicalExpenditures.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,9 +15,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.expenditure.exceptions.DuplicatePersonException;
+import seedu.address.model.expenditure.exceptions.DuplicateExpenditureException;
 import seedu.address.model.expenditure.exceptions.PersonNotFoundException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ExpenditureBuilder;
 
 public class UniqueExpenditureListTest {
 
@@ -43,7 +43,7 @@ public class UniqueExpenditureListTest {
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniqueExpenditureList.add(ALICE);
 
-        Expenditure editedAlice = new PersonBuilder(ALICE).withDate(VALID_DATE_BOB).withTags(VALID_TAG_HUSBAND)
+        Expenditure editedAlice = new ExpenditureBuilder(ALICE).withDate(VALID_DATE_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueExpenditureList.contains(editedAlice));
     }
@@ -56,7 +56,7 @@ public class UniqueExpenditureListTest {
     @Test
     public void add_duplicatePerson_throwsDuplicatePersonException() {
         uniqueExpenditureList.add(ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueExpenditureList.add(ALICE));
+        assertThrows(DuplicateExpenditureException.class, () -> uniqueExpenditureList.add(ALICE));
     }
 
     @Test
@@ -87,7 +87,7 @@ public class UniqueExpenditureListTest {
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniqueExpenditureList.add(ALICE);
 
-        Expenditure editedAlice = new PersonBuilder(ALICE).withDate(VALID_DATE_BOB).withTags(VALID_TAG_HUSBAND)
+        Expenditure editedAlice = new ExpenditureBuilder(ALICE).withDate(VALID_DATE_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         uniqueExpenditureList.setExpenditure(ALICE, editedAlice);
         UniqueExpenditureList expectedUniqueExpenditureList = new UniqueExpenditureList();
@@ -108,7 +108,7 @@ public class UniqueExpenditureListTest {
     public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
         uniqueExpenditureList.add(ALICE);
         uniqueExpenditureList.add(BOB);
-        assertThrows(DuplicatePersonException.class, () -> uniqueExpenditureList.setExpenditure(ALICE, BOB));
+        assertThrows(DuplicateExpenditureException.class, () -> uniqueExpenditureList.setExpenditure(ALICE, BOB));
     }
 
     @Test
@@ -161,7 +161,7 @@ public class UniqueExpenditureListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Expenditure> listWithDuplicateExpenditures = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueExpenditureList.setExpenditures(listWithDuplicateExpenditures));
+        assertThrows(DuplicateExpenditureException.class, () -> uniqueExpenditureList.setExpenditures(listWithDuplicateExpenditures));
     }
 
     @Test

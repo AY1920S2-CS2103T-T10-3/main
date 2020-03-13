@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -22,7 +23,6 @@ public class ModelManager implements Model {
 
     private final AccountList accountList;
     private final UserPrefs userPrefs;
-    private final ObservableList<Expenditure> expenditures;
     private final FilteredList<Expenditure> filteredExpenditures;
 
     /**
@@ -37,8 +37,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         this.accountList = new AccountList(accountList);
 
-        expenditures = FXCollections.observableArrayList(this.accountList.getExpenditureList());
-        filteredExpenditures = expenditures.filtered(PREDICATE_SHOW_ALL_PERSONS);
+        filteredExpenditures = this.accountList.getExpenditureList().filtered(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     public ModelManager() {
@@ -96,17 +95,17 @@ public class ModelManager implements Model {
 
     public boolean hasExpenditure(Expenditure expenditure) {
         requireNonNull(expenditure);
-        return accountList.getActiveAccount().hasExpenditure(expenditure);
+        return accountList.hasExpenditure(expenditure);
     }
 
     @Override
     public void deleteExpenditure(Expenditure target) {
-        accountList.getActiveAccount().removeExpenditure(target);
+        accountList.removeExpenditure(target);
     }
 
     @Override
     public void addExpenditure(Expenditure expenditure) {
-        accountList.getActiveAccount().addExpenditure(expenditure);
+        accountList.addExpenditure(expenditure);
 
         updateFilteredExpenditureList(PREDICATE_SHOW_ALL_PERSONS);
     }
@@ -114,7 +113,7 @@ public class ModelManager implements Model {
     @Override
     public void setExpenditure(Expenditure target, Expenditure editedExpenditure) {
         requireAllNonNull(target, editedExpenditure);
-        accountList.getActiveAccount().setExpenditure(target, editedExpenditure);
+        accountList.setExpenditure(target, editedExpenditure);
     }
 
     //=========== Filtered Expenditure List Accessors =============================================================
@@ -139,8 +138,6 @@ public class ModelManager implements Model {
         if (!accountList.updateActiveAccount(accountName)) {
             return false;
         } else {
-            expenditures.clear();
-            expenditures.addAll(accountList.getExpenditureList());
             updateFilteredExpenditureList(PREDICATE_SHOW_ALL_PERSONS);
             return true;
         }

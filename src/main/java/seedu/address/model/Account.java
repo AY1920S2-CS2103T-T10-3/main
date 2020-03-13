@@ -6,7 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.expenditure.Expenditure;
-import seedu.address.model.expenditure.UniquePersonList;
+import seedu.address.model.expenditure.UniqueExpenditureList;
 
 /**
  * Wraps all data at the address-book level
@@ -14,7 +14,7 @@ import seedu.address.model.expenditure.UniquePersonList;
  */
 public class Account implements ReadOnlyAccount {
 
-    private final UniquePersonList persons;
+    private final UniqueExpenditureList persons;
     private final String accountName;
 
     /*
@@ -25,7 +25,7 @@ public class Account implements ReadOnlyAccount {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        persons = new UniqueExpenditureList();
     }
 
     public Account() {
@@ -56,7 +56,7 @@ public class Account implements ReadOnlyAccount {
      */
 
     public void setExpenditures(List<Expenditure> expenditures) {
-        this.persons.setPersons(expenditures);
+        this.persons.setExpenditures(expenditures);
     }
 
     /**
@@ -96,7 +96,7 @@ public class Account implements ReadOnlyAccount {
     public void setExpenditure(Expenditure target, Expenditure editedExpenditure) {
         requireNonNull(editedExpenditure);
 
-        persons.setPerson(target, editedExpenditure);
+        persons.setExpenditure(target, editedExpenditure);
     }
 
     /**

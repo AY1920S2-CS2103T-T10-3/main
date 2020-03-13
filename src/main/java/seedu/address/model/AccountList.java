@@ -1,14 +1,12 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
-import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.expenditure.Expenditure;
+import seedu.address.model.expenditure.UniqueExpenditureList;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -19,6 +17,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 public class AccountList implements ReadOnlyAccountList, ReadOnlyAccount {
     private Map<String, Account> accounts = new HashMap<>();
     private Account activeAccount;
+    private final UniqueExpenditureList internalList = new UniqueExpenditureList();
 
     /**
      * Creates an AccountList using the accounts in the {@code toBeCopied}
@@ -27,6 +26,7 @@ public class AccountList implements ReadOnlyAccountList, ReadOnlyAccount {
         this();
         resetData(toBeCopied);
         activeAccount = accounts.get("default"); // TODO
+        internalList.setExpenditures(activeAccount.getExpenditureList());
     }
 
     public AccountList(boolean createDefaultAccount) {
@@ -74,17 +74,38 @@ public class AccountList implements ReadOnlyAccountList, ReadOnlyAccount {
         accounts.put(account.getAccountName(), account);
     }
 
+    //// expenditure-level operations
+
+    public boolean hasExpenditure(Expenditure expenditure) {
+        requireNonNull(expenditure);
+        return internalList.contains(expenditure);
+    }
+
+    public void removeExpenditure(Expenditure target) {
+        activeAccount.removeExpenditure(target);
+        internalList.remove(target);
+    }
+
+    public void addExpenditure(Expenditure expenditure) {
+        activeAccount.addExpenditure(expenditure);
+        internalList.add(expenditure);
+    }
+
+    public void setExpenditure(Expenditure target, Expenditure editedExpenditure) {
+        requireAllNonNull(target, editedExpenditure);
+        activeAccount.setExpenditure(target, editedExpenditure);
+        internalList.setExpenditure(target, editedExpenditure);
+    }
+
     //// util methods
 
-    public Account getActiveAccount() {
-        return activeAccount;
-    }
 
     public boolean updateActiveAccount(String accountName){
         if (!accounts.containsKey(accountName)) {
             return false;
         } else {
             activeAccount = accounts.get(accountName);
+            internalList.setExpenditures(activeAccount.getExpenditureList());
             return true;
         }
     }
@@ -96,6 +117,6 @@ public class AccountList implements ReadOnlyAccountList, ReadOnlyAccount {
 
     @Override
     public ObservableList<Expenditure> getExpenditureList() {
-        return activeAccount.getExpenditureList();
+        return internalList.asUnmodifiableObservableList();
     }
 }

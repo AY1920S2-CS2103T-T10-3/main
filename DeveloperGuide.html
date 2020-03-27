@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">$AVE IT</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-T10-3/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>$AVE IT - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team T10-3</code>      Since: <code>Feb 2020</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team T10-3</code>      Since: <code>Mar 2020</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -24,8 +24,12 @@
 <ul class="sectlevel2">
 <li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#calendar-feature">3.3. Calendar feature</a></li>
+<li><a href="#recurring-expenditure-feature">3.4. Recurring Expenditure feature</a></li>
+<li><a href="#autocomplete-feature">3.5. Autocomplete feature</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Report">3.7. Report [In progress]</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -41,7 +45,7 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-an-expenditure">G.2. Deleting an expenditure</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#saving-input">G.3. Saving input</a></li>
 </ul>
 </li>
 </ul>
@@ -149,13 +153,13 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>exp delete 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>exp delete 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -167,16 +171,38 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 4. Structure of the UI Component</div>
+<div class="title">Figure 4. Structure of the Main UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The Main UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> , <code>Calendar</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">Structure of the Report UI Component</div>
+<p>The Report UI consists of a <code>ReportWindow</code> that is made up of parts e.g. <code>ReportCommandBox</code> and <code>PieChart</code> etc.
+The <code>ReportWindow</code> and <code>ReportCommandBox</code>, inherit from abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu.address/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/address/ui"><code>ReportWindow.java</code></a>
+Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/address/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/mainhttps://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -207,7 +233,11 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>TopLevelParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>Depending on the command, the <code>TopLevelParser</code> class may use the <code>SubLevelParser</code> class e.g. <code>ExpLevelParser</code><br>
+to parse the command instead.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -224,13 +254,13 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("exp delete 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>exp delete 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -239,7 +269,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -265,10 +295,10 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the <code>$AVE IT</code> data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Expenditure&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -310,7 +340,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the <code>$AVE IT</code> data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -550,14 +580,100 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.3. Calendar feature</a></h3>
+<div class="paragraph">
+<p><em>{Coming soon}</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recurring-expenditure-feature"><a class="link" href="#recurring-expenditure-feature">3.4. Recurring Expenditure feature</a></h3>
+<div class="paragraph">
+<p><em>{Coming soon}</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">3.5. Autocomplete feature</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">3.5.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The autocomplete feature is facilitated by <code>AutoCompleteTextField.java</code>.
+It extends the <code>TextField</code> component of JavaFx and provides a dropdown of possible commands.</p>
+</div>
+<div class="paragraph">
+<p>To make use of the autocomplete feature. The backend will have to include the commands to be<br>
+added which will be shown to the users. This allows easy configuration of what commands will<br>
+be searched.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the example usage scenario of how the autocompletion works.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. Type into the command box. The function search and filter potential commands that the user might use.<br>
+The commands will then be displayed in a dropdown format which the user can refer to when keying commands.</p>
+</div>
+<div class="paragraph">
+<p>For the current implementation, it checks whether the typed command matches the starting characters of any commands.
+To be improved in later versions.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">3.5.2. Design Consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-usage-of-autocompletion"><a class="link" href="#aspect-usage-of-autocompletion">Aspect: Usage of autocompletion</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Moving mouse over to select commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Does not meet target user needs who strongly prefers typing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use of tab to simulate autocompletion like a terminal.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Intuitive for people used to using a terminal.</p>
+</li>
+<li>
+<p>Cons: Will have to direct the tab keystroke to be used for autocompletion.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-autocompletion-searches-for-completion-items"><a class="link" href="#aspect-how-autocompletion-searches-for-completion-items">Aspect: How autocompletion searches for completion items</a></h5>
+<div class="paragraph">
+<p><em>{To be added}</em></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-more-powerful-autocompletion"><a class="link" href="#aspect-data-structure-to-support-more-powerful-autocompletion">Aspect: Data structure to support more powerful autocompletion</a></h5>
+<div class="paragraph">
+<p><em>{To be added}</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -588,7 +704,87 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Report"><a class="link" href="#Implementation-Report">3.7. Report [In progress]</a></h3>
+<div class="paragraph">
+<p>Report is one of the main feature in <code>$AVE IT</code>  and its purpose is to collate and
+show users their expenditure breakdowns.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.7.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p>While implementing the report feature, we had these considerations:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We want the report to have a graph that showcases expenditure breakdowns.</p>
+</li>
+<li>
+<p>We want to have minimal changes to the current <em>main UI</em> code.</p>
+</li>
+<li>
+<p>We want to avoid cluttering the <code>MainWindow</code> as much as possible when the graph is generated.</p>
+</li>
+<li>
+<p>We want the users to have a clean UI for report.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Hence, due to the above considerations, we chose to break down the report feature into
+2 main aspects:  Logic and  UI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.7.2. Implementation</a></h4>
+<div class="paragraph">
+<p><strong>UI</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>MainWindow</code> : The <code>MainWindow</code> UI implementation is support by <em>javafx</em> and <em>fxml</em>. You can
+read up more at : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/master/docs/DeveloperGuide.adoc#Design-Ui"><code>MainWindow</code></a>.</p>
+</li>
+<li>
+<p><code>ReportWindow</code> : The <code>ReportWindow</code> UI implementation is support by <em>javafx</em> and <em>fxml</em>. You can
+read up more at : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/master/docs/DeveloperGuide.adoc#Design-Ui"><code>ReportWindow</code></a>.</p>
+</li>
+<li>
+<p>Graph is the highlight of the report feature and it is implemented in <code>ReportWindow</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pie chart: Implemented using <strong>javafx.scene.chart.PieChart</strong></p>
+</li>
+<li>
+<p>Bar graph: In progress.</p>
+</li>
+<li>
+<p>Stack Bar graph: In progress.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Logic</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Report</code> : The <code>Report</code>  object is generated to hold  users request for a report either in <code>MainWindow</code> or <code>ReportWindow</code>.</p>
+</li>
+<li>
+<p><code>ReportCommandResult</code>: The <code>ReportCommandResult</code> holds the command result of commands typed in <code>ReportWindow</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -756,20 +952,17 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>$AVE IT</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-add" class="discrete">Use case: Add</h3>
+<h3 id="use-case-acc-add" class="discrete">Use case: Acc Add</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add a spending. Format: `Add -i INFO -a AMT [-t tag] [-d DATE] `</p>
+<p>User requests to add a new account. Format: <code>acc add "account name"</code></p>
 </li>
 <li>
-<p><code>$AVE IT</code> will acknowledge and assign this expenditure an unique ID.</p>
-</li>
-<li>
-<p>If tag is not specified during the instruction, <code>$AVE IT</code> will auto assign it to be <code>others</code></p>
+<p><code>$AVE IT</code> will acknowledge and add this account into the list.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -782,27 +975,402 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1. Wrong Format.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
+<p>1a. <code>$AVE IT</code> detects data is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE It</code> detects a duplicate account name input.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will state that duplicate account name detected. Unable to add.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete" class="discrete">Use case: Delete</h3>
+<h3 id="use-case-acc-delete" class="discrete">Use case: Acc Delete</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to delete a spending. Format: <code>Delete UniqueID</code></p>
+<p>User requests to delete an existing account. Format: <code>acc delete "account name"</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and delete this account from the list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects account name is non-existent.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will state that account is not found. Unable to delete.
+**Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. User requests to deleted the only account in the list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. <code>$AVE IT</code> will create a default account to ensure there is at least an account in the list</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. User requests to delete the account he is are viewing right now.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. <code>$AVE IT</code> will checkout to a random existing account.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-acc-rename" class="discrete">Use case: Acc Rename</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to rename an account. Format: <code>acc rename "old name" "new name"</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and state that the account has being renamed.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that account is non-existent.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will state that the account with the specified name was not found.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects existence of account with "new name".</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> will state that duplicate account name detected. Unable to add.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-acc-checkout" class="discrete">Use case: Acc Checkout</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to check out to another account. Format: <code>acc checkout "account name"</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and state that the target account is checked out.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that account is non-existent.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will state that the account with the specified name was not found.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-acc-list" class="discrete">Use case: Acc List</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a new account. Format: <code>acc list</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and state that the account has being renamed.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format..</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-acc-clear" class="discrete">Use case: Acc Clear</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to clear all data in an account. Format: <code>acc clear "account name"</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and state that the account&#8217;s data has been cleared'.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that account is non-existent.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will state that the account with the specified name was not found.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-exp-add" class="discrete">Use case: Exp Add</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add an expenditure record in the account which they are viewing right now.<br>
+Format: <code>exp add -i info -a amount [-t tag] [-d date (YYYY-MM-DD)]</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge that a new expenditure has been added and show the details of the added expenditure.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that tag is not specified.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1.<code>$AVE IT</code> will auto assign it to be <code>Others</code></p>
+</li>
+<li>
+<p>1c2.<code>$AVE IT</code> will acknowledge that a new expenditure has been added and show the details of the added expenditure.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that date is not specified.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1d1. <code>$AVE IT</code> will add this expenditure record to the day which the calendar states.</p>
+</li>
+<li>
+<p>1d2: <code>$AVE IT</code> will acknowledge that a new expenditure has been added and show the details of the added expenditure.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-exp-delete" class="discrete">Use case: Exp Delete</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete an expenditure record in the account they are viewing right now.<br>
+Format: `exp delete number (positive) `</p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
-</li>
-<li>
-<p>If tag is not specified during the instruction, <code>$AVE IT</code> will auto assign it to be <code>others</code></p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -815,54 +1383,42 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1. Wrong Format.</p>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
 </li>
 <li>
-<p>2. Invalid ID.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that index provided is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will state that the expenditure index provided is invalid.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="use-case-repeat" class="discrete">Use case: Repeat</h3>
+<h3 id="use-case-exp-edit" class="discrete">Use case: Exp Edit</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add an fix spending per month. Format: <code>Repeat -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]</code></p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge and assign it with unique ID.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1. Wrong Format.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-edit" class="discrete">Use case: Edit</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to edit information for a spending. Format: <code>Edit ID [-i INFO] [-a AMT] [-t tag] [-d Date]</code></p>
+<p>User requests to edit an expenditure record in the account they are viewing right now.<br>
+Format: <code>exp edit number(positive) [-i info] [-a amount] [-t tag] [-d date (YYYY-MM-DD)]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
@@ -878,10 +1434,614 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1. Wrong Format.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that date input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> WILL request an valid and non empty date.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that index provided is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1d1. <code>$AVE IT</code> will state that the expenditure index provided is invalid.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-exp-find" class="discrete">Use case: Exp Find</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find expenditure records with certain <code>keyword</code> in the account which they are viewing right now.<br>
+Format: <code>exp find "keyword</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and output a list of relevant expenditure records.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-exp-setbudget-to-be-implemented" class="discrete">Use case: Exp SetBudget [TO BE IMPLEMENTED]</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to set an budget for a given month in the account which they are viewing right now.<br>
+Format: <code>exp setbudget -a amount [-d date (YYYY-MM-DD)]</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that date input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> WILL request an valid and non empty date.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. <code>$AVE IT</code> detects that date is not specified.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. <code>$AVE IT</code> will add this expenditure record to the day which the calendar states.</p>
+</li>
+<li>
+<p>2a2. <code>$AVE IT</code> will acknowledge.</p>
+</li>
+<li>
+<p>use case end.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-repeat-add-to-be-implemented" class="discrete">Use case: Repeat Add [TO BE IMPLEMENTED]</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a repeating expenditure record in the account which they are viewing right now.<br>
+Format: `repeat add -i info -a amount -sd startDate (YYYY-MM-DD) -ed endDate(YYYY-MM-DD) -p period [-t tag] `</p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> will request an valid and date.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that period input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1d1. <code>$AVE IT</code> will request period to be <code>daily</code>, <code>weekly</code>, <code>monthly</code> and <code>annually</code>.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1e. <code>$AVE IT</code> detects that tag input is unspecified.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1e1. <code>$AVE IT</code> will auto assign it to be <code>Others</code></p>
+</li>
+<li>
+<p>1e2. <code>$AVE IT</code> will acknowledge.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-repeat-delete-to-be-implemented" class="discrete">Use case: Repeat Delete [TO BE IMPLEMENTED]</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete a repeating expenditure record from the account which they are viewing right now.<br>
+Format: `repeat delete number (positive) `</p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format'.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that index input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will state that the expenditure index provided is invalid.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-repeat-edit-to-be-implemented" class="discrete">Use case: Repeat Edit [TO BE IMPLEMENTED]</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to edit a repeating expenditure record in the account which they are viewing right now.<br>
+Format: <code>repeat edit number(positive) [-i info] [-a amount] [-sd startDate (YYYY-MM-DD)] [-ed endDate(YYYY-MM-DD)] [-p period] [-t tag]</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> will request an valid and date.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that period input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1d1. <code>$AVE IT</code> will request period to be <code>daily</code>, <code>weekly</code>, <code>monthly</code> and <code>annually</code>.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1e. <code>$AVE IT</code> detects that index input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1e1. <code>$AVE IT</code> will state that the expenditure index provided is invalid.</p>
+</li>
+<li>
+<p>1e2. Back to step 1.</p>
+</li>
+<li>
+<p>use case end.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-report-view-in-progress" class="discrete">Use case: Report View [In Progress]</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view an report of expenditure record in the account which they are viewing right now.<br>
+Format: <code>report view startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) graphType(PIE)</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and pop up another window to show the relevant report.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request a valid start and end date.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that graph type input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> will request a valid graph type.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that there is a report window showing and input is correct.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1d1. <code>$AVE IT</code> will reflect result of input in opened report window.</p>
+</li>
+<li>
+<p>1d2. <code>$AVE IT</code> will acknowledge.</p>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1e. <code>$AVE IT</code> detects that there is a report window showing and input is wrong.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1e1. <code>$AVE IT</code> will reflect input is wrong.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-report-export-to-be-implemented" class="discrete">Use case: Report Export [TO BE IMPLEMENTED]</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to export an report of expenditure record in the account which they are viewing right now.<br>
+Format: `report export startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) `</p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and export the report to the folder which has same location as <code>$AVE IT</code>.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Invalid command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>1a2. Back to step 1.</p>
+</li>
+<li>
+<p>use case end.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Invalid start date or end date.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request an valid and date.</p>
+</li>
+<li>
+<p>1b2. <code>$AVE IT</code> will ensure that the <code>end date</code> is same or after the <code>start date</code>.</p>
+</li>
+<li>
+<p>1b3. Back to step 1.</p>
+</li>
+<li>
+<p>use case end.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-generate-report-in-report-window" class="discrete">Use case: Generate report in report window</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User request to generate new report.</p>
+</li>
+<li>
+<p><code>$AVE IT</code> will update report window to reflect input result.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="paragraph">
+<p>1a. <code>$AVE IT</code> detects input is in incorrect format.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1b. <code>$AVE IT</code> detects date input is invalid.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1c. <code>$AVE IT</code> detects graph type input is invalid.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use case resumes from step 1.</p>
 </li>
 </ul>
 </div>
@@ -892,7 +2052,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to view other date. Format: <code>Go -d date(DDMMYYYY)</code></p>
+<p>User requests to view other date. Format: <code>Go date(YYYY-MM-DD)</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and update the view.</p>
@@ -908,304 +2068,66 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1. Wrong Format.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that date input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> WILL request an valid and non empty date.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="use-case-find" class="discrete">Use case: Find</h3>
+<h3 id="use-case-help" class="discrete">Use case: Help</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to find certain task with relevant keyword. Format: <code>Find -k KEYWORD [-t TAG]</code></p>
+<p>User requests for help.</p>
 </li>
 <li>
-<p><code>$AVE IT</code> will acknowledge and response with a list of relevant data.</p>
+<p><code>$AVE IT</code> will acknowledge and provide help.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1. Wrong Format.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-go-2" class="discrete">Use case: Go</h3>
+<h3 id="use-case-exit" class="discrete">Use case: Exit</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User needs help. Format: <code>Help [-c COMMAND]</code></p>
+<p>User requests to exit.</p>
 </li>
 <li>
-<p><code>$AVE IT</code> will acknowledge and list the respective command guideline.</p>
+<p><code>$AVE IT</code> will acknowledge and exit.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
-</div>
-<h3 id="use-case-setbudget" class="discrete">Use case: SetBudget</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to set a budget for a certain month. Format: <code>SetBudget -a AMT -d DATE(MMYYYY)</code></p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1. Wrong Format.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-addacc" class="discrete">Use case: AddAcc</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to set up a disjoint account for other purpose. Format: <code>AddAcc "ACCOUNT NAME"</code></p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge and create a new account.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Wrong Format.</p>
-</li>
-<li>
-<p>1b. Duplicate account name.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-checkout" class="discrete">Use case: Checkout</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to switch between accounts. Format: <code>Checkout "ACCOUNT NAME</code>.</p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Wrong Format.</p>
-</li>
-<li>
-<p>1b. Invalid account name.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-acc" class="discrete">Use case: Acc</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to view all accounts. Format: <code>acc</code>.</p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge and list out all the existing accounts.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<h3 id="use-case-deleteacc" class="discrete">Use case: DeleteAcc</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to delete an accounts. Format: <code>DeleteAcc "ACCOUNT NAME</code>.</p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Wrong Format.</p>
-</li>
-<li>
-<p>1b. Invalid account name.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-rename" class="discrete">Use case: Rename</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to rename account or existing tag. Format: `Rename [-a "OLD ACCOUNT NAME" "NEW ACCOUNT NAME] [-t "OLD TAG" "NEW TAG"] `.</p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Wrong Format.</p>
-</li>
-<li>
-<p>1b. Invalid account name.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-viewreport" class="discrete">Use case: ViewReport</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to view report of their spending for a specific time. Format: <code>ViewReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"</code>.</p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge and generate a report for them to view.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Wrong Format.</p>
-</li>
-<li>
-<p>1b. Invalid Date.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-exportreport" class="discrete">Use case: ExportReport</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to export a report of their spending in a specific time. Format: ExportReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"`.</p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge, generate a report and export it to desktop.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Wrong Format.</p>
-</li>
-<li>
-<p>1b. Invalid account name.</p>
-<div class="paragraph">
-<p>Use case back to step 1.</p>
-</div>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
@@ -1375,7 +2297,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-input"><a class="link" href="#saving-input">G.3. Saving input</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1395,4 +2317,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-19 03:42:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-27 07:57:10 UTC</div></div></div></body></html>

@@ -337,12 +337,6 @@ public class ReportWindow extends UiPart<Stage> {
         getRoot().hide();
     }
 
-    /**
-     * Focuses on the report window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
-    }
 
     public void addLogic(Logic logic) {
         this.logic = logic;
@@ -374,8 +368,7 @@ public class ReportWindow extends UiPart<Stage> {
 
             if (e instanceof CommandException || e instanceof ParseException) {
                 logger.info("Invalid command :" + commandText);
-            } else {
-                assert e instanceof PrinterException;
+            } else if (e instanceof  PrinterException) {
                 logger.info("Invalid printer");
             }
 

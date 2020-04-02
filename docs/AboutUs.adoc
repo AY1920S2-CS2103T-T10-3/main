@@ -24,7 +24,7 @@ image::zwasd.png[width="150", align="left"]
 {empty}[http://github.com/zwasd[github]]
 
 Role: Developer +
-Responsibilities: Integration + Backend
+Responsibilities: Integration and Backend
 
 '''
 

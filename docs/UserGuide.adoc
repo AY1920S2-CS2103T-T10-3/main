@@ -35,9 +35,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 
-* **`add`**`-i chicken rice -a $4.50` : adds new expenditure and information.
-* **`delete`**`3` : deletes the 3rd expenditure shown in the current list
-* *`bye`* : exits the app
+* **`exp add`**`-i chicken rice -a $4.50` : adds new expenditure and information.
+* **`exp delete`**`3` : deletes the 3rd expenditure shown in the current list
+* *`exit`* : exits the app
 
 .  Refer to <<Features>> for details of each command.
 
@@ -57,10 +57,10 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Format: `help`
 
-=== Adding a expenditure: `add`
+=== Adding a expenditure: `exp add`
 
 Adds an expenditure to $AVE IT +
-Format: `add -i INFO -a AMT  [-t TAG] [-d DATE]`
+Format: `exp add -i INFO -a AMT  [-t TAG]`
 
 [TIP]
 An expenditure can have 1 optional tag which is useful for calculating expenditure reports.
@@ -70,13 +70,13 @@ An expenditure can have 1 optional tag which is useful for calculating expenditu
 
 Examples:
 
-* `add -i chicken rice -a $4.50`
-* `add -i chicken rice -a $4.50 [-t food] [-d 24/12/2020]`
+* `exp add -i chicken rice -a $4.50`
+* `exp add -i chicken rice -a $4.50 [-t food]`
 
-=== Editing a expenditure : `edit`
+=== Editing a expenditure : `exp edit`
 
 Edits an existing expenditure in $AVE IT. +
-Format: `edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]`
+Format: `exp edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]`
 
 ****
 * Edits the expenditure with the specified `ID`. The ID refers to the identification number assigned to each spending.
@@ -86,9 +86,9 @@ Format: `edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]`
 
 Examples:
 
-* `edit 1 -i veg rice` +
+* `exp edit 1 -i veg rice` +
 Edits the info of expenditure with ID 1 to veg rice.
-* `edit 2 -t` +
+* `exp edit 2 -t` +
 Clears tag of expenditure with ID.
 
 === Locating expenditure by keyword: `find`
@@ -111,10 +111,10 @@ Returns `Chicken rice` and `Veg Rice`
 Returns any expenditures having names `Spicy`, `Chicken`, or `Rice`
 
 // tag::delete[]
-=== Deleting a expenditure : `delete`
+=== Deleting a expenditure : `exp delete`
 
 Deletes the specified expenditure from $AVE IT. +
-Format: `delete ID`
+Format: `exp delete ID`
 
 ****
 * Deletes the expenditure at the specified `ID`.
@@ -123,31 +123,37 @@ Format: `delete ID`
 
 Examples:
 
-`delete 2` +
+`exp delete 2` +
 Deletes the expenditure with ID 2. +
-* `find Chicky rice` +
-delete 1` +
+`find Chicky rice` +
+exp delete 1` +
 Deletes the expenditure with ID 1 if it is in the results of the `find` command.
 // end::delete[]
 
-=== Set a fixed recurring ( recurs every `NUMBER PERIOD` )  expenditure: repeat
+=== Set a fixed recurring ( recurs every `NUMBER PERIOD` )  expenditure: `repeat`
 
 Sets an expenditure that will automatically be added every interval which expires at specified date. +
-Format: `Repeat -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]`
+Format: `repeat add -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]`
 
 ****
 * The default interval is set to `monthly`.
 * The AMT must be positive and less than 10 million.
 ****
-=== Clearing all entries : `reset`
+
+=== See expenditures report : `report`
+
+Generates report on expenditure spending in the given period. +
+Format: `report view -sd 2020-03-01 -ed 2020-03-31 -g PIE`
+
+=== Clearing all entries [Not yet functional] : `reset`
 
 Clears all entries from $AVE IT . Once cleared, entries cannot be recovered. +
 Format: `reset`
 
-=== Exiting the program : `bye`
+=== Exiting the program : `exit`
 
 Exits the program. +
-Format: `bye`
+Format: `exit`
 
 === Saving the data
 
@@ -201,28 +207,50 @@ e.g `exp edit 1 -i duck rice -a 4.50 -d 2020-04-02`
 * *exp delete* : `exp delete INDEX` +
 e.g `exp delete 1`
 
-* *exp find* : `exp find Keyword` +
-e.g `exp find chicken`
+* *find* : `find Keyword` +
+e.g `find chicken`
 
 * *exp setBudget* : `exp setBudget -a AMOUNT [-d DATE (YYYY-MM-DD)]` +
 e.g `exp setBudget -a 1000 -d 2020-04-01`
 
 === Repeat Operation
 
-* *repeat add* : `repeat add -i INFO -a AMOUNT -sd STARTDATE (YYYY-MM-DD) -ed ENDDATE(YYYY-MM-DD) -p PERIOD [-t TAG]` +
+* *repeat add* : `repeat add -i INFO -a AMOUNT -sd START DATE (YYYY-MM-DD) -ed END DATE(YYYY-MM-DD) -p PERIOD [-t TAG]` +
 e.g `repeat add -i bus fare -a 1.50 -sd 2020-03-01 -ed 2020-04-01 -p daily -t transport`
 
-* *repeat edit* : `repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd STARTDATE (YYYY-MM-DD)] [-ed ENDDATE(YYYY-MM-DD)] [-p PERIOD] [-t TAG]` +
+* *repeat edit* : `repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START DATE (YYYY-MM-DD)] [-ed END DATE(YYYY-MM-DD)] [-p PERIOD] [-t TAG]` +
 e.g `repeat edit 2 -a 1.20 -ed 2020-04-02`
 
 * *repeat delete* : `repeat delete INDEX` +
 e.g `repeat delete INDEX`
 
-=== Report Operation
-* *report export* : `report export "START DATE(YYYY-MM-DD)" "END DATE(YYYY-MM-DD)"` +
-e.g. `report export 01-02-2020 03-02-2020`
-* *report view* : `report view "START DATE(YYYY-MM-DD)" "END DATE(YYYY-MM-DD)"` +
-e.g. `report view 01-02-2020 03-02-2020`
+=== Report(Main Window) Operation
 
+Note : The report feature is working in progress. Currently, it accounts for expenditures as well as daily repeats only.
+
+* *report view* : `report view -sd YYYY-MM-DD -ed YYYY-MM-DD -g GraphType` +
+e.g. `report view -sd 2020-03-01 -ed 2020-03-31 -g PIE`
+
+* *report print* : `report view -sd YYYY-MM-DD -ed YYYY-MM-DD -g GraphType` +
+e.g. `report print -sd 2020-03-01 -ed 2020-03-31 -g PIE`
+
+* *report export [Not yet functional]* : `report export -sd YYYY-MM-DD -ed YYYY-MM-DD -g GraphType` +
+e.g. `report export -sd 2020-03-01 -ed 2020-03-31 BAR`
+
+=== Report(Report Window) Operation
+
+Note : The report feature is working in progress. Currently, it accounts for expenditures as well as daily repeats only.
+
+* *report view* _equivalence_  : `GraphType YYYY-MM-DD(START DATE) YYYY-MM-DD(END DATE)` +
+e.g. `PIE 2020-03-01 2020-03-31 `
+
+* *print* : `print` +
+e.g. `print`
+
+* *report export _equivalence_ [Not yet functional]* : `export` +
+e.g. `export`
+
+* *exit* : `exit` +
+e.g. `exit`
 
 

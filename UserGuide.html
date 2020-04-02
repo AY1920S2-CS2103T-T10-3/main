@@ -14,15 +14,16 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-c-command-code">3.1. Viewing help : <code>help [-c COMMAND]</code></a></li>
-<li><a href="#adding-a-expenditure-code-add-code">3.2. Adding a expenditure: <code>add</code></a></li>
-<li><a href="#editing-a-expenditure-code-edit-code">3.3. Editing a expenditure : <code>edit</code></a></li>
+<li><a href="#adding-a-expenditure-code-exp-add-code">3.2. Adding a expenditure: <code>exp add</code></a></li>
+<li><a href="#editing-a-expenditure-code-exp-edit-code">3.3. Editing a expenditure : <code>exp edit</code></a></li>
 <li><a href="#locating-expenditure-by-keyword-code-find-code">3.4. Locating expenditure by keyword: <code>find</code></a></li>
-<li><a href="#deleting-a-expenditure-code-delete-code">3.5. Deleting a expenditure : <code>delete</code></a></li>
-<li><a href="#set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-repeat">3.6. Set a fixed recurring ( recurs every <code>NUMBER PERIOD</code> )  expenditure: repeat</a></li>
-<li><a href="#clearing-all-entries-code-reset-code">3.7. Clearing all entries : <code>reset</code></a></li>
-<li><a href="#exiting-the-program-code-bye-code">3.8. Exiting the program : <code>bye</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#deleting-a-expenditure-code-exp-delete-code">3.5. Deleting a expenditure : <code>exp delete</code></a></li>
+<li><a href="#set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-code-repeat-code">3.6. Set a fixed recurring ( recurs every <code>NUMBER PERIOD</code> )  expenditure: <code>repeat</code></a></li>
+<li><a href="#see-expenditures-report-code-report-code">3.7. See expenditures report : <code>report</code></a></li>
+<li><a href="#clearing-all-entries-not-yet-functional-code-reset-code">3.8. Clearing all entries [Not yet functional] : <code>reset</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.10. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -32,7 +33,8 @@
 <li><a href="#account-operation">5.2. Account Operation</a></li>
 <li><a href="#expenditure-operation">5.3. Expenditure Operation</a></li>
 <li><a href="#repeat-operation">5.4. Repeat Operation</a></li>
-<li><a href="#report-operation">5.5. Report Operation</a></li>
+<li><a href="#report-main-window-operation">5.5. Report(Main Window) Operation</a></li>
+<li><a href="#report-report-window-operation">5.6. Report(Report Window) Operation</a></li>
 </ul>
 </li>
 </ul>
@@ -79,13 +81,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>add</code></strong><code>-i chicken rice -a $4.50</code> : adds new expenditure and information.</p>
+<p><strong><code>exp add</code></strong><code>-i chicken rice -a $4.50</code> : adds new expenditure and information.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd expenditure shown in the current list</p>
+<p><strong><code>exp delete</code></strong><code>3</code> : deletes the 3rd expenditure shown in the current list</p>
 </li>
 <li>
-<p><strong><code>bye</code></strong> : exits the app</p>
+<p><strong><code>exit</code></strong> : exits the app</p>
 </li>
 </ul>
 </div>
@@ -127,10 +129,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-expenditure-code-add-code"><a class="link" href="#adding-a-expenditure-code-add-code">3.2. Adding a expenditure: <code>add</code></a></h3>
+<h3 id="adding-a-expenditure-code-exp-add-code"><a class="link" href="#adding-a-expenditure-code-exp-add-code">3.2. Adding a expenditure: <code>exp add</code></a></h3>
 <div class="paragraph">
 <p>Adds an expenditure to $AVE IT<br>
-Format: <code>add -i INFO -a AMT  [-t TAG] [-d DATE]</code></p>
+Format: <code>exp add -i INFO -a AMT  [-t TAG]</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -152,19 +154,19 @@ An expenditure can have 1 optional tag which is useful for calculating expenditu
 <div class="ulist">
 <ul>
 <li>
-<p><code>add -i chicken rice -a $4.50</code></p>
+<p><code>exp add -i chicken rice -a $4.50</code></p>
 </li>
 <li>
-<p><code>add -i chicken rice -a $4.50 [-t food] [-d 24/12/2020]</code></p>
+<p><code>exp add -i chicken rice -a $4.50 [-t food]</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-expenditure-code-edit-code"><a class="link" href="#editing-a-expenditure-code-edit-code">3.3. Editing a expenditure : <code>edit</code></a></h3>
+<h3 id="editing-a-expenditure-code-exp-edit-code"><a class="link" href="#editing-a-expenditure-code-exp-edit-code">3.3. Editing a expenditure : <code>exp edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing expenditure in $AVE IT.<br>
-Format: <code>edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]</code></p>
+Format: <code>exp edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -189,11 +191,11 @@ Format: <code>edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 -i veg rice</code><br>
+<p><code>exp edit 1 -i veg rice</code><br>
 Edits the info of expenditure with ID 1 to veg rice.</p>
 </li>
 <li>
-<p><code>edit 2 -t</code><br>
+<p><code>exp edit 2 -t</code><br>
 Clears tag of expenditure with ID.</p>
 </li>
 </ul>
@@ -242,10 +244,10 @@ Returns any expenditures having names <code>Spicy</code>, <code>Chicken</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-expenditure-code-delete-code"><a class="link" href="#deleting-a-expenditure-code-delete-code">3.5. Deleting a expenditure : <code>delete</code></a></h3>
+<h3 id="deleting-a-expenditure-code-exp-delete-code"><a class="link" href="#deleting-a-expenditure-code-exp-delete-code">3.5. Deleting a expenditure : <code>exp delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified expenditure from $AVE IT.<br>
-Format: <code>delete ID</code></p>
+Format: <code>exp delete ID</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -265,18 +267,18 @@ Format: <code>delete ID</code></p>
 <p>Examples:</p>
 </div>
 <div class="paragraph">
-<p><code>delete 2</code><br>
+<p><code>exp delete 2</code><br>
 Deletes the expenditure with ID 2.<br>
-* <code>find Chicky rice</code><br>
-delete 1`<br>
+<code>find Chicky rice</code><br>
+exp delete 1`<br>
 Deletes the expenditure with ID 1 if it is in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-repeat"><a class="link" href="#set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-repeat">3.6. Set a fixed recurring ( recurs every <code>NUMBER PERIOD</code> )  expenditure: repeat</a></h3>
+<h3 id="set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-code-repeat-code"><a class="link" href="#set-a-fixed-recurring-recurs-every-code-number-period-code-expenditure-code-repeat-code">3.6. Set a fixed recurring ( recurs every <code>NUMBER PERIOD</code> )  expenditure: <code>repeat</code></a></h3>
 <div class="paragraph">
 <p>Sets an expenditure that will automatically be added every interval which expires at specified date.<br>
-Format: <code>Repeat -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]</code></p>
+Format: <code>repeat add -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -294,28 +296,35 @@ Format: <code>Repeat -i INFO -a AMT -d DATE -p INTERVAL MONTH [-t TAG]</code></p
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-reset-code"><a class="link" href="#clearing-all-entries-code-reset-code">3.7. Clearing all entries : <code>reset</code></a></h3>
+<h3 id="see-expenditures-report-code-report-code"><a class="link" href="#see-expenditures-report-code-report-code">3.7. See expenditures report : <code>report</code></a></h3>
+<div class="paragraph">
+<p>Generates report on expenditure spending in the given period.<br>
+Format: <code>report view -sd 2020-03-01 -ed 2020-03-31 -g PIE</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-not-yet-functional-code-reset-code"><a class="link" href="#clearing-all-entries-not-yet-functional-code-reset-code">3.8. Clearing all entries [Not yet functional] : <code>reset</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from $AVE IT . Once cleared, entries cannot be recovered.<br>
 Format: <code>reset</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-bye-code"><a class="link" href="#exiting-the-program-code-bye-code">3.8. Exiting the program : <code>bye</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
-Format: <code>bye</code></p>
+Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
 <div class="paragraph">
 <p>$AVE IT data is stored in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -397,8 +406,8 @@ e.g <code>exp edit 1 -i duck rice -a 4.50 -d 2020-04-02</code></p>
 e.g <code>exp delete 1</code></p>
 </li>
 <li>
-<p><strong>exp find</strong> : <code>exp find Keyword</code><br>
-e.g <code>exp find chicken</code></p>
+<p><strong>find</strong> : <code>find Keyword</code><br>
+e.g <code>find chicken</code></p>
 </li>
 <li>
 <p><strong>exp setBudget</strong> : <code>exp setBudget -a AMOUNT [-d DATE (YYYY-MM-DD)]</code><br>
@@ -412,11 +421,11 @@ e.g <code>exp setBudget -a 1000 -d 2020-04-01</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>repeat add</strong> : <code>repeat add -i INFO -a AMOUNT -sd STARTDATE (YYYY-MM-DD) -ed ENDDATE(YYYY-MM-DD) -p PERIOD [-t TAG]</code><br>
+<p><strong>repeat add</strong> : <code>repeat add -i INFO -a AMOUNT -sd START DATE (YYYY-MM-DD) -ed END DATE(YYYY-MM-DD) -p PERIOD [-t TAG]</code><br>
 e.g <code>repeat add -i bus fare -a 1.50 -sd 2020-03-01 -ed 2020-04-01 -p daily -t transport</code></p>
 </li>
 <li>
-<p><strong>repeat edit</strong> : <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd STARTDATE (YYYY-MM-DD)] [-ed ENDDATE(YYYY-MM-DD)] [-p PERIOD] [-t TAG]</code><br>
+<p><strong>repeat edit</strong> : <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START DATE (YYYY-MM-DD)] [-ed END DATE(YYYY-MM-DD)] [-p PERIOD] [-t TAG]</code><br>
 e.g <code>repeat edit 2 -a 1.20 -ed 2020-04-02</code></p>
 </li>
 <li>
@@ -427,19 +436,52 @@ e.g <code>repeat delete INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="report-operation"><a class="link" href="#report-operation">5.5. Report Operation</a></h3>
+<h3 id="report-main-window-operation"><a class="link" href="#report-main-window-operation">5.5. Report(Main Window) Operation</a></h3>
+<div class="paragraph">
+<p>Note : The report feature is working in progress. Currently, it accounts for expenditures as well as daily repeats only.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>report export</strong> : <code>report export "START DATE(YYYY-MM-DD)" "END DATE(YYYY-MM-DD)"</code><br>
-e.g. <code>report export 01-02-2020 03-02-2020</code></p>
+<p><strong>report view</strong> : <code>report view -sd YYYY-MM-DD -ed YYYY-MM-DD -g GraphType</code><br>
+e.g. <code>report view -sd 2020-03-01 -ed 2020-03-31 -g PIE</code></p>
 </li>
 <li>
-<p><strong>report view</strong> : <code>report view "START DATE(YYYY-MM-DD)" "END DATE(YYYY-MM-DD)"</code><br>
-e.g. <code>report view 01-02-2020 03-02-2020</code></p>
+<p><strong>report print</strong> : <code>report view -sd YYYY-MM-DD -ed YYYY-MM-DD -g GraphType</code><br>
+e.g. <code>report print -sd 2020-03-01 -ed 2020-03-31 -g PIE</code></p>
+</li>
+<li>
+<p><strong>report export [Not yet functional]</strong> : <code>report export -sd YYYY-MM-DD -ed YYYY-MM-DD -g GraphType</code><br>
+e.g. <code>report export -sd 2020-03-01 -ed 2020-03-31 BAR</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="report-report-window-operation"><a class="link" href="#report-report-window-operation">5.6. Report(Report Window) Operation</a></h3>
+<div class="paragraph">
+<p>Note : The report feature is working in progress. Currently, it accounts for expenditures as well as daily repeats only.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>report view</strong> <em>equivalence</em>  : <code>GraphType YYYY-MM-DD(START DATE) YYYY-MM-DD(END DATE)</code><br>
+e.g. `PIE 2020-03-01 2020-03-31 `</p>
+</li>
+<li>
+<p><strong>print</strong> : <code>print</code><br>
+e.g. <code>print</code></p>
+</li>
+<li>
+<p><strong>report export <em>equivalence</em> [Not yet functional]</strong> : <code>export</code><br>
+e.g. <code>export</code></p>
+</li>
+<li>
+<p><strong>exit</strong> : <code>exit</code><br>
+e.g. <code>exit</code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 12:08:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 15:02:25 UTC</div></div></div></body></html>

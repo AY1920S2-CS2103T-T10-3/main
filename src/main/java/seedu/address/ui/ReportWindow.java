@@ -304,6 +304,7 @@ public class ReportWindow extends UiPart<Stage> {
 
     /**
      * Export report (in progress not done)
+     *
      * @param result
      */
     public void export(CommandResult result) {

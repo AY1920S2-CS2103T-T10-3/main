@@ -28,9 +28,11 @@
 <li><a href="#faq">4. FAQ</a></li>
 <li><a href="#command-summary">5. Command Summary</a>
 <ul class="sectlevel2">
-<li><a href="#basic-operation">5.1. Basic operation</a></li>
+<li><a href="#general-operation">5.1. General operation</a></li>
 <li><a href="#account-operation">5.2. Account Operation</a></li>
-<li><a href="#report-operation">5.3. Report Operation</a></li>
+<li><a href="#expenditure-operation">5.3. Expenditure Operation</a></li>
+<li><a href="#repeat-operation">5.4. Repeat Operation</a></li>
+<li><a href="#report-operation">5.5. Report Operation</a></li>
 </ul>
 </li>
 </ul>
@@ -200,8 +202,8 @@ Clears tag of expenditure with ID.</p>
 <div class="sect2">
 <h3 id="locating-expenditure-by-keyword-code-find-code"><a class="link" href="#locating-expenditure-by-keyword-code-find-code">3.4. Locating expenditure by keyword: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Find expenditures which contain the keyword.<br>
-Format: <code>find -k KEYWORD</code></p>
+<p>Find expenditures which contain the keyword(s).<br>
+Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -214,7 +216,7 @@ Format: <code>find -k KEYWORD</code></p>
 <p>The order of the keywords does not matter. e.g. <code>Chicken Rice</code> will match <code>Rice Chicken</code></p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Chicken</code> will not match <code>Chickens</code></p>
+<p>Substrings will be matched e.g. <code>Chicken</code> will match <code>Chickens</code></p>
 </li>
 <li>
 <p>Expenditures matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Chicken Rice</code> will return <code>Fried Chicken</code>, <code>Steam Chicken</code></p>
@@ -333,52 +335,20 @@ There is no need to save manually.</p>
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="basic-operation"><a class="link" href="#basic-operation">5.1. Basic operation</a></h3>
+<h3 id="general-operation"><a class="link" href="#general-operation">5.1. General operation</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>Add -i INFO -a AMT   [-t TAG] [-d DATE(DDMMYYYY)]</code><br>
-e.g.  <code>Add -i chicken rice -a $4.50 [-t food] [-d 24/12/2020]</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>Delete ID</code><br>
-e.g. <code>Delete 2B4E</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>Edit ID [-i INFO] [-a AMT]  [-t TAG] [-d DATE(DDMMYYYY)]</code><br>
-e.g. <code>Edit 2 [-i veg rice] [-a $4.00] [-t] [-d 20/12/2020]</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>Find -k KEYWORD</code><br>
-e.g. <code>Find James Jake</code></p>
-</li>
-<li>
-<p><strong>Go</strong> : 'Go -d DATE'`<br>
-e.g. <code>Go 31-01-2020</code></p>
+<p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Repeat</strong> : <code>Repeat -i INFO -a AMT -d DATE(MMYYYY) -p INTERVAL MONTH [-t TAG]</code><br>
-e.g. <code>Repeat -i bus concession -a 50 -d 02-2020 -p 5 -t transport</code></p>
-</li>
-<li>
-<p><strong>Reset</strong> : <code>Reset</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>Redo</code></p>
-</li>
-<li>
-<p><strong>SetBudget</strong> : <code>SetBudget -a AMT -d DATE(MMYYYY)</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>Undo</code></p>
+<p><strong>Go</strong> : <code>go "DATE(YYYY-MM-DD)"</code><br>
+e.g <code>go 2020-04-01</code></p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>e.g. ` SetBudget -a 400 -d 02-2020`</p>
 </div>
 </div>
 <div class="sect2">
@@ -386,45 +356,90 @@ e.g. <code>Repeat -i bus concession -a 50 -d 02-2020 -p 5 -t transport</code></p
 <div class="ulist">
 <ul>
 <li>
-<p><strong>AddAcc</strong> : <code>AddAcc "ACCOUNT NAME"</code><br>
-e.g. <code>AddAcc Personal</code></p>
+<p><strong>acc add</strong> : <code>acc add "ACCOUNT NAME"</code><br>
+e.g. <code>acc add Personal</code></p>
 </li>
 <li>
-<p><strong>Checkout</strong> : <code>Checkout "ACCOUNT NAME"</code><br>
-e.g. <code>Checkout Personal</code></p>
+<p><strong>acc checkout</strong> : <code>Checkout "ACCOUNT NAME"</code><br>
+e.g. <code>acc checkout Personal</code></p>
 </li>
 <li>
-<p><strong>DeleteAcc</strong> : <code>DeleteAcc "ACCOUNT NAME"</code><br>
-e.g. <code>DeleteAcc Personal</code></p>
+<p><strong>acc clear</strong> : <code>acc clear</code><br></p>
 </li>
 <li>
-<p><strong>AddAcc</strong> : <code>AddAcc "ACCOUNT NAME"</code><br>
-e.g. <code>AddACC Personal</code></p>
+<p><strong>acc list</strong> : <code>acc list</code><br></p>
 </li>
 <li>
-<p><strong>ViewAcc</strong> : <code>Acc</code><br></p>
+<p><strong>acc delete</strong> : <code>acc delete "ACCOUNT NAME"</code><br>
+e.g. <code>acc delete Personal</code></p>
 </li>
 <li>
-<p><strong>Rename</strong> : <code>Rename [-a "OLD ACCOUNT NAME" "NEW ACCOUNT NAME] [-t "OLD TAG" "NEW TAG"]</code><br>
-e.g. <code>Rename -a personal non-personal</code> and <code>Rename -t transport bus</code></p>
+<p><strong>acc rename</strong> : <code>acc rename "OLD ACCOUNT NAME" "NEW ACCOUNT NAME</code><br>
+e.g. <code>acc rename Personal non-personal</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="report-operation"><a class="link" href="#report-operation">5.3. Report Operation</a></h3>
+<h3 id="expenditure-operation"><a class="link" href="#expenditure-operation">5.3. Expenditure Operation</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>ExportReport</strong> : <code>ExportReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"</code><br>
-e.g. <code>ExportReport -sd 01-02-2020 -ed 03-02-2020</code></p>
+<p><strong>exp add</strong> : <code>exp add -i INFO -a AMOUNT [-t TAG] [-d DATE(YYYY-MM-DD)]</code><br>
+e.g <code>exp add -i chicken rice -a 3.50 -t meal -d 2020-04-01</code></p>
 </li>
 <li>
-<p><strong>ViewReport</strong> : <code>ViewReport -sd "START DATE(DDMMYYYY)" -ed "END DATE(DDMMYYYY)"</code><br>
-e.g. <code>ViewReport -sd 01-02-2020 -ed 03-02-2020</code></p>
+<p><strong>exp edit</strong> : <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE(YYYY-MM-DD)]</code><br>
+e.g <code>exp edit 1 -i duck rice -a 4.50 -d 2020-04-02</code></p>
+</li>
+<li>
+<p><strong>exp delete</strong> : <code>exp delete INDEX</code><br>
+e.g <code>exp delete 1</code></p>
+</li>
+<li>
+<p><strong>exp find</strong> : <code>exp find Keyword</code><br>
+e.g <code>exp find chicken</code></p>
+</li>
+<li>
+<p><strong>exp setBudget</strong> : <code>exp setBudget -a AMOUNT [-d DATE (YYYY-MM-DD)]</code><br>
+e.g <code>exp setBudget -a 1000 -d 2020-04-01</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repeat-operation"><a class="link" href="#repeat-operation">5.4. Repeat Operation</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>repeat add</strong> : <code>repeat add -i INFO -a AMOUNT -sd STARTDATE (YYYY-MM-DD) -ed ENDDATE(YYYY-MM-DD) -p PERIOD [-t TAG]</code><br>
+e.g <code>repeat add -i bus fare -a 1.50 -sd 2020-03-01 -ed 2020-04-01 -p daily -t transport</code></p>
+</li>
+<li>
+<p><strong>repeat edit</strong> : <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd STARTDATE (YYYY-MM-DD)] [-ed ENDDATE(YYYY-MM-DD)] [-p PERIOD] [-t TAG]</code><br>
+e.g <code>repeat edit 2 -a 1.20 -ed 2020-04-02</code></p>
+</li>
+<li>
+<p><strong>repeat delete</strong> : <code>repeat delete INDEX</code><br>
+e.g <code>repeat delete INDEX</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="report-operation"><a class="link" href="#report-operation">5.5. Report Operation</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>report export</strong> : <code>report export "START DATE(YYYY-MM-DD)" "END DATE(YYYY-MM-DD)"</code><br>
+e.g. <code>report export 01-02-2020 03-02-2020</code></p>
+</li>
+<li>
+<p><strong>report view</strong> : <code>report view "START DATE(YYYY-MM-DD)" "END DATE(YYYY-MM-DD)"</code><br>
+e.g. <code>report view 01-02-2020 03-02-2020</code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-27 07:57:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 12:08:52 UTC</div></div></div></body></html>

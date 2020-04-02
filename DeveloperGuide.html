@@ -9,32 +9,38 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Introduction-Purpose">1.1. Purpose</a></li>
+<li><a href="#Introduction-Usage">1.2. Usage</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#setting-up">2. Setting up</a></li>
+<li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#calendar-feature">3.3. Calendar feature</a></li>
-<li><a href="#recurring-expenditure-feature">3.4. Recurring Expenditure feature</a></li>
-<li><a href="#autocomplete-feature">3.5. Autocomplete feature</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Report">3.7. Report [In progress]</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI component</a></li>
+<li><a href="#Design-Logic">3.3. Logic component</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
+<li><a href="#Design-Storage">3.5. Storage component</a></li>
+<li><a href="#Design-Commons">3.6. Common classes</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#implementation">4. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></li>
+<li><a href="#calendar-feature">4.3. Calendar feature</a></li>
+<li><a href="#recurring-expenditure-feature">4.4. Recurring Expenditure feature</a></li>
+<li><a href="#autocomplete-feature">4.5. Autocomplete feature</a></li>
+<li><a href="#logging">4.6. Logging</a></li>
+<li><a href="#Implementation-Report">4.7. Report [In progress]</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#documentation">5. Documentation</a></li>
+<li><a href="#testing">6. Testing</a></li>
+<li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
@@ -52,7 +58,33 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section will introduce the intended use of the document and how to navigate it.</p>
+</div>
+<div class="sect2">
+<h3 id="Introduction-Purpose"><a class="link" href="#Introduction-Purpose">1.1. Purpose</a></h3>
+<div class="paragraph">
+<p>The purpose of this document is to give insight to the implementation of the app, $AVE IT. This
+will give developers a better understanding on how they can work on the app in the future.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Introduction-Usage"><a class="link" href="#Introduction-Usage">1.2. Usage</a></h3>
+<div class="sect3">
+<h4 id="navigate"><a class="link" href="#navigate">1.2.1. Navigate</a></h4>
+<div class="paragraph">
+<p>Navigate the document by using <code>control - f</code> for Windows User or
+<code>command - f</code> for Mac Users. Alternatively, there is a clickable content page
+at the start of the document which you can click and bring you to the relevant sections.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
@@ -60,10 +92,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -166,7 +198,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -219,7 +251,7 @@ Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -276,7 +308,7 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -321,7 +353,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -346,7 +378,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -354,15 +386,15 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.1.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -504,7 +536,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -574,27 +606,27 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.3. Calendar feature</a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">4.3. Calendar feature</a></h3>
 <div class="paragraph">
 <p><em>{Coming soon}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recurring-expenditure-feature"><a class="link" href="#recurring-expenditure-feature">3.4. Recurring Expenditure feature</a></h3>
+<h3 id="recurring-expenditure-feature"><a class="link" href="#recurring-expenditure-feature">4.4. Recurring Expenditure feature</a></h3>
 <div class="paragraph">
 <p><em>{Coming soon}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">3.5. Autocomplete feature</a></h3>
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.5. Autocomplete feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">3.5.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">4.5.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The autocomplete feature is facilitated by <code>AutoCompleteTextField.java</code>.
 It extends the <code>TextField</code> component of JavaFx and provides a dropdown of possible commands.</p>
@@ -617,7 +649,7 @@ To be improved in later versions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">3.5.2. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">4.5.2. Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-usage-of-autocompletion"><a class="link" href="#aspect-usage-of-autocompletion">Aspect: Usage of autocompletion</a></h5>
 <div class="ulist">
@@ -666,14 +698,14 @@ To be improved in later versions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -704,87 +736,84 @@ To be improved in later versions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Report"><a class="link" href="#Implementation-Report">3.7. Report [In progress]</a></h3>
+<h3 id="Implementation-Report"><a class="link" href="#Implementation-Report">4.7. Report [In progress]</a></h3>
 <div class="paragraph">
 <p>Report is one of the main feature in <code>$AVE IT</code>  and its purpose is to collate and
 show users their expenditure breakdowns.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.7.1. Design Considerations</a></h4>
+<h4 id="rationale"><a class="link" href="#rationale">4.7.1. Rationale</a></h4>
 <div class="paragraph">
-<p>While implementing the report feature, we had these considerations:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We want the report to have a graph that showcases expenditure breakdowns.</p>
-</li>
-<li>
-<p>We want to have minimal changes to the current <em>main UI</em> code.</p>
-</li>
-<li>
-<p>We want to avoid cluttering the <code>MainWindow</code> as much as possible when the graph is generated.</p>
-</li>
-<li>
-<p>We want the users to have a clean UI for report.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Hence, due to the above considerations, we chose to break down the report feature into
-2 main aspects:  Logic and  UI.</p>
+<p>The report feature is an important feature that allows users to see their
+expenditure breakdowns within a certain time period. Currently, the expenditure
+are categorise in terms of tags and this will give users a clear overview of
+what they are spending on over this period of time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.7.2. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">4.7.2. Implementation</a></h4>
 <div class="paragraph">
-<p><strong>UI</strong></p>
+<p>The report feature can be accessed from 2 platforms either <strong>Main Window</strong> or <strong>Report Window</strong></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>MainWindow</code> : The <code>MainWindow</code> UI implementation is support by <em>javafx</em> and <em>fxml</em>. You can
-read up more at : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/master/docs/DeveloperGuide.adoc#Design-Ui"><code>MainWindow</code></a>.</p>
-</li>
-<li>
-<p><code>ReportWindow</code> : The <code>ReportWindow</code> UI implementation is support by <em>javafx</em> and <em>fxml</em>. You can
-read up more at : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/master/docs/DeveloperGuide.adoc#Design-Ui"><code>ReportWindow</code></a>.</p>
-</li>
-<li>
-<p>Graph is the highlight of the report feature and it is implemented in <code>ReportWindow</code> class.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pie chart: Implemented using <strong>javafx.scene.chart.PieChart</strong></p>
-</li>
-<li>
-<p>Bar graph: In progress.</p>
-</li>
-<li>
-<p>Stack Bar graph: In progress.</p>
+<p><strong>Main Window</strong></p>
 </li>
 </ul>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>The input from user is parsed using a specific command parser
+depending on which of 3 commands: <code>report view</code>, <code>report print</code> and <code>report export</code> were inputted by user.</p>
 </div>
 <div class="paragraph">
-<p><strong>Logic</strong></p>
+<p>If a <code>report view</code> command was input, the <em>ViewReportCommandParser</em>  will parse the input and convert the Strings :
+start date, end date and graph into <em>Date</em> and <em>Report.GraphType</em> object respectively. The <em>Date</em> objects
+and <em>Report.GraphType</em> objects are used to create <em>ViewReportCommand</em> object which will be
+executed. The execution will pop out the <em>ReportWindow</em> which will showcase a expenditure breakdown report.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.7.3. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Consideration : Minimal changes to current UI implementation, especially Main Window</strong></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>Report</code> : The <code>Report</code>  object is generated to hold  users request for a report either in <code>MainWindow</code> or <code>ReportWindow</code>.</p>
+<p>Pros:  Less dependency with current working code for Main Window. Hence, even if report feature fails, it is
+likely that Main Window can continue running.</p>
 </li>
 <li>
-<p><code>ReportCommandResult</code>: The <code>ReportCommandResult</code> holds the command result of commands typed in <code>ReportWindow</code>.</p>
+<p>Cons: It could be more complicated to implement.</p>
 </li>
-</ol>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Consideration : Avoid cluttering the Main Window UI</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Better user experience.</p>
+</li>
+<li>
+<p>Pros: As report is not using any space in Main Window,
+we could introduce and showcase other smaller and useful features in
+the Main Winow UI.</p>
+</li>
+<li>
+<p>Cons: It could be more different to implement</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Due to the above considerations ,we implemented report viewing in a pop up window.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -792,7 +821,7 @@ read up more at : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/m
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
@@ -800,7 +829,7 @@ read up more at : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/m
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
@@ -808,7 +837,7 @@ read up more at : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/m
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
@@ -1487,18 +1516,18 @@ Format: <code>exp edit number(positive) [-i info] [-a amount] [-t tag] [-d date 
 </li>
 </ul>
 </div>
-<h3 id="use-case-exp-find" class="discrete">Use case: Exp Find</h3>
+<h3 id="use-case-find" class="discrete">Use case: Find</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to find expenditure records with certain <code>keyword</code> in the account which they are viewing right now.<br>
-Format: <code>exp find "keyword</code></p>
+<p>User requests to find expenditure &amp; repeat records with certain <code>keyword</code>(s) in the account which they are viewing right now.<br>
+Format: <code>find [keyword&#8230;&#8203;]</code></p>
 </li>
 <li>
-<p><code>$AVE IT</code> will acknowledge and output a list of relevant expenditure records.</p>
+<p><code>$AVE IT</code> will acknowledge and output a list of relevant records.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2317,4 +2346,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-27 07:57:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 12:08:52 UTC</div></div></div></body></html>

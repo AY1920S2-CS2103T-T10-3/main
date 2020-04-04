@@ -27,15 +27,14 @@
 </ul>
 </li>
 <li><a href="#implementation">4. Implementation</a>
-<ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></li>
-<li><a href="#calendar-feature">4.3. Calendar feature</a></li>
-<li><a href="#recurring-expenditure-feature">4.4. Recurring Expenditure feature</a></li>
-<li><a href="#autocomplete-feature">4.5. Autocomplete feature</a></li>
-<li><a href="#logging">4.6. Logging</a></li>
+<ul class="sectlevel3">
+<li><a href="#proposed-implementation">4.1. Proposed Implementation</a></li>
+<li><a href="#design-consideration">4.2. Design Consideration</a></li>
+<li><a href="#calendar-feature-in-progress">4.3. Calendar feature [In progress]</a></li>
+<li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
+<li><a href="#logging">4.5. Logging</a></li>
+<li><a href="#recurring-expenditure-feature-in-progress">4.6. Recurring Expenditure feature [In Progress]</a></li>
 <li><a href="#Implementation-Report">4.7. Report [In progress]</a></li>
-<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -119,7 +118,7 @@ Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how 
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -206,13 +205,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the Main UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The Main UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> , <code>Calendar</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -227,14 +226,19 @@ The following class plays an important role at the architecture level:</p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReportUIClassDiagram.png" alt="ReportUIClassDiagram">
+</div>
+<div class="title">Figure 5. Structure of the Report UI Component</div>
+</div>
 <div class="paragraph">
-<div class="title">Structure of the Report UI Component</div>
-<p>The Report UI consists of a <code>ReportWindow</code> that is made up of parts e.g. <code>ReportCommandBox</code> and <code>PieChart</code> etc.
+<p>The Report UI consists of a <code>ReportWindow</code> that is made up of parts e.g. <code>ReportCommandBox</code> and <code>Result Display</code> etc.
 The <code>ReportWindow</code> and <code>ReportCommandBox</code>, inherit from abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu.address/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/address/ui"><code>ReportWindow.java</code></a>
-Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/address/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/mainhttps://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu/saveit/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/saveit/ui"><code>ReportWindow.java</code></a>
+Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/saveit/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/mainhttps://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -243,9 +247,6 @@ Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code
 <ul>
 <li>
 <p>Executes user commands using the <code>Logic</code> component.</p>
-</li>
-<li>
-<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
 </li>
 </ul>
 </div>
@@ -256,11 +257,11 @@ Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -292,7 +293,7 @@ to parse the command instead.</p>
 <div class="content">
 <img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>exp delete 1</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>exp delete 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -313,10 +314,10 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -337,20 +338,6 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
@@ -358,10 +345,10 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -380,7 +367,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.saveit.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -389,244 +376,11 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
-</div>
-<div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.1.1. Proposed Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState1.png" alt="UndoRedoState1">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-</div>
+<p>This section describes some noteworthy details on how certain features are implemented.
+=== Autocomplete feature</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="calendar-feature"><a class="link" href="#calendar-feature">4.3. Calendar feature</a></h3>
-<div class="paragraph">
-<p><em>{Coming soon}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="recurring-expenditure-feature"><a class="link" href="#recurring-expenditure-feature">4.4. Recurring Expenditure feature</a></h3>
-<div class="paragraph">
-<p><em>{Coming soon}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.5. Autocomplete feature</a></h3>
-<div class="sect3">
-<h4 id="proposed-implementation-2"><a class="link" href="#proposed-implementation-2">4.5.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The autocomplete feature is facilitated by <code>AutoCompleteTextField.java</code>.
 It extends the <code>TextField</code> component of JavaFx and provides a dropdown of possible commands.</p>
@@ -643,13 +397,22 @@ be searched.</p>
 <p>Step 1. Type into the command box. The function search and filter potential commands that the user might use.<br>
 The commands will then be displayed in a dropdown format which the user can refer to when keying commands.</p>
 </div>
-<div class="paragraph">
-<p>For the current implementation, it checks whether the typed command matches the starting characters of any commands.
-To be improved in later versions.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For the current implementation, it checks whether the typed command matches the starting characters of any commands.
+To be improved in later versions.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">4.5.2. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">4.2. Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-usage-of-autocompletion"><a class="link" href="#aspect-usage-of-autocompletion">Aspect: Usage of autocompletion</a></h5>
 <div class="ulist">
@@ -696,16 +459,33 @@ To be improved in later versions.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="calendar-feature-in-progress"><a class="link" href="#calendar-feature-in-progress">4.3. Calendar feature [In progress]</a></h3>
+<div class="paragraph">
+<p>Calendar is a feature that has a clickable calendar which users
+can use to navigate between the different days. It also shows
+the date of the expenditures the user is viewing as well as today.</p>
+</div>
+<div class="sect3">
+<h4 id="rationale"><a class="link" href="#rationale">4.3.1. Rationale</a></h4>
+
+</div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.4. Configuration</a></h3>
+<div class="paragraph">
+<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.4, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -736,13 +516,26 @@ To be improved in later versions.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="recurring-expenditure-feature-in-progress"><a class="link" href="#recurring-expenditure-feature-in-progress">4.6. Recurring Expenditure feature [In Progress]</a></h3>
+<div class="paragraph">
+<p>Recurring expenditure is one of the main feature in <code>$AVE IT</code> and it is
+a expenditure automatically logged for user at their preferred frequency.
+==== Rationale
+This feature allows user to keep track of expenditures that will occur either <em>daily</em>,
+<em>monthly</em> or <em>annually</em> without the need to key in the expenditures every day or month.
+Hence, this will provide more convenience for users as well as address the need
+for such a feature since recurring expenditures are common. For example, day to day
+commuting expenses.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="Implementation-Report"><a class="link" href="#Implementation-Report">4.7. Report [In progress]</a></h3>
 <div class="paragraph">
 <p>Report is one of the main feature in <code>$AVE IT</code>  and its purpose is to collate and
 show users their expenditure breakdowns.</p>
 </div>
 <div class="sect3">
-<h4 id="rationale"><a class="link" href="#rationale">4.7.1. Rationale</a></h4>
+<h4 id="rationale-2"><a class="link" href="#rationale-2">4.7.1. Rationale</a></h4>
 <div class="paragraph">
 <p>The report feature is an important feature that allows users to see their
 expenditure breakdowns within a certain time period. Currently, the expenditure
@@ -766,15 +559,39 @@ what they are spending on over this period of time.</p>
 <p>The input from user is parsed using a specific command parser
 depending on which of 3 commands: <code>report view</code>, <code>report print</code> and <code>report export</code> were inputted by user.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReportViewSequence.png" alt="ReportViewSequence">
+</div>
+<div class="title">Figure 10. Sequence Diagram for Report View</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GenerateStats_and_Graph.png" alt="GenerateStats and Graph">
+</div>
+<div class="title">Figure 11. Sequence Diagram GenerateStats and Graph</div>
+</div>
 <div class="paragraph">
 <p>If a <code>report view</code> command was input, the <em>ViewReportCommandParser</em>  will parse the input and convert the Strings :
 start date, end date and graph into <em>Date</em> and <em>Report.GraphType</em> object respectively. The <em>Date</em> objects
 and <em>Report.GraphType</em> objects are used to create <em>ViewReportCommand</em> object which will be
-executed. The execution will pop out the <em>ReportWindow</em> which will showcase a expenditure breakdown report.</p>
+executed. The result of executions is popping out the <em>ReportWindow</em> which will showcase a expenditure breakdown report.</p>
+</div>
+<div class="paragraph">
+<p>If a <code>report print</code> command was input, the <em>PrintReportCommandParser</em>  will parse the input and convert the Strings :
+start date, end date and graph into <em>Date</em> and <em>Report.GraphType</em> object respectively. The <em>Date</em> objects
+and <em>Report.GraphType</em> objects are used to create <em>PrintReportCommand</em> object which will be
+executed. The result of execution will be sending a print job to your printer, printing out the report.</p>
+</div>
+<div class="paragraph">
+<p>If a <code>report export</code> command was input, the <em>ExportReportCommandParser</em>  will parse the input and convert the Strings :
+start date, end date and graph into <em>Date</em> and <em>Report.GraphType</em> object respectively. The <em>Date</em> objects
+and <em>Report.GraphType</em> objects are used to create <em>ExportReportCommand</em> object which will be
+executed. The result of execution will be exporting a PDF version of the report into your computer.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.7.3. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.7.3. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Consideration : Minimal changes to current UI implementation, especially Main Window</strong></p>
 </div>
@@ -810,12 +627,6 @@ the Main Winow UI.</p>
 <div class="paragraph">
 <p>Due to the above considerations ,we implemented report viewing in a pop up window.</p>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 </div>
@@ -988,7 +799,7 @@ the Main Winow UI.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add a new account. Format: <code>acc add "account name"</code></p>
+<p>User requests to add a new account. Format: <code>acc add ACCOUNT</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and add this account into the list.</p>
@@ -1038,7 +849,7 @@ the Main Winow UI.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to delete an existing account. Format: <code>acc delete "account name"</code></p>
+<p>User requests to delete an existing account. Format: <code>acc delete ACCOUNT</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and delete this account from the list.</p>
@@ -1071,8 +882,10 @@ the Main Winow UI.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will state that account is not found. Unable to delete.
-**Use case resumes from step 1.</p>
+<p>1b1. <code>$AVE IT</code> will state that account is not found. Unable to delete.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
 </li>
 </ul>
 </div>
@@ -1112,7 +925,7 @@ the Main Winow UI.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to rename an account. Format: <code>acc rename "old name" "new name"</code></p>
+<p>User requests to rename an account. Format: <code>acc rename OLD_NAME NEW_NAME</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and state that the account has being renamed.</p>
@@ -1175,7 +988,7 @@ the Main Winow UI.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to check out to another account. Format: <code>acc checkout "account name"</code></p>
+<p>User requests to check out to another account. Format: <code>acc checkout ACCOUNT</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and state that the target account is checked out.</p>
@@ -1262,7 +1075,7 @@ the Main Winow UI.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to clear all data in an account. Format: <code>acc clear "account name"</code></p>
+<p>User requests to clear all data in an account. Format: <code>acc clear</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and state that the account&#8217;s data has been cleared'.</p>
@@ -1313,7 +1126,7 @@ the Main Winow UI.</p>
 <ol class="arabic">
 <li>
 <p>User requests to add an expenditure record in the account which they are viewing right now.<br>
-Format: <code>exp add -i info -a amount [-t tag] [-d date (YYYY-MM-DD)]</code></p>
+Format: <code>exp add -i INFO -a AMOUNT [-t TAG] [-d DATE]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge that a new expenditure has been added and show the details of the added expenditure.</p>
@@ -1396,7 +1209,7 @@ Format: <code>exp add -i info -a amount [-t tag] [-d date (YYYY-MM-DD)]</code></
 <ol class="arabic">
 <li>
 <p>User requests to delete an expenditure record in the account they are viewing right now.<br>
-Format: `exp delete number (positive) `</p>
+Format: <code>exp delete INDEX</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
@@ -1447,7 +1260,7 @@ Format: `exp delete number (positive) `</p>
 <ol class="arabic">
 <li>
 <p>User requests to edit an expenditure record in the account they are viewing right now.<br>
-Format: <code>exp edit number(positive) [-i info] [-a amount] [-t tag] [-d date (YYYY-MM-DD)]</code></p>
+Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
@@ -1524,7 +1337,7 @@ Format: <code>exp edit number(positive) [-i info] [-a amount] [-t tag] [-d date 
 <ol class="arabic">
 <li>
 <p>User requests to find expenditure &amp; repeat records with certain <code>keyword</code>(s) in the account which they are viewing right now.<br>
-Format: <code>find [keyword&#8230;&#8203;]</code></p>
+Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and output a list of relevant records.</p>
@@ -1554,7 +1367,7 @@ Format: <code>find [keyword&#8230;&#8203;]</code></p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-exp-setbudget-to-be-implemented" class="discrete">Use case: Exp SetBudget [TO BE IMPLEMENTED]</h3>
+<h3 id="use-case-exp-setbudget" class="discrete">Use case: Exp SetBudget</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1562,7 +1375,7 @@ Format: <code>find [keyword&#8230;&#8203;]</code></p>
 <ol class="arabic">
 <li>
 <p>User requests to set an budget for a given month in the account which they are viewing right now.<br>
-Format: <code>exp setbudget -a amount [-d date (YYYY-MM-DD)]</code></p>
+Format: <code>exp setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
@@ -1634,7 +1447,7 @@ Format: <code>exp setbudget -a amount [-d date (YYYY-MM-DD)]</code></p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-repeat-add-to-be-implemented" class="discrete">Use case: Repeat Add [TO BE IMPLEMENTED]</h3>
+<h3 id="use-case-repeat-add" class="discrete">Use case: Repeat Add</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1642,7 +1455,7 @@ Format: <code>exp setbudget -a amount [-d date (YYYY-MM-DD)]</code></p>
 <ol class="arabic">
 <li>
 <p>User requests to add a repeating expenditure record in the account which they are viewing right now.<br>
-Format: `repeat add -i info -a amount -sd startDate (YYYY-MM-DD) -ed endDate(YYYY-MM-DD) -p period [-t tag] `</p>
+Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
@@ -1735,7 +1548,7 @@ Format: `repeat add -i info -a amount -sd startDate (YYYY-MM-DD) -ed endDate(YYY
 <ol class="arabic">
 <li>
 <p>User requests to delete a repeating expenditure record from the account which they are viewing right now.<br>
-Format: `repeat delete number (positive) `</p>
+Format: <code>repeat delete INDEX</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
@@ -1778,7 +1591,7 @@ Format: `repeat delete number (positive) `</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-repeat-edit-to-be-implemented" class="discrete">Use case: Repeat Edit [TO BE IMPLEMENTED]</h3>
+<h3 id="use-case-repeat-edit" class="discrete">Use case: Repeat Edit</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1786,7 +1599,7 @@ Format: `repeat delete number (positive) `</p>
 <ol class="arabic">
 <li>
 <p>User requests to edit a repeating expenditure record in the account which they are viewing right now.<br>
-Format: <code>repeat edit number(positive) [-i info] [-a amount] [-sd startDate (YYYY-MM-DD)] [-ed endDate(YYYY-MM-DD)] [-p period] [-t tag]</code></p>
+Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_DATE] [-p PERIOD] [-t TAG]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge.</p>
@@ -1871,7 +1684,7 @@ Format: <code>repeat edit number(positive) [-i info] [-a amount] [-sd startDate 
 </li>
 </ul>
 </div>
-<h3 id="use-case-report-view-in-progress" class="discrete">Use case: Report View [In Progress]</h3>
+<h3 id="use-case-report-view" class="discrete">Use case: Report View</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1879,7 +1692,7 @@ Format: <code>repeat edit number(positive) [-i info] [-a amount] [-sd startDate 
 <ol class="arabic">
 <li>
 <p>User requests to view an report of expenditure record in the account which they are viewing right now.<br>
-Format: <code>report view startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) graphType(PIE)</code></p>
+Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and pop up another window to show the relevant report.</p>
@@ -1972,7 +1785,7 @@ Format: <code>report view startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) graphType(P
 <ol class="arabic">
 <li>
 <p>User requests to export an report of expenditure record in the account which they are viewing right now.<br>
-Format: `report export startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) `</p>
+Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and export the report to the folder which has same location as <code>$AVE IT</code>.</p>
@@ -2044,9 +1857,10 @@ Format: `report export startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) `</p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="paragraph">
+<div class="ulist none">
+<ul class="none">
+<li>
 <p>1a. <code>$AVE IT</code> detects input is in incorrect format.</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -2054,9 +1868,9 @@ Format: `report export startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) `</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>1b. <code>$AVE IT</code> detects date input is invalid.</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -2064,13 +1878,16 @@ Format: `report export startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) `</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>1c. <code>$AVE IT</code> detects graph type input is invalid.</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
 <p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -2081,7 +1898,7 @@ Format: `report export startDate (YYYY-MM-DD) endDate(YYYY-MM-DD) `</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to view other date. Format: <code>Go date(YYYY-MM-DD)</code></p>
+<p>User requests to view other date. Format: <code>go DATE</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and update the view.</p>
@@ -2302,18 +2119,18 @@ Expected: The most recent window size and location is retained.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all expenditure using the <code>list</code> command. Multiple expenditure in the list.</p>
+<p>Prerequisites: List all expenditure using the <code>exp list</code> command. Multiple expenditure in the list.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
+<p>Test case: <code>exp delete 1</code><br>
 Expected: First expenditure is deleted from the list. Details of the deleted expenditure shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
+<p>Test case: <code>exp delete 0</code><br>
 Expected: No expenditure is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>exp delete</code>, <code>exp delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -2346,4 +2163,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 20:49:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 04:11:05 UTC</div></div></div></body></html>

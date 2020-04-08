@@ -561,33 +561,44 @@ depending on which of 3 commands: <code>report view</code>, <code>report print</
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ReportViewSequence.png" alt="ReportViewSequence">
+<img src="images/GenerateStats_and_Graph.png" alt="GenerateStats and Graph">
 </div>
-<div class="title">Figure 10. Sequence Diagram for Report View</div>
+<div class="title">Figure 10. Sequence Diagram GenerateStats and Graph</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/GenerateStats_and_Graph.png" alt="GenerateStats and Graph">
+<img src="images/ReportViewSequence.png" alt="ReportViewSequence">
 </div>
-<div class="title">Figure 11. Sequence Diagram GenerateStats and Graph</div>
-</div>
-<div class="paragraph">
-<p>If a <code>report view</code> command was input, the <em>ViewReportCommandParser</em>  will parse the input and convert the Strings :
-start date, end date and graph into <em>Date</em> and <em>Report.GraphType</em> object respectively. The <em>Date</em> objects
-and <em>Report.GraphType</em> objects are used to create <em>ViewReportCommand</em> object which will be
-executed. The result of executions is popping out the <em>ReportWindow</em> which will showcase a expenditure breakdown report.</p>
+<div class="title">Figure 11. Sequence Diagram for Report View</div>
 </div>
 <div class="paragraph">
-<p>If a <code>report print</code> command was input, the <em>PrintReportCommandParser</em>  will parse the input and convert the Strings :
-start date, end date and graph into <em>Date</em> and <em>Report.GraphType</em> object respectively. The <em>Date</em> objects
-and <em>Report.GraphType</em> objects are used to create <em>PrintReportCommand</em> object which will be
-executed. The result of execution will be sending a print job to your printer, printing out the report.</p>
+<p>If a valid <code>report view</code> command was input, the <em>ViewReportCommandParser</em>  will parse the input and convert the Strings :
+start date, end date, graph type  and organisation into <em>Date</em> , <em>Report.GraphType</em> and <em>String: organisation</em> object respectively.
+These objects are used to create <em>ViewReportCommand</em> object which will be executed. The result of the execution is popping out of  <em>ReportWindow</em> which will showcase a expenditure breakdown report.
+The details of execution can be seen from <strong>Figure 11</strong>.</p>
 </div>
 <div class="paragraph">
-<p>If a <code>report export</code> command was input, the <em>ExportReportCommandParser</em>  will parse the input and convert the Strings :
-start date, end date and graph into <em>Date</em> and <em>Report.GraphType</em> object respectively. The <em>Date</em> objects
-and <em>Report.GraphType</em> objects are used to create <em>ExportReportCommand</em> object which will be
-executed. The result of execution will be exporting a PDF version of the report into your computer.</p>
+<p>If a valid <code>report print</code> command was input, the <em>PrintReportCommandParser</em>  will parse the input and convert the Strings :
+start date, end date, graph into <em>Date</em> , <em>Report.GraphType</em> and <em>String: organisation</em> object respectively. These objects
+are used to create <em>PrintReportCommand</em> object which will be executed. The result of execution will be sending a print job to your printer, printing out the report.
+<code>report print</code> has a similar execution path to <code>report view</code>, hence you can refer to <strong>Figure 11</strong> to find out more.</p>
+</div>
+<div class="paragraph">
+<p>If a valid <code>report export</code> command was input, the <em>ExportReportCommandParser</em>  will parse the input and convert the Strings :
+tart date, end date, graph into <em>Date</em> , <em>Report.GraphType</em> , <em>String: organisation</em> and <em>String: file name</em> object respectively.
+These objects are used to create <em>ExportReportCommand</em> object which will be executed.
+The result of execution will be exporting a PNG version of the report into your computer with file name.
+<code>report export</code> also has a similar execution path to <code>report view</code> with the addition of <em>ExportFile</em> class being involved.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Report Window</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <strong>Report Window</strong> can be accessed via the  <em>Report button</em> in the <strong>Main Window</strong> or via <code>report view</code> command.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2163,4 +2174,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-05 17:30:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-08 09:11:43 UTC</div></div></div></body></html>

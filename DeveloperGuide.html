@@ -32,14 +32,16 @@
 </ul>
 </li>
 <li><a href="#implementation">4. Implementation</a>
-<ul class="sectlevel3">
-<li><a href="#proposed-implementation">4.1. Proposed Implementation</a></li>
-<li><a href="#design-consideration">4.2. Design Consideration</a></li>
-<li><a href="#calendar-feature-in-progress">4.3. Calendar feature [In progress]</a></li>
-<li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
-<li><a href="#logging">4.5. Logging</a></li>
-<li><a href="#recurring-expenditure-feature-in-progress">4.6. Recurring Expenditure feature [In Progress]</a></li>
-<li><a href="#Implementation-Report">4.7. Report [In progress]</a></li>
+<ul class="sectlevel2">
+<li><a href="#disjoint-account">4.1. Disjoint Account</a></li>
+<li><a href="#expenditure">4.2. Expenditure</a></li>
+<li><a href="#recurring-expenditure-feature-code-repeat-code">4.3. Recurring Expenditure feature <code>Repeat</code></a></li>
+<li><a href="#budget">4.4. Budget</a></li>
+<li><a href="#report">4.5. Report</a></li>
+<li><a href="#calendar-feature">4.6. Calendar feature</a></li>
+<li><a href="#autocomplete-feature">4.7. Autocomplete feature</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+<li><a href="#logging">4.9. Logging</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -380,167 +382,127 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 <div class="sect1">
 <h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.
-=== Autocomplete feature</p>
-</div>
-<div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.1. Proposed Implementation</a></h4>
-<div class="paragraph">
-<p>The autocomplete feature is facilitated by <code>AutoCompleteTextField.java</code>.
-It extends the <code>TextField</code> component of JavaFx and provides a dropdown of possible commands.</p>
-</div>
-<div class="paragraph">
-<p>To make use of the autocomplete feature. The backend will have to include the commands to be<br>
-added which will be shown to the users. This allows easy configuration of what commands will<br>
-be searched.</p>
-</div>
-<div class="paragraph">
-<p>Given below is the example usage scenario of how the autocompletion works.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. Type into the command box. The function search and filter potential commands that the user might use.<br>
-The commands will then be displayed in a dropdown format which the user can refer to when keying commands.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-For the current implementation, it checks whether the typed command matches the starting characters of any commands.
-To be improved in later versions.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">4.2. Design Consideration</a></h4>
-<div class="sect4">
-<h5 id="aspect-usage-of-autocompletion"><a class="link" href="#aspect-usage-of-autocompletion">Aspect: Usage of autocompletion</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Moving mouse over to select commands.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: Does not meet target user needs who strongly prefers typing.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use of tab to simulate autocompletion like a terminal.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Intuitive for people used to using a terminal.</p>
-</li>
-<li>
-<p>Cons: Will have to direct the tab keystroke to be used for autocompletion.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-how-autocompletion-searches-for-completion-items"><a class="link" href="#aspect-how-autocompletion-searches-for-completion-items">Aspect: How autocompletion searches for completion items</a></h5>
-<div class="paragraph">
-<p><em>{To be added}</em></p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-more-powerful-autocompletion"><a class="link" href="#aspect-data-structure-to-support-more-powerful-autocompletion">Aspect: Data structure to support more powerful autocompletion</a></h5>
-<div class="paragraph">
-<p><em>{To be added}</em></p>
-</div>
-</div>
-</div>
 <div class="sect2">
-<h3 id="calendar-feature-in-progress"><a class="link" href="#calendar-feature-in-progress">4.3. Calendar feature [In progress]</a></h3>
-<div class="paragraph">
-<p>Calendar is a feature that has a clickable calendar which users
-can use to navigate between the different days. It also shows
-the date of the expenditures the user is viewing as well as today.</p>
+<h3 id="disjoint-account"><a class="link" href="#disjoint-account">4.1. Disjoint Account</a></h3>
+<div class="sect3">
+<h4 id="rational"><a class="link" href="#rational">4.1.1. Rational</a></h4>
+
 </div>
 <div class="sect3">
-<h4 id="rationale"><a class="link" href="#rationale">4.3.1. Rationale</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">4.1.2. Implementation</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">4.1.3. Design Consideration</a></h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.4. Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+<h3 id="expenditure"><a class="link" href="#expenditure">4.2. Expenditure</a></h3>
+<div class="sect3">
+<h4 id="rational-2"><a class="link" href="#rational-2">4.2.1. Rational</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.2. Implementation</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">4.2.3. Design Consideration</a></h4>
+
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
-<div class="paragraph">
-<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.4, &#8220;Configuration&#8221;</a>)</p>
-</li>
-<li>
-<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
-</li>
-<li>
-<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Logging Levels</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="recurring-expenditure-feature-in-progress"><a class="link" href="#recurring-expenditure-feature-in-progress">4.6. Recurring Expenditure feature [In Progress]</a></h3>
+<h3 id="recurring-expenditure-feature-code-repeat-code"><a class="link" href="#recurring-expenditure-feature-code-repeat-code">4.3. Recurring Expenditure feature <code>Repeat</code></a></h3>
 <div class="paragraph">
 <p>Recurring expenditure is one of the main feature in <code>$AVE IT</code> and it is
-a expenditure automatically logged for user at their preferred frequency.
-==== Rationale
-This feature allows user to keep track of expenditures that will occur either <em>daily</em>,
+an expenditure automatically logged for user at their preferred frequency.</p>
+</div>
+<div class="sect3">
+<h4 id="rationale"><a class="link" href="#rationale">4.3.1. Rationale</a></h4>
+<div class="paragraph">
+<p><code>Repeat</code> allows user to keep track of expenditures that will occur either <em>daily</em>, <em>weekly</em>,
 <em>monthly</em> or <em>annually</em> without the need to key in the expenditures every day or month.
 Hence, this will provide more convenience for users as well as address the need
 for such a feature since recurring expenditures are common. For example, day to day
 commuting expenses.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.2. Implementation</a></h4>
+<div class="paragraph">
+<p>Below is a class diagram shows different components that <code>Repeat</code> contains.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/repeatClassDiagram.png" alt="repeatClassDiagram">
+</div>
+<div class="title">Figure 10. Class diagram for showing what <code>Repeat</code> consist.</div>
+</div>
+<div class="paragraph">
+<p>For each account, it has its own <code>list</code> which all the <code>Repeat</code> objects are stored.
+There are different types of command that is cater for <code>Repeat</code> such as add, edit and delete.
+The following activity diagram shows what how a <code>Repeat</code> can be added.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/repeatActivityDiagram.png" alt="repeatActivityDiagram">
+</div>
+<div class="title">Figure 11. Activity diagram for <code>repeat add</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-3"><a class="link" href="#design-consideration-3">4.3.3. Design Consideration</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternatives:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Current choice) Have a repeat class which extends <code>BaseExp</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Able to mass delete and edit all the expenditures under this <code>Repeat</code> easily.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hard to implement, especially when we have to calculate monthly spending so to generate report and statistics.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mass operation: add <code>Expenditure</code> object to all those dates which state in the command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are unable to edit all the expenditures which are recurring.<br>
+Users have to delete such expenditures one by one.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="sect2">
-<h3 id="Implementation-Report"><a class="link" href="#Implementation-Report">4.7. Report [In progress]</a></h3>
+<h3 id="budget"><a class="link" href="#budget">4.4. Budget</a></h3>
+<div class="sect3">
+<h4 id="rational-3"><a class="link" href="#rational-3">4.4.1. Rational</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.2. Implementation</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="design-consideration-4"><a class="link" href="#design-consideration-4">4.4.3. Design Consideration</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="report"><a class="link" href="#report">4.5. Report</a></h3>
 <div class="paragraph">
 <p>Report is one of the main feature in <code>$AVE IT</code>  and its purpose is to collate and
 show users their expenditure breakdowns.</p>
 </div>
 <div class="sect3">
-<h4 id="rationale-2"><a class="link" href="#rationale-2">4.7.1. Rationale</a></h4>
+<h4 id="rationale-2"><a class="link" href="#rationale-2">4.5.1. Rationale</a></h4>
 <div class="paragraph">
 <p>The report feature is an important feature that allows users to see their
 expenditure breakdowns within a certain time period. Currently, the expenditure
@@ -549,7 +511,7 @@ what they are spending on over this period of time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">4.7.2. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.2. Implementation</a></h4>
 <div class="paragraph">
 <p>The report feature can be accessed from 2 platforms either <strong>Main Window</strong> or <strong>Report Window</strong></p>
 </div>
@@ -568,7 +530,7 @@ depending on which of 3 commands: <code>report view</code>, <code>report print</
 <div class="content">
 <img src="images/ReportViewSequence.png" alt="ReportViewSequence">
 </div>
-<div class="title">Figure 10. Sequence Diagram for Report View</div>
+<div class="title">Figure 12. Sequence Diagram for Report View</div>
 </div>
 <div class="paragraph">
 <p>If a valid  <code>report view</code> command was input, the <em>ViewReportCommandParser</em> will parse the input and convert the Strings :
@@ -625,7 +587,7 @@ The result of execution will be exporting a PNG version of the report into your 
 <div class="content">
 <img src="images/Report_MainWindow_.png" alt="Report MainWindow ">
 </div>
-<div class="title">Figure 11. Activity Diagram for Report in Main Window</div>
+<div class="title">Figure 13. Activity Diagram for Report in Main Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram summarises what can happen when user
@@ -645,7 +607,7 @@ enter a <code>report</code> command in the <strong>Main Window</strong></p>
 <div class="content">
 <img src="images/Report_ReportWindow_.png" alt="Report ReportWindow ">
 </div>
-<div class="title">Figure 12. Activity Diagram for Report Window</div>
+<div class="title">Figure 14. Activity Diagram for Report Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram shows what can happen when users enter in a new command
@@ -653,7 +615,7 @@ in the <strong>Report Window</strong></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.7.3. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.5.3. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Consideration : Minimal changes to current UI implementation, especially Main Window</strong></p>
 </div>
@@ -689,6 +651,218 @@ the Main Winow UI.</p>
 <div class="paragraph">
 <p>Due to the above considerations ,we implemented report viewing in a pop up window.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">4.6. Calendar feature</a></h3>
+<div class="sect3">
+<h4 id="rational-4"><a class="link" href="#rational-4">4.6.1. Rational</a></h4>
+<div class="paragraph">
+<p>Calendar is a feature that has a clickable calendar which users
+can use to navigate between the different days. It also shows
+the date of the expenditures the user is viewing as well as today.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-7"><a class="link" href="#implementation-7">4.6.2. Implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the above functions will be described separately in this section.</p>
+</div>
+<div class="paragraph">
+<p>The users are given two different choice on how to navigate between
+the days:<br>
+<strong>1</strong>. UI interaction with the calendar view.<br>
+<strong>2</strong>. Make use of <code>go YYYY-MM-DD</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows you how the <code>go YYYY-MM-DD</code>
+(E.g <code>go 2020-04-01</code>) command works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/goSquenceDiagram.png" alt="goSquenceDiagram">
+</div>
+<div class="title">Figure 15. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
+</div>
+<div class="paragraph">
+<p>Upon completion of the above command, the calendar view will update the
+active date to be <code>2020-04-01</code> and expenditures records for
+<code>2020-04-01</code> will be displayed.</p>
+</div>
+<div class="paragraph">
+<p>If the user chooses to navigate through UI interaction with the calendar view
+(aka clicking on the date that is shown on the calendar). The implementation is
+very similar to the <code>go</code> command, <code>calendarView</code> will invoke <code>go</code> command when
+user click on the dates.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/calendarActivityDiagram.png" alt="calendarActivityDiagram">
+</div>
+<div class="title">Figure 16. Activity diagram showing what happen when user wants to navigate to other date</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-5"><a class="link" href="#design-consideration-5">4.6.3. Design Consideration</a></h4>
+<div class="paragraph">
+<p>This section contains some of our design considerations for the calendar feature.<br>
+Consideration: How are we going to present the expenditure records.<br></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternatives:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Make use of a month list to contain all the expenditure records of the given month.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is able to provide a concise view of expenditure view especially when there are only a small number of records.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This looks like excel sheet and users have to scroll all the way up if they want to view a date which is much earlier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.(current choice) Make use of a calender view and only list out a given date&#8217;s expenditure record.
+This automatically helps user to organize the records according to date.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can make use of the calendar view to navigate between the dates,
+this is much more convenient than scrolling through a list.<br>
+This helps user to organize the expenditure and keep it tidy.
+Especially helpful if there is lots of records.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is much more troublesome to implement.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.7. Autocomplete feature</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.7.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The autocomplete feature is facilitated by <code>AutoCompleteTextField.java</code>.
+It extends the <code>TextField</code> component of JavaFx and provides a dropdown of possible commands.</p>
+</div>
+<div class="paragraph">
+<p>To make use of the autocomplete feature. The backend will have to include the commands to be<br>
+added which will be shown to the users. This allows easy configuration of what commands will<br>
+be searched.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the example usage scenario of how the autocompletion works.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. Type into the command box. The function search and filter potential commands that the user might use.<br>
+The commands will then be displayed in a dropdown format which the user can refer to when keying commands.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For the current implementation, it checks whether the typed command matches the starting characters of any commands.
+To be improved in later versions.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-6"><a class="link" href="#design-consideration-6">4.7.2. Design Consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-usage-of-autocompletion"><a class="link" href="#aspect-usage-of-autocompletion">Aspect: Usage of autocompletion</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Moving mouse over to select commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Does not meet target user needs who strongly prefers typing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use of tab to simulate autocompletion like a terminal.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Intuitive for people used to using a terminal.</p>
+</li>
+<li>
+<p>Cons: Will have to direct the tab keystroke to be used for autocompletion.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-autocompletion-searches-for-completion-items"><a class="link" href="#aspect-how-autocompletion-searches-for-completion-items">Aspect: How autocompletion searches for completion items</a></h5>
+<div class="paragraph">
+<p><em>{To be added}</em></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-more-powerful-autocompletion"><a class="link" href="#aspect-data-structure-to-support-more-powerful-autocompletion">Aspect: Data structure to support more powerful autocompletion</a></h5>
+<div class="paragraph">
+<p><em>{To be added}</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
+<div class="paragraph">
+<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
+<div class="paragraph">
+<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
+</li>
+<li>
+<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
+</li>
+<li>
+<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Logging Levels</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
+</li>
+<li>
+<p><code>WARNING</code> : Can continue, but with caution</p>
+</li>
+<li>
+<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
+</li>
+<li>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1391,27 +1565,6 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-find" class="discrete">Use case: Find</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to find expenditure &amp; repeat records with certain <code>keyword</code>(s) in the account which they are viewing right now.<br>
-Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge and output a list of relevant records.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1953,6 +2106,24 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-find" class="discrete">Use case: Find</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find expenditure &amp; repeat records with certain <code>keyword</code>(s) in the account which they are viewing right now.<br>
+Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge and output a list of relevant records.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
 <h3 id="use-case-go" class="discrete">Use case: Go</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2225,4 +2396,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-08 13:21:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-08 17:16:11 UTC</div></div></div></body></html>

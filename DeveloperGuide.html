@@ -385,7 +385,7 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 <div class="sect2">
 <h3 id="disjoint-account"><a class="link" href="#disjoint-account">4.1. Disjoint Account</a></h3>
 <div class="sect3">
-<h4 id="rational"><a class="link" href="#rational">4.1.1. Rational</a></h4>
+<h4 id="rationale"><a class="link" href="#rationale">4.1.1. Rationale</a></h4>
 
 </div>
 <div class="sect3">
@@ -400,7 +400,7 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 <div class="sect2">
 <h3 id="expenditure"><a class="link" href="#expenditure">4.2. Expenditure</a></h3>
 <div class="sect3">
-<h4 id="rational-2"><a class="link" href="#rational-2">4.2.1. Rational</a></h4>
+<h4 id="rationale-2"><a class="link" href="#rationale-2">4.2.1. Rationale</a></h4>
 
 </div>
 <div class="sect3">
@@ -419,7 +419,7 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 an expenditure automatically logged for user at their preferred frequency.</p>
 </div>
 <div class="sect3">
-<h4 id="rationale"><a class="link" href="#rationale">4.3.1. Rationale</a></h4>
+<h4 id="rationale-3"><a class="link" href="#rationale-3">4.3.1. Rationale</a></h4>
 <div class="paragraph">
 <p><code>Repeat</code> allows user to keep track of expenditures that will occur either <em>daily</em>, <em>weekly</em>,
 <em>monthly</em> or <em>annually</em> without the need to key in the expenditures every day or month.
@@ -461,12 +461,12 @@ The following activity diagram shows what how a <code>Repeat</code> can be added
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alternatives:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pros:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Current choice) Have a repeat class which extends <code>BaseExp</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>(Current choice)</strong> Have a repeat class which extends <code>BaseExp</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Able to mass delete and edit all the expenditures under this <code>Repeat</code> easily.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hard to implement, especially when we have to calculate monthly spending so to generate report and statistics.</p></td>
 </tr>
@@ -482,17 +482,148 @@ Users have to delete such expenditures one by one.</p></td>
 </div>
 <div class="sect2">
 <h3 id="budget"><a class="link" href="#budget">4.4. Budget</a></h3>
+<div class="paragraph">
+<p>Budget feature allows user to input their budget for any month, and calculates
+the balance from the total spending. Depending on the amount of balance and
+whether the budget is set, different piggy bank images will be shown.</p>
+</div>
 <div class="sect3">
-<h4 id="rational-3"><a class="link" href="#rational-3">4.4.1. Rational</a></h4>
-
+<h4 id="rationale-4"><a class="link" href="#rationale-4">4.4.1. Rationale</a></h4>
+<div class="paragraph">
+<p>As the application is about budget management and expenditure tracking. Budgeting
+is an essential feature to allow user to keep track on how they are spending
+their money.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.2. Implementation</a></h4>
-
+<div class="paragraph">
+<p>The budget feature consists of using a command, and a part of the UI display.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows what happens to the <code>BudgetView</code> which
+displays the budget details when a command is entered.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetActivityDiagram.png" alt="BudgetActivityDiagram">
+</div>
+<div class="title">Figure 12. Activity Diagram of Budget View</div>
+</div>
+<div class="paragraph">
+<p>The implementation of setting the budget of the month is through the command
+format of <code>exp setbudget -a AMOUNT -ym YEAR_MONTH</code>. The process of how the command
+is parsed is shown below using an example, <code>exp setbudget -a 123 -ym 2020-04</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetSequenceDiagram.png" alt="BudgetSequenceDiagram">
+</div>
+<div class="title">Figure 13. Set Budget Sequence Diagram (UI and Logic)</div>
+</div>
+<div class="paragraph">
+<p>The above sequence diagram shows the interaction of the user and the UI. After entering
+the command, the <code>BudgetView</code> will be updated using the result returned by
+the <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>The information displayed are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The budget amount, e.g <code>$123.00</code></p>
+</li>
+<li>
+<p>The total spending in <code>2020-04</code> (month)</p>
+</li>
+<li>
+<p>The balance, which is the difference between the budget amount and the total
+spending</p>
+</li>
+<li>
+<p>An image as visual feedback</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below shows a more detailed view of what happens inside the
+<code>LogicManager</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SetBudgetSequenceDiagram.png" alt="SetBudgetSequenceDiagram">
+</div>
+<div class="title">Figure 14. Set Budget Sequence Diagram (Logic and Model)</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-4"><a class="link" href="#design-consideration-4">4.4.3. Design Consideration</a></h4>
-
+<div class="sect4">
+<h5 id="aspect-calculation-of-budget"><a class="link" href="#aspect-calculation-of-budget">Aspect: Calculation of Budget</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Budgets are set monthly only.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Most common budget setting type.<br>
+- Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- It is not useful for users who prefer other kinds of calculation of budget.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variability in how budget is calculated, e.g. weekly, monthly, yearly.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Gives users more choice on how they want to budget.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Way more difficult to implement.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="aspect-visual-display-of-budget"><a class="link" href="#aspect-visual-display-of-budget">Aspect: Visual Display of Budget</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Display 3 states of budget balance in image.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Easier to see if the budget is being met.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Requires a bit more code, and finding images.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No visual display, just text display.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Very easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- The UI may look a bit plain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Better UI display, showing different variations of whether budget is met e.g.
+a chart.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Gives users better insight on how they are handling their budget.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- More work is required.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -502,7 +633,7 @@ Users have to delete such expenditures one by one.</p></td>
 show users their expenditure breakdowns.</p>
 </div>
 <div class="sect3">
-<h4 id="rationale-2"><a class="link" href="#rationale-2">4.5.1. Rationale</a></h4>
+<h4 id="rationale-5"><a class="link" href="#rationale-5">4.5.1. Rationale</a></h4>
 <div class="paragraph">
 <p>The report feature is an important feature that allows users to see their
 expenditure breakdowns within a certain time period. Currently, the expenditure
@@ -530,7 +661,7 @@ depending on which of 3 commands: <code>report view</code>, <code>report print</
 <div class="content">
 <img src="images/ReportViewSequence.png" alt="ReportViewSequence">
 </div>
-<div class="title">Figure 12. Sequence Diagram for Report View</div>
+<div class="title">Figure 15. Sequence Diagram for Report View</div>
 </div>
 <div class="paragraph">
 <p>If a valid  <code>report view</code> command was input, the <em>ViewReportCommandParser</em> will parse the input and convert the Strings :
@@ -587,7 +718,7 @@ The result of execution will be exporting a PNG version of the report into your 
 <div class="content">
 <img src="images/Report_MainWindow_.png" alt="Report MainWindow ">
 </div>
-<div class="title">Figure 13. Activity Diagram for Report in Main Window</div>
+<div class="title">Figure 16. Activity Diagram for Report in Main Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram summarises what can happen when user
@@ -607,7 +738,7 @@ enter a <code>report</code> command in the <strong>Main Window</strong></p>
 <div class="content">
 <img src="images/Report_ReportWindow_.png" alt="Report ReportWindow ">
 </div>
-<div class="title">Figure 14. Activity Diagram for Report Window</div>
+<div class="title">Figure 17. Activity Diagram for Report Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram shows what can happen when users enter in a new command
@@ -671,7 +802,7 @@ hence it is recommended to users that Bar Chart should be used in such instances
 <div class="sect2">
 <h3 id="calendar-feature"><a class="link" href="#calendar-feature">4.6. Calendar feature</a></h3>
 <div class="sect3">
-<h4 id="rational-4"><a class="link" href="#rational-4">4.6.1. Rational</a></h4>
+<h4 id="rationale-6"><a class="link" href="#rationale-6">4.6.1. Rationale</a></h4>
 <div class="paragraph">
 <p>Calendar is a feature that has a clickable calendar which users
 can use to navigate between the different days. It also shows
@@ -697,7 +828,7 @@ the days:<br>
 <div class="content">
 <img src="images/goSquenceDiagram.png" alt="goSquenceDiagram">
 </div>
-<div class="title">Figure 15. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
+<div class="title">Figure 18. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
 </div>
 <div class="paragraph">
 <p>Upon completion of the above command, the calendar view will update the
@@ -714,14 +845,16 @@ user click on the dates.</p>
 <div class="content">
 <img src="images/calendarActivityDiagram.png" alt="calendarActivityDiagram">
 </div>
-<div class="title">Figure 16. Activity diagram showing what happen when user wants to navigate to other date</div>
+<div class="title">Figure 19. Activity diagram showing what happen when user wants to navigate to other date</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-5"><a class="link" href="#design-consideration-5">4.6.3. Design Consideration</a></h4>
 <div class="paragraph">
-<p>This section contains some of our design considerations for the calendar feature.<br>
-Consideration: How are we going to present the expenditure records.<br></p>
+<p>This section contains some of our design considerations for the calendar feature.</p>
+</div>
+<div class="paragraph">
+<p><strong>Consideration:</strong> How are we going to present the expenditure records.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -731,9 +864,9 @@ Consideration: How are we going to present the expenditure records.<br></p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alternatives:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pros:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cons:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1. Make use of a month list to contain all the expenditure records of the given month.</p></td>
@@ -741,7 +874,7 @@ Consideration: How are we going to present the expenditure records.<br></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This looks like excel sheet and users have to scroll all the way up if they want to view a date which is much earlier.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.(current choice) Make use of a calender view and only list out a given date&#8217;s expenditure record.
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Make use of a calender view and only list out a given date&#8217;s expenditure record.
 This automatically helps user to organize the records according to date.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User can make use of the calendar view to navigate between the dates,
 this is much more convenient than scrolling through a list.<br>
@@ -755,84 +888,124 @@ Especially helpful if there is lots of records.</p></td>
 </div>
 <div class="sect2">
 <h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.7. Autocomplete feature</a></h3>
+<div class="paragraph">
+<p>Completes the command that the user is typing in the command box.</p>
+</div>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.7.1. Proposed Implementation</a></h4>
+<h4 id="rationale-7"><a class="link" href="#rationale-7">4.7.1. Rationale</a></h4>
 <div class="paragraph">
-<p>The autocomplete feature is facilitated by <code>AutoCompleteTextField.java</code>.
-It extends the <code>TextField</code> component of JavaFx and provides a dropdown of possible commands.</p>
-</div>
-<div class="paragraph">
-<p>To make use of the autocomplete feature. The backend will have to include the commands to be<br>
-added which will be shown to the users. This allows easy configuration of what commands will<br>
-be searched.</p>
-</div>
-<div class="paragraph">
-<p>Given below is the example usage scenario of how the autocompletion works.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. Type into the command box. The function search and filter potential commands that the user might use.<br>
-The commands will then be displayed in a dropdown format which the user can refer to when keying commands.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-For the current implementation, it checks whether the typed command matches the starting characters of any commands.
-To be improved in later versions.
-</td>
-</tr>
-</table>
+<p>The autocomplete feature makes it easier for user to know what commands there
+are in the application. As the application is also catered for users who prefer
+typing, this feature can be of great assistance and helps in efficiency.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration-6"><a class="link" href="#design-consideration-6">4.7.2. Design Consideration</a></h4>
+<h4 id="implementation-8"><a class="link" href="#implementation-8">4.7.2. Implementation</a></h4>
+<div class="paragraph">
+<p>The autocomplete feature is facilitated by <code>AutoCompleteTextField</code>.
+It extends the <code>TextField</code> component of JavaFx and provides a dropdown of
+possible commands using <code>ContextMenu</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of the autocompletion.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteSequenceDiagram.png" alt="AutocompleteSequenceDiagram">
+</div>
+<div class="title">Figure 20. Autocomplete Sequence Diagram</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type into the command box. The function searches and filters potential commands
+that the user might use.</p>
+</li>
+<li>
+<p>The commands will then be displayed in a dropdown format which the user can
+refer to when keying commands.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>During the start up of the application, a list of commands are added to the
+<code>AutoCompleteTextField</code>. These commands will then be sorted lexicographically in
+the java implementation of <code>TreeSet</code>.</p>
+</div>
+<div class="paragraph">
+<p>A <code>ChangeListener</code> is added the text field to 'listen' for changes in the input.
+<code>TreeSet#subSet()</code> is used to obtain all the commands between the previous text
+and the current text. For example, the textbox shows <code>ex</code> and a <code>p</code> is added, so
+the current text is <code>exp</code>. <code>TreeSet#subSet()</code> will obtain the commands that are
+lexicographically between <code>ex</code> and <code>exp</code>. These commands will then be shown in the
+autocomplete dropdown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteActivityDiagram.png" alt="AutocompleteActivityDiagram">
+</div>
+<div class="title">Figure 21. Autocomplete Activity Diagram</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-6"><a class="link" href="#design-consideration-6">4.7.3. Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-usage-of-autocompletion"><a class="link" href="#aspect-usage-of-autocompletion">Aspect: Usage of autocompletion</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Moving mouse over to select commands.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: Does not meet target user needs who strongly prefers typing.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use of tab to simulate autocompletion like a terminal.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Intuitive for people used to using a terminal.</p>
-</li>
-<li>
-<p>Cons: Will have to direct the tab keystroke to be used for autocompletion.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Using up and down arrow keys to select autocompletion.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Requires the text field to be in focus.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use of tab to simulate autocompletion like a terminal.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Intuitive for people used to using a terminal.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Will have to direct the tab keystroke to be used for autocompletion.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect4">
-<h5 id="aspect-how-autocompletion-searches-for-completion-items"><a class="link" href="#aspect-how-autocompletion-searches-for-completion-items">Aspect: How autocompletion searches for completion items</a></h5>
-<div class="paragraph">
-<p><em>{To be added}</em></p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-more-powerful-autocompletion"><a class="link" href="#aspect-data-structure-to-support-more-powerful-autocompletion">Aspect: Data structure to support more powerful autocompletion</a></h5>
-<div class="paragraph">
-<p><em>{To be added}</em></p>
-</div>
+<h5 id="aspect-data-structure"><a class="link" href="#aspect-data-structure">Aspect: Data structure</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Sorting lexicographically using <code>TreeSet</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Can be slow if sorting through a huge number of strings.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using a prefix trie.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Extremely fast.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Takes up a lot of space.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -2411,4 +2584,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 06:56:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 08:37:47 UTC</div></div></div></body></html>

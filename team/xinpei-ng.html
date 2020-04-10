@@ -10,7 +10,9 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>$AVE IT is a desktop budget management application. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>$AVE IT is a desktop budget management application.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,34 +22,123 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability view report</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>Report Feature</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to generate a report based on their expenditures. User can specify the date range of
-the report and how they would like the data to be generated; by months or tags.</p>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It allows the user to <strong>generate a report</strong> based on their expenditures (including repeat). User can specify the date range and type of
+the report (bar chart or pie chart) and how they want their spending to be categorised (month or tag).</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because it gives user a overview to
-see what they are spending on, which can equip them with better knowledge of their spending habits.</p>
+<p>Added functionality to <strong>print</strong> and <strong>export</strong> the report.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Report is shown in a <strong>pop out window</strong> which also allow users to type in <code>Report commands</code> only.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Justification:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature improves the product significantly because it gives user a overview of what they are spending on,
+which can equip them with better knowledge of their spending habits.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=xinpei-ng&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=XinPei-ng&amp;tabRepo=AY1920S2-CS2103T-T10-3%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Some users might want to have a permanent copy of their report,
+hence the <strong>print</strong> and <strong>export</strong> report function was introduced
+which give users the choice of having both hard and soft copy of their report.</p>
 </li>
 <li>
-<p><strong>Other contributions</strong>:</p>
+<p>The pop out window was added avoid cluttering the Main Window.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature works together with <code>expenditure</code> and <code>repeat</code> feature. As the <code>repeat</code> feature
+allowed expenditures to occur at varying frequency : daily, weekly, monthly or annually,
+calculation of spending became complex especially since users are able to have specified start and end date
+eg: 2020-03-12 to 2020-04-28.</p>
+</li>
+<li>
+<p>When user types <code>report view</code> command, a Report Window will pop out showcasing the report
+user has requested. This made implementation challenging as I had to set up the UI.</p>
+</li>
+<li>
+<p>User is able to <strong>print</strong> or <strong>export</strong> the report so long it is showcased in
+the report window.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Credits: JavaFXSwingUtils is used for exporting and printing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong> : added <strong>Report Window</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Show cases the report user requested for.</p>
+</li>
+<li>
+<p>It is able to take in <code>Report command</code> , execute and show case the result of the command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoid cluttering the Main Window UI with report showing there.</p>
+</li>
+<li>
+<p>It is likely that users only needed report at specified occasions and not all the time, hence I
+implemented a pop out window which user can close when they no longer need the report.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature works with <code>Report</code> feature.</p>
+</li>
+<li>
+<p>Users can also access the Report Window via <code>report button</code> in Main Window, which made
+implementation slightly challenging as I had to take care of cases where there is no
+report generated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=xinpei-ng&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=XinPei-ng&amp;tabRepo=AY1920S2-CS2103T-T10-3%2Fmain%5Bmaster%5D">RepoSense</a></p>
 <div class="ulist">
 <ul>
 <li>
@@ -55,7 +146,7 @@ see what they are spending on, which can equip them with better knowledge of the
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed release  <code>v1.1</code> - <code>v1.2</code> (3 releases)  on GitHub</p>
 </li>
 </ul>
 </div>
@@ -65,10 +156,10 @@ see what they are spending on, which can equip them with better knowledge of the
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated the GUI layout (Pull request :  <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/81/commits/bc0186cf6d2cd69b0d10aafff15a837337d8634a">#81)</a></p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage from 47% to 50%  (Pull request : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/240">#240</a>)</p>
 </li>
 </ul>
 </div>
@@ -78,7 +169,10 @@ see what they are spending on, which can equip them with better knowledge of the
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/162/files">#162</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/222">#222</a></p>
+</li>
+<li>
+<p>Added format to Developer Guide: <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/210/files">#210</a></p>
 </li>
 </ul>
 </div>
@@ -88,16 +182,10 @@ see what they are spending on, which can equip them with better knowledge of the
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/2">#2</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/216">#216</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/230">#230</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/XinPei-ng/ped/issues/2">2</a>, <a href="https://github.com/XinPei-ng/ped/issues/6">6</a>, <a href="https://github.com/XinPei-ng/ped/issues/10">10</a>)</p>
 </li>
 </ul>
 </div>
@@ -107,10 +195,7 @@ see what they are spending on, which can equip them with better knowledge of the
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated a third party library (JavaFxSwing) to the project (<a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/219">#219</a>)</p>
 </li>
 </ul>
 </div>
@@ -119,9 +204,6 @@ see what they are spending on, which can equip them with better knowledge of the
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -134,10 +216,154 @@ see what they are spending on, which can equip them with better knowledge of the
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide.
+They showcase my ability to write documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="report"><a class="link" href="#report">Report</a></h3>
+<div class="sect3">
+<h4 id="function"><a class="link" href="#function">Function</a></h4>
+<div class="paragraph">
+<p>The <em>Report</em> feature allows you to have a quick overview of your expenditures.
+It can tell you your total spending within a period of time and have your spending
+categorised either by month or tag. You can have also have a permanent copy
+of the report, through the report printing and export capabilities.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/report_bar_ss.png" alt="report bar ss">
+</div>
+<div class="title">Figure 1. Bar chart report</div>
+</div>
+<div class="paragraph">
+<p>This is an example of the report in bar chart format with the expenditures grouped by months.
+The horizontal line represents the expenditures whereas the vertical line shows
+the month followed by the total spending in that month.
+Alternatively, you can also group the expenditure by tags and read off the bar chart
+in a similar fashion.</p>
+</div>
+<div class="paragraph">
+<p>If you are a visual person, you can consider using the pie chart format instead!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/report_pie.png" alt="report pie">
+</div>
+<div class="title">Figure 2. Pie chart report</div>
+</div>
+<div class="paragraph">
+<p>This is an example of report in pie chart format with the expenditures grouped by
+tags.</p>
+</div>
+<div class="paragraph">
+<p>If you are interested to find out more, you can explore <a href="#Report command">Report Command</a>
+to find out how to generate these graphs.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="report-commands"><a class="link" href="#report-commands">Report Window Commands</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These are the commands to be executed in the report window.</p>
+</div>
+<div class="sect2">
+<h3 id="report-cmd-view"><a class="link" href="#report-cmd-view">Viewing expenditures report</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The result of this command is equivalent to <a href="#report-view">[report-view]</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Generates report on expenditure spending in the given period.<br>
+Format: <code>view START_DATE END_DATE GRAPH_TYPE ORGANISATION</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Views the report of a graph type populated with data from expenditures from
+a start date to an end date.</p>
+</li>
+<li>
+<p><code>START_DATE</code> is the date from which the report will start generating from.</p>
+</li>
+<li>
+<p><code>END_DATE</code> is the date from which the report will stop generating.</p>
+</li>
+<li>
+<p><code>GRAPH_TYPE</code> is the type of the graph you want to generate. It can be either
+<code>bar</code> or <code>pie</code>. They represent a bar chart and a pie
+char respectively.</p>
+</li>
+<li>
+<p><code>ORGANISATION</code> is how the expenditures will be grouped when generating the graph.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view 2020-03-01 2020-03-31 pie tag</code></p>
+</li>
+<li>
+<p><code>view 2020-03-01 2020-03-31 bar month</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="report-cmd-export"><a class="link" href="#report-cmd-export">Exporting report: <code>export</code></a></h3>
+<div class="paragraph">
+<p>Exports the current report shown in the report window.<br>
+Format: `export FILE_NAME `</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Exports the report to Report folder with file&#8217;s name specified by user</p>
+</li>
+<li>
+<p><code>FILE_NAME</code> is the name of exported file. File name should not contain whitespace.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="report-cmd-print"><a class="link" href="#report-cmd-print">Printing report: <code>print</code></a></h3>
+<div class="paragraph">
+<p>Prints the current report shown on the report window.<br>
+Format: <code>print</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="report-cmd-exit"><a class="link" href="#report-cmd-exit">Exiting the report window: <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the report window.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -153,5 +379,203 @@ see what they are spending on, which can equip them with better knowledge of the
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="report-2"><a class="link" href="#report-2">Report</a></h3>
+<div class="paragraph">
+<p>Report is one of the main features in <code>$AVE IT</code>  and its purpose is to collate and
+show users their expenditure breakdowns.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 11:30:39 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="rationale"><a class="link" href="#rationale">Rationale</a></h4>
+<div class="paragraph">
+<p>The report feature is an important feature that allows users to see their
+expenditure breakdowns within a certain time period. Currently, the expenditure
+are categorise in terms of tags and this will give users a clear overview of
+what they are spending on over this period of time.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The report feature can be accessed from 2 platforms either <strong>Main Window</strong> or <strong>Report Window</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Main Window</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The input from user is parsed using a specific command parser
+depending on which of 3 commands: <code>report view</code>, <code>report print</code> and <code>report export</code> were inputted by user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReportViewSequence.png" alt="ReportViewSequence">
+</div>
+<div class="title">Figure 3. Sequence Diagram for Report View</div>
+</div>
+<div class="paragraph">
+<p>If a valid  <code>report view</code> command was input, the <em>ViewReportCommandParser</em> will parse the input and convert the Strings :
+start date, end date, graph type  and organisation into <em>Date</em> , <em>Report.GraphType</em> and <em>organisation(String)</em> object respectively.
+These objects are used to create <em>ViewReportCommand</em> object which will be executed. The result of the execution is popping out of  <em>ReportWindow</em> which will showcase a expenditure breakdown report.
+<strong>Figure 11</strong> provides a detailed execution flow for <code>report view</code> command.</p>
+</div>
+<div class="paragraph">
+<p>As stated in <strong>Figure 11</strong>, when a user inputs a valid <code>report  view</code> command:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>report view</code> command will be parsed and a new <em>Report</em> object will be created.</p>
+</li>
+<li>
+<p>A new <em>ViewReportCommand</em> object containing the <em>Report</em> object will be created.</p>
+</li>
+<li>
+<p>The <em>ViewReportCommand</em> object will be executed and a new <em>GenerateStats</em> object will be created.</p>
+</li>
+<li>
+<p>The <em>GenerateStats</em> object will calculate and generate statistics from
+<em>ReportableAccount</em> object requested from <em>Model</em> through <code>getReportableAccount</code> method.</p>
+</li>
+<li>
+<p>A new <em>Pie</em> object will be created.</p>
+</li>
+<li>
+<p>The <em>Pie</em> object will construct a graph using statistics from <em>GenerateStats</em> object.</p>
+</li>
+<li>
+<p>A new <em>CommandResult</em> will be constructed and returned.</p>
+</li>
+<li>
+<p>Report Window will pop out.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If a valid <code>report print</code> command was input, the <em>PrintReportCommandParser</em>  will parse the input and convert the Strings :
+start date, end date, graph into <em>Date</em> , <em>Report.GraphType</em> and <em>organisation(String)</em> object respectively. These objects
+are used to create <em>PrintReportCommand</em> object which will be executed. The result of execution will be sending a print job to your printer, printing out the report.
+<code>report print</code> has a similar execution path to <code>report view</code>, hence you can refer to <strong>Figure 11</strong> to find out more.</p>
+</div>
+<div class="paragraph">
+<p>If a valid <code>report export</code> command was input, the <em>ExportReportCommandParser</em>  will parse the input and convert the Strings :
+tart date, end date, graph into <em>Date</em> , <em>Report.GraphType</em> , <em>organisation(String)</em> and <em>file name(String)</em> object respectively.
+These objects are used to create <em>ExportReportCommand</em> object which will be executed.
+The result of execution will be exporting a PNG version of the report into your computer with file name.
+<code>report export</code> also has a similar execution path to <code>report view</code> with the addition of <em>ExportFile</em> class being involved.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Report_MainWindow_.png" alt="Report MainWindow ">
+</div>
+<div class="title">Figure 4. Activity Diagram for Report in Main Window</div>
+</div>
+<div class="paragraph">
+<p>The activity diagram summarises what can happen when user
+enter a <code>report</code> command in the <strong>Main Window</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Report Window</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <strong>Report Window</strong> can be accessed via the  <em>Report button</em> in the <strong>Main Window</strong> or via <code>report view</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Report_ReportWindow_.png" alt="Report ReportWindow ">
+</div>
+<div class="title">Figure 5. Activity Diagram for Report Window</div>
+</div>
+<div class="paragraph">
+<p>The activity diagram shows what can happen when users enter in a new command
+in the <strong>Report Window</strong>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Consideration : Minimal changes to current UI implementation, especially Main Window</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:  Less dependency with current working code for Main Window. Hence, even if report feature fails, it is
+likely that Main Window can continue running.</p>
+</li>
+<li>
+<p>Cons: It could be more complicated to implement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Consideration : Avoid cluttering the Main Window UI</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Better user experience.</p>
+</li>
+<li>
+<p>Pros: As report is not using any space in Main Window,
+we could introduce and showcase other smaller and useful features in
+the Main Window UI.</p>
+</li>
+<li>
+<p>Cons: It could be more different to implement</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Due to the above considerations, we implemented report viewing in a pop up window.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="note"><a class="link" href="#note">NOTE</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>While it is allowed for users to state any date range for report and have any number of tags, it is recommended to them
+that to keep the <strong>date range within 12 months</strong> for <strong>reports generated by months</strong> or <strong>keep number of tags to be within 12</strong> for <strong>reports generated by
+tags</strong> due to sizing issues.</p>
+</li>
+<li>
+<p>Overlaps can occur in PieChart when there are huge difference in expenditure values,
+hence it is recommended to users that Bar Chart should be used in such instances.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReportUIClassDiagram.png" alt="ReportUIClassDiagram">
+</div>
+<div class="title">Figure 6. Structure of the Report UI Component</div>
+</div>
+<div class="paragraph">
+<p>The Report UI consists of a <code>ReportWindow</code> that is made up of parts e.g. <code>ReportCommandBox</code> and <code>Result Display</code> etc.
+The <code>ReportWindow</code> and <code>ReportCommandBox</code>, inherit from abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu/saveit/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/saveit/ui"><code>ReportWindow.java</code></a>
+Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/saveit/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="{repoURL}https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 17:22:49 UTC</div></div></div></body></html>

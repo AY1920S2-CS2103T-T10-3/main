@@ -20,29 +20,80 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Enhancement added</strong>: <code>calendar</code> feature in cooperate with  <code>go</code> command which provides easy navigation between dates for users.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: The <code>calendar</code> enables users to navigate between nearby dates easily by just a simple click. While <code>go</code> command allows user to navigate to any valid date with just a simple line of command.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: There will be occasions when users will just like to view the nearby dates just check their expenditure records.
+Despite that users prefer command line input,but I feel that it is inconvenient for them to keep on type in command line for each of the navigation, thus <code>calendar</code> is developed to solve such problem.
+On the other hand, users may also want to navigate to a date which is far away. In this situation, <code>calendar</code> will not be helpful, thus <code>go</code> command is developed to resolve such issue,
+enable the users to navigate with just a simple line of command. In any of the scenario, we ensure that</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature works with other features such as <code>budget</code> and <code>find</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When users navigate to a different <code>month</code>, <code>budget</code> will be auto updated to display relevant data for that <code>month</code>.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Similarly, this feature is able to function as usual when the user enters <code>find</code> mode.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>I felt that the implementation was quite challenging because it requires a certain knowledge on how to use tools such as JavaFX and SceneBuilder
+which were used to design the graphical user interface (GUI).
+With no prior experience, the learning curve was steep which required more effort to learn about these tools.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Enhancement added</strong>: <code>repeat</code> feature which is a recurring expenditure.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Users can record a fix expenditure records which is recurring daily, weekly, monthly or annually.</p>
+</li>
+<li>
+<p>Justification: It is a norm that users have a certain fixed type of spending such as transport. Thus, the team has take
+into account of such situation and developed <code>repeat</code> which caters to such need.</p>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial stage, there is consideration to just make it a mass operation of <code>exp</code> type command.
+This approach is much more simpler for the developers, however it will cause lots of inconvenience to the users.
+For example, when users wants to edit all those recurring expenditures' <code>info</code>,
+they have to spend time to edit each of them individually and this is very troublesome.
+Thus, I have to change the implementation approach by introducing a <code>repeat</code> class.
+This implementation is much more challenging especially when there is data structure and storage involved.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: helps to develop in developing <code>budget</code> feature.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=sp-shaopeng&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true">RepoSense Code Dashboard</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +104,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.1</code> - <code>v1.4</code> (3 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -63,10 +114,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated the GUI for calendar view (Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/86">#86</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/88">#88</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/102">#102</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage from 40% to 50% (Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/213">#213</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/215">#215</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/216">#216</a>)</p>
 </li>
 </ul>
 </div>
@@ -76,7 +127,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated developer guide to standardise the style and formatting(Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/122">#122</a>).</p>
+</li>
+<li>
+<p>Added documentation for <code>calendar</code> feature in the User Guide. (: <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/230">#230</a>).</p>
+</li>
+<li>
+<p>Added documentation for <code>calendar</code> and <code>repeat</code> feature in the Developer Guide. (: <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/225">#225</a>).</p>
 </li>
 </ul>
 </div>
@@ -86,29 +143,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/97">#97</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/146">#146</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/148">#148</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/159">#159</a></p>
 </li>
 </ul>
 </div>
@@ -117,9 +152,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +168,114 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="calendar"><a class="link" href="#calendar">Calendar</a></h3>
+<div class="paragraph">
+<p>The <em>calendar</em> feature aims to ease users' navigation experience.<br>
+  <strong>1</strong>. Users is able to traverse between different dates by clicking on the calendar.<br>
+  <strong>2</strong>. Users is able to make use of <code>go</code> command to navigate to other date.</p>
+</div>
+<div class="paragraph">
+<p>With reference to the diagram below, <strong>Header</strong> displays the year and month which the
+calendar is displaying. <strong>Box 1</strong> displays the day which you are looking at
+while <strong>Box 2</strong> refers to the today&#8217;s date.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/calendarExplanation.png" alt="calendarExplanation">
+</div>
+<div class="title">Figure 1. Calendar View</div>
+</div>
+<div class="sect3">
+<h4 id="navigate-using-calendar"><a class="link" href="#navigate-using-calendar">Navigate using calendar</a></h4>
+<div class="paragraph">
+<p>It is troublesome and inconvenient for users to keep on make use of command line input
+to navigate between the dates, especially when the date which user wants to view is just one or
+two days before.<br>
+Under this situation, user can interact with <code>calendar</code> and navigate with a simple click.</p>
+</div>
+<div class="paragraph">
+<p>For example, we are now viewing expenditure records which are on <code>2020-04-09</code>.
+And we wish to view previous day&#8217;s expenditure record. We can simply click on the date on the calendar.
+Below are two diagrams which will show the operation.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/beforeClick.png" alt="beforeClick">
+</div>
+<div class="title">Figure 2. Before click (9 April)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/afterClick.png" alt="afterClick">
+</div>
+<div class="title">Figure 3. After click (8 April)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigate-with-code-go-code-command"><a class="link" href="#navigate-with-code-go-code-command">Navigate with <code>go</code> command</a></h4>
+<div class="paragraph">
+<p>The developer team has taken into account the case when users wish to navigate to another date
+which is way before or after. Thus, we have integrate the <code>calendar</code> with <code>go</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>For example, we are now viewing expenditure records which are on <code>2020-04-09</code> and we wish to navigate to
+<code>2019-04-09</code> through <code>go</code> command.<br>
+<strong>1</strong>. We need to input <code>go 2019-04-09</code> into the command box which is shown in the diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/goCommandInput.png" alt="goCommandInput">
+</div>
+<div class="title">Figure 4. <code>go</code> command example</div>
+</div>
+<div class="paragraph">
+<p><strong>2</strong>. A response will be given to indicate that the date has changed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/goCommandResponse.png" alt="goCommandResponse">
+</div>
+<div class="title">Figure 5. <code>go</code> command response</div>
+</div>
+<div class="paragraph">
+<p><strong>3</strong>. The <code>calendar</code> and the expenditure records will update accordingly.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/updateViewForGoCommand.png" alt="updateViewForGoCommand">
+</div>
+<div class="title">Figure 6. <code>calendar</code> and expenditure records are updated accordingly.</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repeat"><a class="link" href="#repeat">Repeat</a></h3>
+<div class="paragraph">
+<p>The <em>Repeat</em> feature allows you to add recurring <em>expenditures</em>.<br>
+You are able to create fixed expenditures records which will be recurring daily, weekly, monthly or annually.
+As shown in the diagram below, a <code>repeat</code> will have a different display as compared to <code>expenditure</code>.
+"Repeat details" includes the frequency of recurring, start date and end date are displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/repeatDisplay.png" alt="repeatDisplay">
+</div>
+<div class="title">Figure 7. <code>Repeat</code> display</div>
+</div>
+<div class="sect3">
+<h4 id="code-repeat-code-type-commands"><a class="link" href="#code-repeat-code-type-commands"><code>Repeat</code> type commands</a></h4>
+<div class="paragraph">
+<p><code>Repeat</code> has very similar command as <code>Expenditure</code>, with just a few of values to be specified.<br></p>
+</div>
+<div class="paragraph">
+<p>Here, we will be using <code>repeat add</code> command as an example, while other commands works the same way.</p>
+</div>
+<div class="paragraph">
+<p><em>{ work in progress }</em></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,5 +291,160 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="recurring-expenditure-feature-code-repeat-code"><a class="link" href="#recurring-expenditure-feature-code-repeat-code">Recurring Expenditure feature <code>Repeat</code></a></h3>
+<div class="paragraph">
+<p>Recurring expenditure is one of the main feature in <code>$AVE IT</code> and it is
+an expenditure automatically logged for user at their preferred frequency.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 08:37:47 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="rationale"><a class="link" href="#rationale">Rationale</a></h4>
+<div class="paragraph">
+<p><code>Repeat</code> allows user to keep track of expenditures that will occur either <em>daily</em>, <em>weekly</em>,
+<em>monthly</em> or <em>annually</em> without the need to key in the expenditures every day or month.
+Hence, this will provide more convenience for users as well as address the need
+for such a feature since recurring expenditures are common. For example, day to day
+commuting expenses.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>Below is a class diagram shows different components that <code>Repeat</code> contains.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/repeatClassDiagram.png" alt="repeatClassDiagram">
+</div>
+<div class="title">Figure 8. Class diagram for showing what <code>Repeat</code> consist.</div>
+</div>
+<div class="paragraph">
+<p>For each account, it has its own <code>list</code> which all the <code>Repeat</code> objects are stored.
+There are different types of command that is cater for <code>Repeat</code> such as add, edit and delete.
+The following activity diagram shows what how a <code>Repeat</code> can be added.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/repeatActivityDiagram.png" alt="repeatActivityDiagram">
+</div>
+<div class="title">Figure 9. Activity diagram for <code>repeat add</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>(Current choice)</strong> Have a repeat class which extends <code>BaseExp</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Able to mass delete and edit all the expenditures under this <code>Repeat</code> easily.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hard to implement, especially when we have to calculate monthly spending so to generate report and statistics.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mass operation: add <code>Expenditure</code> object to all those dates which state in the command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are unable to edit all the expenditures which are recurring.<br>
+Users have to delete such expenditures one by one.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">Calendar feature</a></h3>
+<div class="sect3">
+<h4 id="rationale-2"><a class="link" href="#rationale-2">Rationale</a></h4>
+<div class="paragraph">
+<p>Calendar is a feature that has a clickable calendar which users
+can use to navigate between the different days. It also shows
+the date of the expenditures the user is viewing as well as today.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the above functions will be described separately in this section.</p>
+</div>
+<div class="paragraph">
+<p>The users are given two different choice on how to navigate between
+the days:<br>
+<strong>1</strong>. UI interaction with the calendar view.<br>
+<strong>2</strong>. Make use of <code>go YYYY-MM-DD</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows you how the <code>go YYYY-MM-DD</code>
+(E.g <code>go 2020-04-01</code>) command works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/goSquenceDiagram.png" alt="goSquenceDiagram">
+</div>
+<div class="title">Figure 10. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
+</div>
+<div class="paragraph">
+<p>Upon completion of the above command, the calendar view will update the
+active date to be <code>2020-04-01</code> and expenditures records for
+<code>2020-04-01</code> will be displayed.</p>
+</div>
+<div class="paragraph">
+<p>If the user chooses to navigate through UI interaction with the calendar view
+(aka clicking on the date that is shown on the calendar). The implementation is
+very similar to the <code>go</code> command, <code>calendarView</code> will invoke <code>go</code> command when
+user click on the dates.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/calendarActivityDiagram.png" alt="calendarActivityDiagram">
+</div>
+<div class="title">Figure 11. Activity diagram showing what happen when user wants to navigate to other date</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h4>
+<div class="paragraph">
+<p>This section contains some of our design considerations for the calendar feature.</p>
+</div>
+<div class="paragraph">
+<p><strong>Consideration:</strong> How are we going to present the expenditure records.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Make use of a month list to contain all the expenditure records of the given month.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is able to provide a concise view of expenditure view especially when there are only a small number of records.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This looks like excel sheet and users have to scroll all the way up if they want to view a date which is much earlier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Make use of a calender view and only list out a given date&#8217;s expenditure record.
+This automatically helps user to organize the records according to date.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can make use of the calendar view to navigate between the dates,
+this is much more convenient than scrolling through a list.<br>
+This helps user to organize the expenditure and keep it tidy.
+Especially helpful if there is lots of records.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is much more troublesome to implement.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 09:14:22 UTC</div></div></div></body></html>

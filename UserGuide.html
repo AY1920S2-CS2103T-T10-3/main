@@ -139,7 +139,28 @@ e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help w
 <div class="sect2">
 <h3 id="repeat"><a class="link" href="#repeat">3.3. Repeat</a></h3>
 <div class="paragraph">
+<p>The <em>Repeat</em> feature allows you to add recurring <em>expenditures</em>.<br>
+You are able to create fixed expenditures records which will be recurring daily, weekly, monthly or annually.
+As shown in the diagram below, a <code>repeat</code> will have a different display as compared to <code>expenditure</code>.
+"Repeat details" includes the frequency of recurring, start date and end date are displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/repeatDisplay.png" alt="repeatDisplay">
+</div>
+<div class="title">Figure 1. <code>Repeat</code> display</div>
+</div>
+<div class="sect3">
+<h4 id="code-repeat-code-type-commands"><a class="link" href="#code-repeat-code-type-commands">3.3.1. <code>Repeat</code> type commands</a></h4>
+<div class="paragraph">
+<p><code>Repeat</code> has very similar command as <code>Expenditure</code>, with just a few of values to be specified.<br></p>
+</div>
+<div class="paragraph">
+<p>Here, we will be using <code>repeat add</code> command as an example, while other commands works the same way.</p>
+</div>
+<div class="paragraph">
 <p><em>{ work in progress }</em></p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -158,11 +179,13 @@ It can tell you your total spending within a period of time and have your spendi
 categorised either by month or tag. You can have also have a permanent copy
 of the report, through the report printing and export capabilities.</p>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="images/report_bar_ss.png" alt="report bar ss"></span></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/report_bar_ss.png" alt="report bar ss">
+</div>
+<div class="title">Figure 2. Bar chart report</div>
 </div>
 <div class="paragraph">
-<div class="title">Bar chart report</div>
 <p>This is an example of the report in bar chart format with the expenditures grouped by months.
 The horizontal line represents the expenditures whereas the vertical line shows
 the month followed by the total spending in that month.
@@ -172,11 +195,13 @@ in a similar fashion.</p>
 <div class="paragraph">
 <p>If you are a visual person, you can consider using the pie chart format instead!</p>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="images/report_pie.png" alt="report pie"></span></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/report_pie.png" alt="report pie">
+</div>
+<div class="title">Figure 3. Pie chart report</div>
 </div>
 <div class="paragraph">
-<div class="title">Pie chart report</div>
 <p>This is an example of report in pie chart format with the expenditures grouped by
 tags.</p>
 </div>
@@ -190,8 +215,8 @@ to find out how to generate these graphs.</p>
 <h3 id="calendar"><a class="link" href="#calendar">3.6. Calendar</a></h3>
 <div class="paragraph">
 <p>The <em>calendar</em> feature aims to ease users' navigation experience.<br>
-  <strong>1</strong>. Users can click on the calendar to traverse between different dates.<br>
-  <strong>2</strong>. Users can make use of <code>go</code> command to navigate to other date.</p>
+  <strong>1</strong>. Users is able to traverse between different dates by clicking on the calendar.<br>
+  <strong>2</strong>. Users is able to make use of <code>go</code> command to navigate to other date.</p>
 </div>
 <div class="paragraph">
 <p>With reference to the diagram below, <strong>Header</strong> displays the year and month which the
@@ -202,7 +227,7 @@ while <strong>Box 2</strong> refers to the today&#8217;s date.</p>
 <div class="content">
 <img src="images/calendarExplanation.png" alt="calendarExplanation">
 </div>
-<div class="title">Figure 1. Calendar View</div>
+<div class="title">Figure 4. Calendar View</div>
 </div>
 <div class="sect3">
 <h4 id="navigate-using-calendar"><a class="link" href="#navigate-using-calendar">3.6.1. Navigate using calendar</a></h4>
@@ -221,13 +246,13 @@ Below are two diagrams which will show the operation.</p>
 <div class="content">
 <img src="images/beforeClick.png" alt="beforeClick">
 </div>
-<div class="title">Figure 2. Before click (9 April)</div>
+<div class="title">Figure 5. Before click (9 April)</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/afterClick.png" alt="afterClick">
 </div>
-<div class="title">Figure 3. After click (8 April)</div>
+<div class="title">Figure 6. After click (8 April)</div>
 </div>
 </div>
 <div class="sect3">
@@ -245,7 +270,7 @@ which is way before or after. Thus, we have integrate the <code>calendar</code> 
 <div class="content">
 <img src="images/goCommandInput.png" alt="goCommandInput">
 </div>
-<div class="title">Figure 4. <code>go</code> command example</div>
+<div class="title">Figure 7. <code>go</code> command example</div>
 </div>
 <div class="paragraph">
 <p><strong>2</strong>. A response will be given to indicate that the date has changed.</p>
@@ -254,7 +279,7 @@ which is way before or after. Thus, we have integrate the <code>calendar</code> 
 <div class="content">
 <img src="images/goCommandResponse.png" alt="goCommandResponse">
 </div>
-<div class="title">Figure 5. <code>go</code> command response</div>
+<div class="title">Figure 8. <code>go</code> command response</div>
 </div>
 <div class="paragraph">
 <p><strong>3</strong>. The <code>calendar</code> and the expenditure records will update accordingly.</p>
@@ -263,10 +288,7 @@ which is way before or after. Thus, we have integrate the <code>calendar</code> 
 <div class="content">
 <img src="images/updateViewForGoCommand.png" alt="updateViewForGoCommand">
 </div>
-<div class="title">Figure 6. <code>calendar</code> and expenditure records are updated accordingly.</div>
-</div>
-<div class="paragraph">
-<p><em>{ work in progress }</em></p>
+<div class="title">Figure 9. <code>calendar</code> and expenditure records are updated accordingly.</div>
 </div>
 </div>
 </div>
@@ -437,8 +459,8 @@ Format: <code>acc add ACCOUNT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ACCOUNT</code> is the account name. It is only contain letters and numbers and
-must be less than 26 characters.</p>
+<p><code>ACCOUNT</code> is the account name. It must be less than 26 characters and must not
+contain any space in between.</p>
 </li>
 <li>
 <p>The default account is called <code>default</code>, it is automatically created when you
@@ -620,7 +642,7 @@ Format: <code>exp setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
 <ul>
 <li>
 <p><code>AMOUNT</code> is the amount of the budget (in dollars). It must be positive up
-to 2 decimal point and less than 1 billion.</p>
+to 2 decimal point and less than 1 billion. Please exclude any unit symbol for <code>AMOUNT</code>.</p>
 </li>
 <li>
 <p><code>YEAR_MONTH</code> is in the format <code>YYYY-MM</code>, which is the year and month for the
@@ -650,7 +672,7 @@ Sets the budget of $1000 for the month of March in 2020.</p>
 <h4 id="exp-add"><a class="link" href="#exp-add">4.4.2. Adding an expenditure: <code>exp add</code></a></h4>
 <div class="paragraph">
 <p>Adds an expenditure to the current account in $AVE IT.<br>
-Format: <code>exp add -i INFO -a AMOUNT [-t TAG] [-d DATE]</code></p>
+Format: <code>exp add -i INFO -a AMOUNT [-t TAG] [-d DATE]</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -708,6 +730,9 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 </li>
 <li>
 <p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>The expenditure records will be auto sorted again.</p>
 </li>
 <li>
 <p>Refer to <a href="#exp-add">Section 4.4.2, &#8220;Adding an expenditure: <code>exp add</code>&#8221;</a> for what the options represent.</p>
@@ -787,7 +812,8 @@ Use this command after <code>find</code> to return back to normal daily view.
 <h4 id="repeat-add"><a class="link" href="#repeat-add">4.5.1. Adding a repeated expenditure: <code>repeat add</code></a></h4>
 <div class="paragraph">
 <p>Adds an expenditure that can be repeated.<br>
-Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code></p>
+Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code><br>
+<strong>Do note that duplicate <code>repeat</code> records are allowed</strong>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -853,6 +879,9 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 </li>
 <li>
 <p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>The records will be auto sorted again.</p>
 </li>
 <li>
 <p>Refer to <a href="#repeat-add">Section 4.5.1, &#8220;Adding a repeated expenditure: <code>repeat add</code>&#8221;</a> for what the options represent.</p>
@@ -1386,4 +1415,4 @@ e.g. <code>exit</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 08:37:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 09:14:22 UTC</div></div></div></body></html>

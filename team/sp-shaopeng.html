@@ -267,10 +267,53 @@ As shown in the diagram below, a <code>repeat</code> will have a different displ
 <div class="sect3">
 <h4 id="code-repeat-code-type-commands"><a class="link" href="#code-repeat-code-type-commands"><code>Repeat</code> type commands</a></h4>
 <div class="paragraph">
-<p><code>Repeat</code> has very similar command as <code>Expenditure</code>, with just a few of values to be specified.<br></p>
+<p><code>Repeat</code> has very similar command as <code>Expenditure</code>, with just a few of values to be specified.<br>
+Here, we will be using <code>repeat add</code> command as an example, while other <code>repeat</code> commands works the same way.<br>
+Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code><br></p>
 </div>
 <div class="paragraph">
-<p>Here, we will be using <code>repeat add</code> command as an example, while other commands works the same way.</p>
+<p><strong>1</strong> Key in the command into the command box. We will be using <code>repeat add -i bubble tea -a 3.50 -sd 2020-04-01 -ed 2020-04-30 -p weekly -t drink</code>
+as an example.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/repeatInput.png" alt="repeatInput">
+</div>
+<div class="title">Figure 8. Input command</div>
+</div>
+<div class="paragraph">
+<p><strong>2</strong> A response will be given to indicate that this recurring expenditure has been recorded.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/repeatResponse.png" alt="repeatResponse">
+</div>
+<div class="title">Figure 9. Response given</div>
+</div>
+<div class="paragraph">
+<p><strong>3</strong> As the <code>START_DATE</code> is 2020-04-01 and the <code>PERIOD</code> is set to weekly,
+thus the first record will be at 2020-04-01 and last record will be on 2020-04-29.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/firstRepeatRecord.png" alt="firstRepeatRecord">
+</div>
+<div class="title">Figure 10. Added to 2020-04-01</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/lastRepeatRecord.png" alt="lastRepeatRecord">
+</div>
+<div class="title">Figure 11. Added to 2020-04-29</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="note"><a class="link" href="#note">NOTE</a></h4>
+<div class="paragraph">
+<p>For <code>repeat add -i rental fee -a 300 -sd 2020-03-31 -ed 2021-03-31 -p monthly -t housing</code>,
+as the start date is <code>2020-03-31</code>, the next tentative date should be <code>2020-04-31</code> but this date is invalid.
+Hence, this expenditure record will be shown on <code>2020-04-30</code> instead. For May, it will be still shown on <code>2020-05-31</code>.<br>
+<strong>This applies to leap year too</strong></p>
 </div>
 <div class="paragraph">
 <p><em>{ work in progress }</em></p>
@@ -317,7 +360,7 @@ commuting expenses.</p>
 <div class="content">
 <img src="../images/repeatClassDiagram.png" alt="repeatClassDiagram">
 </div>
-<div class="title">Figure 8. Class diagram for showing what <code>Repeat</code> consist.</div>
+<div class="title">Figure 12. Class diagram for showing what <code>Repeat</code> consist.</div>
 </div>
 <div class="paragraph">
 <p>For each account, it has its own <code>list</code> which all the <code>Repeat</code> objects are stored.
@@ -328,7 +371,7 @@ The following activity diagram shows what how a <code>Repeat</code> can be added
 <div class="content">
 <img src="../images/repeatActivityDiagram.png" alt="repeatActivityDiagram">
 </div>
-<div class="title">Figure 9. Activity diagram for <code>repeat add</code></div>
+<div class="title">Figure 13. Activity diagram for <code>repeat add</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -389,7 +432,7 @@ the days:<br>
 <div class="content">
 <img src="../images/goSquenceDiagram.png" alt="goSquenceDiagram">
 </div>
-<div class="title">Figure 10. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
+<div class="title">Figure 14. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
 </div>
 <div class="paragraph">
 <p>Upon completion of the above command, the calendar view will update the
@@ -406,7 +449,7 @@ user click on the dates.</p>
 <div class="content">
 <img src="../images/calendarActivityDiagram.png" alt="calendarActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram showing what happen when user wants to navigate to other date</div>
+<div class="title">Figure 15. Activity diagram showing what happen when user wants to navigate to other date</div>
 </div>
 </div>
 <div class="sect3">
@@ -446,6 +489,14 @@ Especially helpful if there is lots of records.</p></td>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="note-2"><a class="link" href="#note-2">NOTE</a></h4>
+<div class="paragraph">
+<p>Dates with negative year are allowed. E.g <code>-1234-03-21</code> is allowed.<br>
+The developer team follows the range which is specified in the
+<a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate Api, released by Oracle</a>.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 10:38:12 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 10:46:28 UTC</div></div></div></body></html>

@@ -32,12 +32,13 @@
 <ul class="sectlevel2">
 <li><a href="#cmd-help">4.1. Viewing help: <code>help</code></a></li>
 <li><a href="#cmd-go">4.2. Going to a specific date: <code>go</code></a></li>
-<li><a href="#account-command">4.3. Account command</a></li>
-<li><a href="#expenditure-command">4.4. Expenditure command</a></li>
-<li><a href="#repeat-command">4.5. Repeat command</a></li>
-<li><a href="#setbudget">4.6. Budget command: <code>setbudget</code></a></li>
+<li><a href="#account-commands">4.3. Account commands</a></li>
+<li><a href="#expenditure-commands">4.4. Expenditure commands</a></li>
+<li><a href="#repeat-commands">4.5. Repeat commands</a></li>
+<li><a href="#setbudget">4.6. Budget setting command: <code>setbudget</code></a></li>
 <li><a href="#cmd-find">4.7. Locating both repeats and normal expenditures by keyword: <code>find</code></a></li>
-<li><a href="#report-command">4.8. Report command</a></li>
+<li><a href="#report-commands">4.8. Report commands</a></li>
+<li><a href="#cmd-exit">4.9. Exiting the program: <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#report-commands">5. Report Window Commands</a>
@@ -126,29 +127,51 @@ e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help w
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><code>$AVE IT</code> consists of features such as disjoint account, expenditure management,
+recurring expenditure, budgeting, report. Additional features are calendar,
+autocomplete and auto-saving of data.</p>
+</div>
 <div class="sect2">
 <h3 id="disjoint-accounts"><a class="link" href="#disjoint-accounts">3.1. Disjoint Accounts</a></h3>
 <div class="paragraph">
 <p>This feature aims to help you better organise your expenditures by allowing you to separate them into disjoint accounts.<br></p>
 </div>
 <div class="paragraph">
-<p>You can add any many accounts as you like:
-<span class="image"><img src="images/acc_add.png" alt="acc add"></span></p>
+<p>You can add any many accounts as you like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/acc_add.png" alt="acc add">
+</div>
+<div class="title">Figure 1. Add account</div>
 </div>
 <div class="paragraph">
-<p>View your list of accounts using the command <code>acc list</code>:<br>
-<span class="image"><img src="images/acc_listed.png" alt="acc listed"></span></p>
+<p>View your list of accounts using the command <code>acc list</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/acc_listed.png" alt="acc listed">
+</div>
+<div class="title">Figure 2. List all accounts</div>
 </div>
 <div class="paragraph">
-<p>Switch to a different account using the command<br>
-<code>acc checkout ACCOUNT</code>:<br>
-<span class="image"><img src="images/acc_checkout_CCA.png" alt="acc checkout CCA"></span></p>
+<p>Switch to a different account using the command, <code>acc checkout ACCOUNT</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/acc_checkout_CCA.png" alt="acc checkout CCA">
+</div>
+<div class="title">Figure 3. Switch account to <code>CCA</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/acc_checkout_Home.png" alt="acc checkout Home">
+</div>
+<div class="title">Figure 4. Switch account to <code>Home</code></div>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/acc_checkout_Home.png" alt="acc checkout Home"></span></p>
-</div>
-<div class="paragraph">
-<p>Refer to <a href="#account-command">Account Command</a> for more details on commands, including renaming, deletion and clearing of data.</p>
+<p>Refer to <a href="#account-commands">Account Commands</a> for more details on commands, including renaming, deletion and clearing of data.</p>
 </div>
 </div>
 <div class="sect2">
@@ -160,10 +183,10 @@ e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help w
 <div class="content">
 <img src="images/exp_list.png" alt="exp list">
 </div>
-<div class="title">Figure 1. Example list of expenditures</div>
+<div class="title">Figure 5. Example list of expenditures</div>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#expenditure-command">Expenditure Command</a> for more details on how to add, edit, and delete expenditures.</p>
+<p>Refer to <a href="#expenditure-commands">Expenditure Commands</a> for more details on how to add, edit, and delete expenditures.</p>
 </div>
 </div>
 <div class="sect2">
@@ -178,7 +201,7 @@ As shown in the diagram below, a <code>repeat</code> will have a different displ
 <div class="content">
 <img src="images/repeatDisplay.png" alt="repeatDisplay">
 </div>
-<div class="title">Figure 2. <code>Repeat</code> display</div>
+<div class="title">Figure 6. Display difference between <code>Expenditure</code> and <code>Repeat</code></div>
 </div>
 <div class="sect3">
 <h4 id="code-repeat-code-type-commands"><a class="link" href="#code-repeat-code-type-commands">3.3.1. <code>Repeat</code> type commands</a></h4>
@@ -188,64 +211,149 @@ Here, we will be using <code>repeat add</code> command as an example, while othe
 Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code><br></p>
 </div>
 <div class="paragraph">
-<p><strong>1</strong> Key in the command into the command box. We will be using <code>repeat add -i bubble tea -a 3.50 -sd 2020-04-01 -ed 2020-04-30 -p weekly -t drink</code>
+<p><strong>1.</strong> Key in the command into the command box. We will be using <code>repeat add -i bubble tea -a 3.50 -sd 2020-04-01 -ed 2020-04-30 -p weekly -t drink</code>
 as an example.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/repeatInput.png" alt="repeatInput">
 </div>
-<div class="title">Figure 3. Input command</div>
+<div class="title">Figure 7. Input command</div>
 </div>
 <div class="paragraph">
-<p><strong>2</strong> A response will be given to indicate that this recurring expenditure has been recorded.</p>
+<p><strong>2.</strong> A response will be given to indicate that this recurring expenditure has been recorded.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/repeatResponse.png" alt="repeatResponse">
 </div>
-<div class="title">Figure 4. Response given</div>
+<div class="title">Figure 8. Response given</div>
 </div>
 <div class="paragraph">
-<p><strong>3</strong> As the <code>START_DATE</code> is 2020-04-01 and the <code>PERIOD</code> is set to weekly,
+<p><strong>3.</strong> As the <code>START_DATE</code> is 2020-04-01 and the <code>PERIOD</code> is set to weekly,
 thus the first record will be at 2020-04-01 and last record will be on 2020-04-29.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/firstRepeatRecord.png" alt="firstRepeatRecord">
 </div>
-<div class="title">Figure 5. Added to 2020-04-01</div>
+<div class="title">Figure 9. Added to 2020-04-01</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/lastRepeatRecord.png" alt="lastRepeatRecord">
 </div>
-<div class="title">Figure 6. Added to 2020-04-29</div>
+<div class="title">Figure 10. Added to 2020-04-29</div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="note"><a class="link" href="#note">3.3.2. NOTE</a></h4>
-<div class="paragraph">
-<p>For <code>repeat add -i rental fee -a 300 -sd 2020-03-31 -ed 2021-03-31 -p monthly -t housing</code>,
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For <code>repeat add -i rental fee -a 300 -sd 2020-03-31 -ed 2021-03-31 -p monthly -t housing</code>,
 as the start date is <code>2020-03-31</code>, the next tentative date should be <code>2020-04-31</code> but this date is invalid.
 Hence, this expenditure record will be shown on <code>2020-04-30</code> instead. For May, it will be still shown on <code>2020-05-31</code>.<br>
-<strong>This applies to leap year too</strong></p>
+<strong>This applies to leap year too</strong>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p><em>{ work in progress }</em></p>
-</div>
-<div class="paragraph">
-<p>Refer to <a href="#repeat-command">Repeat Command</a> for more details.</p>
+<p>Refer to <a href="#repeat-commands">Repeat Commands</a> for more details on how to add, edit
+and delete <code>Repeat</code> type expenditures.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="budget"><a class="link" href="#budget">3.4. Budget</a></h3>
 <div class="paragraph">
-<p><em>{ work in progress }</em></p>
+<p>The <em>Budget</em> feature allows you to set your budget monthly, and give you a better
+sense of whether you are on track to your financial goals. You can see your budget
+at the right panel of the application.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#setbudget">Budget Command</a> for more details.</p>
+<p>Initially, you will see this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/no_budget.png" alt="no budget">
+</div>
+<div class="title">Figure 11. No budget set</div>
+</div>
+<div class="paragraph">
+<p>It means that there is not budget set for the month.</p>
+</div>
+<div class="paragraph">
+<p>In order to know which month <code>this month</code> in the above image refers to, you can
+look at the date in the middle panel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/no_budget_2020_04.png" alt="no budget 2020 04">
+</div>
+<div class="title">Figure 12. No budget set for April 2020</div>
+</div>
+<div class="sect3">
+<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">3.4.1. Setting a budget</a></h4>
+<div class="paragraph">
+<p>To set a budget you can use the <a href="#setbudget"><code>setbudget</code> Command</a>. Shown below is an example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/setting_a_budget.png" alt="setting a budget">
+</div>
+<div class="title">Figure 13. Setting this month&#8217;s budget to $100</div>
+</div>
+<div class="paragraph">
+<p>After setting a budget, you will see that the information on the right panel has
+changed:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/budget_is_set.png" alt="budget is set">
+</div>
+<div class="title">Figure 14. After setting a budget for April 2020</div>
+</div>
+<div class="paragraph">
+<p>If your budget has been met, you will see the piggy bank from above. If your
+budget is not met, you will see something like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/budget_not_met.png" alt="budget not met">
+</div>
+<div class="title">Figure 15. Budget not met</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To meet your budget, your balance have to be positive.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-budget-from-another-month"><a class="link" href="#viewing-budget-from-another-month">3.4.2. Viewing budget from another month</a></h4>
+<div class="paragraph">
+<p>To view budget from another month, you can use the <a href="#cmd-go"><code>go</code> command</a>, or
+the <a href="#calendar">Section 3.6, &#8220;Calendar&#8221;</a> feature to view any date of the month.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/view_may2020_budget.png" alt="view may2020 budget">
+</div>
+<div class="title">Figure 16. View May 2020 budget</div>
+</div>
+<div class="paragraph">
+<p>For example, going to <em>8 May 2020</em> allows you to view the budget set for <em>May 2020</em>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -262,7 +370,7 @@ of the report, through the report printing and export capabilities.</p>
 <div class="content">
 <img src="images/report_bar_ss.png" alt="report bar ss">
 </div>
-<div class="title">Figure 7. Bar chart report</div>
+<div class="title">Figure 17. Bar chart report</div>
 </div>
 <div class="paragraph">
 <p>This is an example of the report in bar chart format with the expenditures grouped by months.
@@ -278,14 +386,14 @@ in a similar fashion.</p>
 <div class="content">
 <img src="images/report_pie.png" alt="report pie">
 </div>
-<div class="title">Figure 8. Pie chart report</div>
+<div class="title">Figure 18. Pie chart report</div>
 </div>
 <div class="paragraph">
 <p>This is an example of report in pie chart format with the expenditures grouped by
 tags.</p>
 </div>
 <div class="paragraph">
-<p>If you are interested to find out more, you can explore <a href="#report-command">Report Command</a>
+<p>If you are interested to find out more, you can explore <a href="#Report command">Report Command</a>
 to find out how to generate these graphs.</p>
 </div>
 </div>
@@ -293,10 +401,18 @@ to find out how to generate these graphs.</p>
 <div class="sect2">
 <h3 id="calendar"><a class="link" href="#calendar">3.6. Calendar</a></h3>
 <div class="paragraph">
-<p>The <em>calendar</em> feature aims to ease users' navigation experience.<br>
-  <strong>1</strong>. Users are able to traverse between different dates by clicking on the calendar.<br>
-Or<br>
-  <strong>2</strong>. Users are able to make use of <code>go</code> command to navigate to another date.</p>
+<p>The <em>calendar</em> feature aims to ease users' navigation experience.<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Users are able to traverse between different dates by clicking on the calendar.<br>
+Or,</p>
+</li>
+<li>
+<p>Users are able to make use of <code>go</code> command to navigate to another date.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>With reference to the diagram below, <strong>Header</strong> displays the year and month which the
@@ -307,7 +423,7 @@ while <strong>Box 2</strong> refers to the today&#8217;s date.</p>
 <div class="content">
 <img src="images/calendarExplanation.png" alt="calendarExplanation">
 </div>
-<div class="title">Figure 9. Calendar View</div>
+<div class="title">Figure 19. Calendar View</div>
 </div>
 <div class="sect3">
 <h4 id="navigate-using-calendar"><a class="link" href="#navigate-using-calendar">3.6.1. Navigate using calendar</a></h4>
@@ -326,13 +442,13 @@ Below are two diagrams which will show the operation.</p>
 <div class="content">
 <img src="images/beforeClick.png" alt="beforeClick">
 </div>
-<div class="title">Figure 10. Before click (9 April)</div>
+<div class="title">Figure 20. Before click (9 April)</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/afterClick.png" alt="afterClick">
 </div>
-<div class="title">Figure 11. After click (8 April)</div>
+<div class="title">Figure 21. After click (8 April)</div>
 </div>
 </div>
 <div class="sect3">
@@ -343,14 +459,16 @@ which is way before or after. Thus, we have integrate the <code>calendar</code> 
 </div>
 <div class="paragraph">
 <p>For example, we are now viewing expenditure records which are on <code>2020-04-09</code> and we wish to navigate to
-<code>2019-04-09</code> through <code>go</code> command.<br>
-<strong>1</strong>. We need to input <code>go 2019-04-09</code> into the command box which is shown in the diagram below.</p>
+<code>2019-04-09</code> through <code>go</code> command.</p>
+</div>
+<div class="paragraph">
+<p><strong>1</strong>. We need to input <code>go 2019-04-09</code> into the command box which is shown in the diagram below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/goCommandInput.png" alt="goCommandInput">
 </div>
-<div class="title">Figure 12. <code>go</code> command example</div>
+<div class="title">Figure 22. <code>go</code> command example</div>
 </div>
 <div class="paragraph">
 <p><strong>2</strong>. A response will be given to indicate that the date has changed.</p>
@@ -359,7 +477,7 @@ which is way before or after. Thus, we have integrate the <code>calendar</code> 
 <div class="content">
 <img src="images/goCommandResponse.png" alt="goCommandResponse">
 </div>
-<div class="title">Figure 13. <code>go</code> command response</div>
+<div class="title">Figure 23. <code>go</code> command response</div>
 </div>
 <div class="paragraph">
 <p><strong>3</strong>. The <code>calendar</code> and the expenditure records will update accordingly.</p>
@@ -368,14 +486,39 @@ which is way before or after. Thus, we have integrate the <code>calendar</code> 
 <div class="content">
 <img src="images/updateViewForGoCommand.png" alt="updateViewForGoCommand">
 </div>
-<div class="title">Figure 14. <code>calendar</code> and expenditure records are updated accordingly.</div>
+<div class="title">Figure 24. <code>calendar</code> and expenditure records are updated accordingly.</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="autocomplete"><a class="link" href="#autocomplete">3.7. Autocomplete</a></h3>
 <div class="paragraph">
-<p><em>{ work in progress }</em></p>
+<p>The <em>Autocomplete</em> feature allows you to complete the basic commands of the
+application. It matches the what you type into the command box and tries to
+complete the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/autocomplete_ex.png" alt="autocomplete ex">
+</div>
+<div class="title">Figure 25. Autocomplete feature</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If no dropdown appear, it means that either: the text does not match any commands,
+or the dropdown is hidden after clicking away.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can use the <kbd>Up</kbd> or <kbd>Down</kbd> arrow keys to navigate the dropdown, then
+press <kbd>Enter</kbd> to select the command you want to complete.</p>
 </div>
 </div>
 <div class="sect2">
@@ -414,6 +557,22 @@ category, in this case, <code>add</code>.</p>
 <p>Words starting with <code>-</code> e.g. <code>-i</code>, <code>-a</code> and <code>-t</code> are the <strong>option prefix</strong>. Not all
 commands have options, an example is deleting an expenditure, <code>exp delete 1</code>.</p>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Refer to <a href="#prefix-notation">Section 7.1, &#8220;Prefix Notation&#8221;</a> for what each prefix means.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Words in caps are the <strong>parameters</strong> to be supplied by the user. <code>INFO</code>, <code>AMOUNT</code>
 and <code>TAG</code> are parameters representing information, amount and tag of the
@@ -527,7 +686,7 @@ Use <code>go today</code> to go to today&#8217;s date.
 </div>
 </div>
 <div class="sect2">
-<h3 id="account-command"><a class="link" href="#account-command">4.3. Account command</a></h3>
+<h3 id="account-commands"><a class="link" href="#account-commands">4.3. Account commands</a></h3>
 <div class="sect3">
 <h4 id="acc-add"><a class="link" href="#acc-add">4.3.1. Adding an account: <code>acc add</code></a></h4>
 <div class="paragraph">
@@ -733,7 +892,7 @@ Deletes the account named <code>school</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="expenditure-command"><a class="link" href="#expenditure-command">4.4. Expenditure command</a></h3>
+<h3 id="expenditure-commands"><a class="link" href="#expenditure-commands">4.4. Expenditure commands</a></h3>
 <div class="sect3">
 <h4 id="exp-add"><a class="link" href="#exp-add">4.4.1. Adding an expenditure: <code>exp add</code></a></h4>
 <div class="paragraph">
@@ -847,7 +1006,7 @@ Format: <code>exp delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>exp delete 4</code>
+<p><code>exp delete 4</code><br>
 Deletes the expenditure with index <code>4</code>.</p>
 </li>
 </ul>
@@ -874,7 +1033,7 @@ Use this command after <code>find</code> to return back to normal daily view.
 </div>
 </div>
 <div class="sect2">
-<h3 id="repeat-command"><a class="link" href="#repeat-command">4.5. Repeat command</a></h3>
+<h3 id="repeat-commands"><a class="link" href="#repeat-commands">4.5. Repeat commands</a></h3>
 <div class="sect3">
 <h4 id="repeat-add"><a class="link" href="#repeat-add">4.5.1. Adding a repeated expenditure: <code>repeat add</code></a></h4>
 <div class="paragraph">
@@ -1006,7 +1165,7 @@ Deletes the repeated expenditure with index <code>4</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setbudget"><a class="link" href="#setbudget">4.6. Budget command: <code>setbudget</code></a></h3>
+<h3 id="setbudget"><a class="link" href="#setbudget">4.6. Budget setting command: <code>setbudget</code></a></h3>
 <div class="paragraph">
 <p>Sets the budget amount in an account for the specified month.<br>
 Format: <code>setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
@@ -1098,13 +1257,11 @@ Returns any expenditures or repeats having names <code>Spicy</code>, <code>Chick
 </div>
 </div>
 <div class="sect2">
-<h3 id="report-command"><a class="link" href="#report-command">4.8. Report command</a></h3>
+<h3 id="report-commands"><a class="link" href="#report-commands">4.8. Report commands</a></h3>
 <div class="paragraph">
 <p>This section will talk about how to use the report feature. Before we begin
 with the details of the command, here are some things to note :</p>
 </div>
-<div class="sect3">
-<h4 id="note-2"><a class="link" href="#note-2">4.8.1. NOTE</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1123,9 +1280,8 @@ sizing issues not all months or tags might be displayed, if start and end date e
 </li>
 </ol>
 </div>
-</div>
 <div class="sect3">
-<h4 id="report-view"><a class="link" href="#report-view">4.8.2. Viewing expenditures report: <code>report view</code></a></h4>
+<h4 id="report-view"><a class="link" href="#report-view">4.8.1. Viewing expenditures report: <code>report view</code></a></h4>
 <div class="paragraph">
 <p>Generates report on expenditure spending in the given period.<br></p>
 </div>
@@ -1173,7 +1329,7 @@ chart respectively.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="report-export"><a class="link" href="#report-export">4.8.3. Exporting report: <code>report export</code></a></h4>
+<h4 id="report-export"><a class="link" href="#report-export">4.8.2. Exporting report: <code>report export</code></a></h4>
 <div class="paragraph">
 <p>Exports report on expenditure spending in the given period.<br></p>
 </div>
@@ -1224,7 +1380,7 @@ chart respectively.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="report-print"><a class="link" href="#report-print">4.8.4. Printing report: <code>report print</code></a></h4>
+<h4 id="report-print"><a class="link" href="#report-print">4.8.3. Printing report: <code>report print</code></a></h4>
 <div class="paragraph">
 <p>Prints report on expenditure spending in the given period.<br></p>
 </div>
@@ -1240,7 +1396,7 @@ chart respectively.</p>
 start date to an end date.</p>
 </li>
 <li>
-<p>Refer to <a href="#report-view">Section 4.8.2, &#8220;Viewing expenditures report: <code>report view</code>&#8221;</a> for the details on the parameters.</p>
+<p>Refer to <a href="#report-view">Section 4.8.1, &#8220;Viewing expenditures report: <code>report view</code>&#8221;</a> for the details on the parameters.</p>
 </li>
 </ul>
 </div>
@@ -1260,12 +1416,12 @@ start date to an end date.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="cmd-exit"><a class="link" href="#cmd-exit">4.8.5. Exiting the program: <code>exit</code></a></h4>
+</div>
+<div class="sect2">
+<h3 id="cmd-exit"><a class="link" href="#cmd-exit">4.9. Exiting the program: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
-</div>
 </div>
 </div>
 </div>
@@ -1285,7 +1441,7 @@ Format: <code>exit</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The result of this command is equivalent to <a href="#report-view">Section 4.8.2, &#8220;Viewing expenditures report: <code>report view</code>&#8221;</a>.
+The result of this command is equivalent to <a href="#report-view">Section 4.8.1, &#8220;Viewing expenditures report: <code>report view</code>&#8221;</a>.
 </td>
 </tr>
 </table>
@@ -1392,51 +1548,51 @@ Format: <code>exit</code></p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meaning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Prefix</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Meaning</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-i</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-i</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">information</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-a</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-a</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-d</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">date</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-t</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-t</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tag</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-sd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-sd</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">start date</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-ed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-ed</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">end date</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-ym</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-ym</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">year month</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-p</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-p</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">period</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-g</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">graph type</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-f</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">file name</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-o</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-o</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">organised by</p></td>
 </tr>
 </tbody>
@@ -1580,4 +1736,4 @@ e.g. <code>exit</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 17:22:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 07:43:47 UTC</div></div></div></body></html>

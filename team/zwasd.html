@@ -10,7 +10,9 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>$AVE IT is a desktop budget management application. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>$AVE IT is a desktop budget management application. The user interacts with it
+using a CLI, and it has a GUI created with JavaFX. It is written in Java, and
+has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,29 +22,71 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>autocomplete feature</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: The Autocomplete feature allows you to complete the commands of
+the application when you type.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: As most of the functionality is command based, autocompletion
+makes it more efficient for when using our application. Also, users do not have
+to recall the variety of commands the application has from memory.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As there are many ways to implement autocompletion, quite some research is
+done to determine the best way to implement and design it, with multiple data structures and algorithms to choose from.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>The implementation was challenging as it requires digging into JavaFx listeners.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Credits: Caleb Brinkman</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Major enhancement</strong>: added <strong>budget feature</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The budget feature allows the user to set monthly budgets and
+show how much money they can spend given their expenditures.</p>
+</li>
+<li>
+<p>Justification: Setting a budget is crucial, as one only has a limited amount
+of money to spend. So having a budget can help user stay on tack to save more.</p>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The implementation of the budget is stored monthly, which differs from the
+main part of the application that are stored daily. This makes the logic and
+storage different from the base components.</p>
+</li>
+<li>
+<p>Calculation of spendings are done using expenditures and repeats which
+functions differently, hence requiring a bit more work too.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=zwasd&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=zwasd&amp;tabRepo=AY1920S2-CS2103T-T10-3%2Fmain%5Bmaster%5D">RepoSense</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +97,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.1</code> - <code>v1.4</code> (3 releases) on GitHub</p>
+</li>
+<li>
+<p>Setting up and maintaining GitHub, Travis, AppVeyor and Coveralls</p>
 </li>
 </ul>
 </div>
@@ -63,10 +110,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated GUI look and feel (Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/152">#152</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/158">#158</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage from 45% to 48% (Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/117">#117</a>)</p>
 </li>
 </ul>
 </div>
@@ -76,7 +123,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated the user guide with new commands: <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/209">#209</a></p>
+</li>
+<li>
+<p>Updated outdated puml and description in developer guide: <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/55">#55</a></p>
+</li>
+<li>
+<p>Add <strong>budget</strong> and <strong>autocomplete</strong> features in user guide</p>
+</li>
+<li>
+<p>Add <strong>budget</strong> and <strong>autocomplete</strong> implementations in developer guide</p>
 </li>
 </ul>
 </div>
@@ -86,29 +142,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/18">#18</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/55">#55</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/82">#82</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/86">#86</a> etc</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/zwasd/ped/issues/1">#1</a>, <a href="https://github.com/zwasd/ped/issues/2">#2</a>, <a href="https://github.com/zwasd/ped/issues/4">#4</a>)</p>
 </li>
 </ul>
 </div>
@@ -117,9 +154,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +170,127 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="budget-lim-feng-yue"><a class="link" href="#budget-lim-feng-yue">Budget (Lim Feng Yue)</a></h3>
+<div class="paragraph">
+<p>The <em>Budget</em> feature allows you to set your budget monthly, and give you a better
+sense of whether you are on track to your financial goals. You can see your budget
+at the right panel of the application.</p>
+</div>
+<div class="paragraph">
+<p>Initially, you will see this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/no_budget.png" alt="no budget">
+</div>
+<div class="title">Figure 1. No budget set</div>
+</div>
+<div class="paragraph">
+<p>It means that there is not budget set for the month.</p>
+</div>
+<div class="paragraph">
+<p>In order to know which month <code>this month</code> in the above image refers to, you can
+look at the date in the middle panel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/no_budget_2020_04.png" alt="no budget 2020 04">
+</div>
+<div class="title">Figure 2. No budget set for April 2020</div>
+</div>
+<div class="sect3">
+<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">Setting a budget</a></h4>
+<div class="paragraph">
+<p>To set a budget you can use the <a href="#Budget setting command: <code>setbudget</code>"><code>setbudget</code> Command</a>. Shown below is an example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/setting_a_budget.png" alt="setting a budget">
+</div>
+<div class="title">Figure 3. Setting this month&#8217;s budget to $100</div>
+</div>
+<div class="paragraph">
+<p>After setting a budget, you will see that the information on the right panel has
+changed:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/budget_is_set.png" alt="budget is set">
+</div>
+<div class="title">Figure 4. After setting a budget for April 2020</div>
+</div>
+<div class="paragraph">
+<p>If your budget has been met, you will see the piggy bank from above. If your
+budget is not met, you will see something like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/budget_not_met.png" alt="budget not met">
+</div>
+<div class="title">Figure 5. Budget not met</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To meet your budget, your balance have to be positive.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-budget-from-another-month"><a class="link" href="#viewing-budget-from-another-month">Viewing budget from another month</a></h4>
+<div class="paragraph">
+<p>To view budget from another month, you can use the <a href="#cmd-go"><code>go</code> command</a>, or
+the <a href="#Calendar">[Calendar]</a> feature to view any date of the month.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/view_may2020_budget.png" alt="view may2020 budget">
+</div>
+<div class="title">Figure 6. View May 2020 budget</div>
+</div>
+<div class="paragraph">
+<p>For example, going to <em>8 May 2020</em> allows you to view the budget set for <em>May 2020</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-lim-feng-yue"><a class="link" href="#autocomplete-lim-feng-yue">Autocomplete (Lim Feng Yue)</a></h3>
+<div class="paragraph">
+<p>The <em>Autocomplete</em> feature allows you to complete the basic commands of the
+application. It matches the what you type into the command box and tries to
+complete the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/autocomplete_ex.png" alt="autocomplete ex">
+</div>
+<div class="title">Figure 7. Autocomplete feature</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If no dropdown appear, it means that either: the text does not match any commands,
+or the dropdown is hidden after clicking away.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can use the <kbd>Up</kbd> or <kbd>Down</kbd> arrow keys to navigate the dropdown, then
+press <kbd>Enter</kbd> to select the command you want to complete.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,5 +306,274 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="budget-lim-feng-yue-2"><a class="link" href="#budget-lim-feng-yue-2">Budget (Lim Feng Yue)</a></h3>
+<div class="paragraph">
+<p>Budget feature allows user to input their budget for any month, and calculates
+the balance from the total spending. Depending on the amount of balance and
+whether the budget is set, different piggy bank images will be shown.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:52:18 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="rationale"><a class="link" href="#rationale">Rationale</a></h4>
+<div class="paragraph">
+<p>As the application is about budget management and expenditure tracking. Budgeting
+is an essential feature to allow user to keep track on how they are spending
+their money.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The budget feature consists of using a command, and a part of the UI display.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows what happens to the <code>BudgetView</code> which
+displays the budget details when a command is entered.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BudgetActivityDiagram.png" alt="BudgetActivityDiagram">
+</div>
+<div class="title">Figure 8. Activity Diagram of Budget View</div>
+</div>
+<div class="paragraph">
+<p>The implementation of setting the budget of the month is through the command
+format of <code>exp setbudget -a AMOUNT -ym YEAR_MONTH</code>. The process of how the command
+is parsed is shown below using an example, <code>exp setbudget -a 123 -ym 2020-04</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BudgetSequenceDiagram.png" alt="BudgetSequenceDiagram">
+</div>
+<div class="title">Figure 9. Set Budget Sequence Diagram (UI and Logic)</div>
+</div>
+<div class="paragraph">
+<p>The above sequence diagram shows the interaction of the user and the UI. After entering
+the command, the <code>BudgetView</code> will be updated using the result returned by
+the <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>The information displayed are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The budget amount, e.g <code>$123.00</code></p>
+</li>
+<li>
+<p>The total spending in <code>2020-04</code> (month)</p>
+</li>
+<li>
+<p>The balance, which is the difference between the budget amount and the total
+spending</p>
+</li>
+<li>
+<p>An image as visual feedback</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below shows a more detailed view of what happens inside the
+<code>LogicManager</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SetBudgetSequenceDiagram.png" alt="SetBudgetSequenceDiagram">
+</div>
+<div class="title">Figure 10. Set Budget Sequence Diagram (Logic and Model)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-calculation-of-budget"><a class="link" href="#aspect-calculation-of-budget">Aspect: Calculation of Budget</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Budgets are set monthly only.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Most common budget setting type.<br>
+- Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- It is not useful for users who prefer other kinds of calculation of budget.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variability in how budget is calculated, e.g. weekly, monthly, yearly.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Gives users more choice on how they want to budget.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Way more difficult to implement.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="aspect-visual-display-of-budget"><a class="link" href="#aspect-visual-display-of-budget">Aspect: Visual Display of Budget</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Display 3 states of budget balance in image.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Easier to see if the budget is being met.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Requires a bit more code, and finding images.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No visual display, just text display.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Very easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- The UI may look a bit plain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Better UI display, showing different variations of whether budget is met e.g.
+a chart.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Gives users better insight on how they are handling their budget.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- More work is required.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-feature-lim-feng-yue"><a class="link" href="#autocomplete-feature-lim-feng-yue">Autocomplete feature (Lim Feng Yue)</a></h3>
+<div class="paragraph">
+<p>Completes the command that the user is typing in the command box.</p>
+</div>
+<div class="sect3">
+<h4 id="rationale-2"><a class="link" href="#rationale-2">Rationale</a></h4>
+<div class="paragraph">
+<p>The autocomplete feature makes it easier for user to know what commands there
+are in the application. As the application is also catered for users who prefer
+typing, this feature can be of great assistance and helps in efficiency.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>The autocomplete feature is facilitated by <code>AutoCompleteTextField</code>.
+It extends the <code>TextField</code> component of JavaFx and provides a dropdown of
+possible commands using <code>ContextMenu</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of the autocompletion.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutocompleteSequenceDiagram.png" alt="AutocompleteSequenceDiagram">
+</div>
+<div class="title">Figure 11. Autocomplete Sequence Diagram</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type into the command box. The function searches and filters potential commands
+that the user might use.</p>
+</li>
+<li>
+<p>The commands will then be displayed in a dropdown format which the user can
+refer to when keying commands.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>During the start up of the application, a list of commands are added to the
+<code>AutoCompleteTextField</code>. These commands will then be sorted lexicographically in
+the java implementation of <code>TreeSet</code>.</p>
+</div>
+<div class="paragraph">
+<p>A <code>ChangeListener</code> is added the text field to 'listen' for changes in the input.
+<code>TreeSet#subSet()</code> is used to obtain all the commands between the previous text
+and the current text. For example, the textbox shows <code>ex</code> and a <code>p</code> is added, so
+the current text is <code>exp</code>. <code>TreeSet#subSet()</code> will obtain the commands that are
+lexicographically between <code>ex</code> and <code>exp</code>. These commands will then be shown in the
+autocomplete dropdown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutocompleteActivityDiagram.png" alt="AutocompleteActivityDiagram">
+</div>
+<div class="title">Figure 12. Autocomplete Activity Diagram</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-usage-of-autocompletion"><a class="link" href="#aspect-usage-of-autocompletion">Aspect: Usage of autocompletion</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Using up and down arrow keys to select autocompletion.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Requires the text field to be in focus.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use of tab to simulate autocompletion like a terminal.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Intuitive for people used to using a terminal.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Will have to direct the tab keystroke to be used for autocompletion.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure"><a class="link" href="#aspect-data-structure">Aspect: Data structure</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternatives</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pros</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>[current choice]</strong> Sorting lexicographically using <code>TreeSet</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Easy to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Can be slow if sorting through a huge number of strings.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using a prefix trie.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Extremely fast.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Takes up a lot of space.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:55:34 UTC</div></div></div></body></html>

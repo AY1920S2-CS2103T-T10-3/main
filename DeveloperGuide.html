@@ -37,7 +37,7 @@
 <li><a href="#expenditure-jiang-jiahui">4.2. Expenditure (Jiang Jiahui)</a></li>
 <li><a href="#recurring-expenditure-feature-code-repeat-code-zheng-shaopeng">4.3. Recurring Expenditure feature <code>Repeat</code> (Zheng Shaopeng)</a></li>
 <li><a href="#budget-lim-feng-yue">4.4. Budget (Lim Feng Yue)</a></li>
-<li><a href="#report-ng-xin-pei">4.5. Report (Ng Xin Pei)</a></li>
+<li><a href="#Report">4.5. Report (Ng Xinpei)</a></li>
 <li><a href="#calendar-feature-zheng-shaopeng">4.6. Calendar feature (Zheng Shaopeng)</a></li>
 <li><a href="#autocomplete-feature-lim-feng-yue">4.7. Autocomplete feature (Lim Feng Yue)</a></li>
 <li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
@@ -52,12 +52,14 @@
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-an-expenditure">G.2. Deleting an expenditure</a></li>
-<li><a href="#saving-input">G.3. Saving input</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#account-command-test">F.2. Account command test</a></li>
+<li><a href="#expenditure-command-test">F.3. Expenditure command test</a></li>
+<li><a href="#repeat-command-test">F.4. Repeat command test</a></li>
+<li><a href="#report-command-test">F.5. Report command test</a></li>
+<li><a href="#general-command-test">F.6. General command test</a></li>
 </ul>
 </li>
 </ul>
@@ -180,15 +182,6 @@ The following class plays an important role at the architecture level:</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
-</div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
-</div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>exp delete 1</code>.</p>
@@ -197,7 +190,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>exp delete 1</code> command</div>
+<div class="title">Figure 2. Component interactions for <code>exp delete 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -209,13 +202,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 4. Structure of the Main UI Component</div>
+<div class="title">Figure 3. Structure of the Main UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The Main UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> , <code>Calendar</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The Main UI consists of a <code>MainWindow</code> that is made up of parts e.g. <code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> , <code>Calendar</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -237,18 +230,19 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/ReportUIClassDiagram.png" alt="ReportUIClassDiagram">
 </div>
-<div class="title">Figure 5. Structure of the Report UI Component</div>
+<div class="title">Figure 4. Structure of the Report UI Component</div>
 </div>
 <div class="paragraph">
 <p>The Report UI consists of a <code>ReportWindow</code> that is made up of parts e.g. <code>ReportCommandBox</code> and <code>Result Display</code> etc.
 The <code>ReportWindow</code> and <code>ReportCommandBox</code>, inherit from abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu/saveit/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/saveit/ui"><code>ReportWindow.java</code></a>
-Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/saveit/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/mainhttps://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a></p>
+<p>The <code>Report UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu/saveit/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/saveit/ui"><code>ReportWindow.java</code></a>.
+Layout of <code>ReportCommandBox</code> is defined in the matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder.
+For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/saveit/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/mainhttps://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component,</p>
+<p>The <code>Report UI</code> component,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -264,7 +258,13 @@ Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 6. Structure of the Logic Component</div>
+<div class="title">Figure 5. Structure of the Logic Component</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LogicParserClassDiagram.png" alt="LogicParserClassDiagram">
+</div>
+<div class="title">Figure 6. Structure of the Parser Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -276,8 +276,8 @@ Layout of <code>ReportCommandBox</code> is defined in matching <code>.fxml</code
 <p><code>Logic</code> uses the <code>TopLevelParser</code> class to parse the user command.</p>
 </li>
 <li>
-<p>Depending on the command, the <code>TopLevelParser</code> class may use the <code>SubLevelParser</code> class e.g. <code>ExpLevelParser</code><br>
-to parse the command instead.</p>
+<p>Depending on the command, the <code>TopLevelParser</code> class may use the
+<code>SubLevelParser</code> class e.g. <code>ExpLevelParser</code> to parse the command instead.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -338,12 +338,22 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 <p>stores the <code>$AVE IT</code> data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Expenditure&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;BaseExp&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelExpClassDiagram.png" alt="ModelExpClassDiagram">
+</div>
+<div class="title">Figure 9. Structure of the Expenditure Component</div>
+</div>
+<div class="paragraph">
+<p>The above image shows how the <code>expenditure</code> package interaction within itself,
+and other model components.</p>
 </div>
 </div>
 <div class="sect2">
@@ -352,7 +362,7 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 9. Structure of the Storage Component</div>
+<div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/src/main/java/seedu/saveit/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -384,32 +394,153 @@ The lifeline for <code>ExpDeleteCommandParser</code> should end at the destroy m
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="disjoint-account-jiang-jiahui"><a class="link" href="#disjoint-account-jiang-jiahui">4.1. Disjoint Account (Jiang Jiahui)</a></h3>
+<div class="paragraph">
+<p>The disjoint accounts feature aims to help users better organise their expenditures by allowing them to separate the expenditures into different accounts.</p>
+</div>
 <div class="sect3">
 <h4 id="rationale"><a class="link" href="#rationale">4.1.1. Rationale</a></h4>
-
+<div class="paragraph">
+<p>The user may be involved in different projects or have different roles which require expenditure tracking. Disjoint accounts aim to provide a higher degree of organization than just organising by date or tag.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">4.1.2. Implementation</a></h4>
-
+<div class="paragraph">
+<p>Below is a simplified class diagram that shows how the Account class relates to other classes (interfaces not shown).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AccountClassDiagram.png" alt="AccountClassDiagram">
+</div>
+<div class="title">Figure 11. Simplified Account class diagram</div>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#Expenditure-Implementation">Expenditure Implementation</a> and <a href="#Repeat-Implementation">Repeat Implementation</a> for more details on these classes.</p>
+</div>
+<div class="paragraph">
+<p>There are many commands that allow the user to add, delete, rename accounts and so on.
+Below is a sequence diagram that shows how a command to rename an account takes place.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AccountRenameSequenceDiagram.png" alt="AccountRenameSequenceDiagram">
+</div>
+<div class="title">Figure 12. Sequence Diagram for execution of <code>acc rename</code> command</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration"><a class="link" href="#design-consideration">4.1.3. Design Consideration</a></h4>
-
+<div class="paragraph">
+<p>This section contains some of our design considerations for the account feature.</p>
+</div>
+<div class="paragraph">
+<p><strong>Consideration:</strong> Storage of expenditures and repeats.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Store expenditures and repeats in the same list.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fewer methods, since we can use the same method to add, edit or delete an expenditure/repeat.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Worse time complexity for some tasks which need to differentiate between expenditures and repeats.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Store expenditures and repeats in separate lists.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Better time complexity for tasks such as calculation of total spending.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There needs to be double the number of getters, setters, methods to add, edit &amp; delete the items.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Consideration:</strong> What to use for the backing list of the ListView UI component.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exposing the repeat and expenditure lists in the accounts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less troublesome when a repeat or expenditure command is executed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More difficult to implement. Every time the active account is changed, the ListView has to be replaced as the backing list cannot be changed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Maintain a single list in the AccountList class as a backing list of the ListView.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is no ambiguity as to which list is currently being displayed. This is safer as the lists in the accounts cannot be directly modified outside the Account class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More troublesome when a repeat or expenditure command is executed, since both the active account and the list has to be updated.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="expenditure-jiang-jiahui"><a class="link" href="#expenditure-jiang-jiahui">4.2. Expenditure (Jiang Jiahui)</a></h3>
-<div class="sect3">
-<h4 id="rationale-2"><a class="link" href="#rationale-2">4.2.1. Rationale</a></h4>
-
+<div class="paragraph">
+<p>This is the most essential and basic feature of the application.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.2. Implementation</a></h4>
-
+<h4 id="rationale-2"><a class="link" href="#rationale-2">4.2.1. Rationale</a></h4>
+<div class="paragraph">
+<p>The user can create expenditures to keep track of what they spend on, how much they have spent, and when it happens.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Expenditure-Implementation"><a class="link" href="#Expenditure-Implementation">4.2.2. Implementation</a></h4>
+<div class="paragraph">
+<p>Below is a class diagram that shows the Expenditure class and how it relates to other classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExpenditureClassDiagram.png" alt="ExpenditureClassDiagram">
+</div>
+<div class="title">Figure 13. Expenditure class diagram</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">4.2.3. Design Consideration</a></h4>
-
+<div class="paragraph">
+<p><strong>Consideration:</strong> Number of tags an expenditure can have</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One expenditure can have multiple tags.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More flexibility for the user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More difficult to implement. This also makes it impossible to calculate total spendings for each tag due to possible overlapping.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> An expenditure has exactly one tag.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This makes it possible for the user to see total spendings per tag using the <a href="#Report">Report</a> feature.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less flexibility for the user.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -429,7 +560,7 @@ commuting expenses.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.2. Implementation</a></h4>
+<h4 id="Repeat-Implementation"><a class="link" href="#Repeat-Implementation">4.3.2. Implementation</a></h4>
 <div class="paragraph">
 <p>Below is a class diagram shows different components that <code>Repeat</code> contains.</p>
 </div>
@@ -437,7 +568,7 @@ commuting expenses.</p>
 <div class="content">
 <img src="images/repeatClassDiagram.png" alt="repeatClassDiagram">
 </div>
-<div class="title">Figure 10. Class diagram for showing what <code>Repeat</code> consist.</div>
+<div class="title">Figure 14. Class diagram for showing what <code>Repeat</code> consist.</div>
 </div>
 <div class="paragraph">
 <p>For each account, it has its own <code>list</code> which all the <code>Repeat</code> objects are stored.
@@ -448,7 +579,7 @@ The following activity diagram shows what how a <code>Repeat</code> can be added
 <div class="content">
 <img src="images/repeatActivityDiagram.png" alt="repeatActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram for <code>repeat add</code></div>
+<div class="title">Figure 15. Activity diagram for <code>repeat add</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -496,7 +627,7 @@ their money.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.2. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.4.2. Implementation</a></h4>
 <div class="paragraph">
 <p>The budget feature consists of using a command, and a part of the UI display.</p>
 </div>
@@ -508,18 +639,18 @@ displays the budget details when a command is entered.</p>
 <div class="content">
 <img src="images/BudgetActivityDiagram.png" alt="BudgetActivityDiagram">
 </div>
-<div class="title">Figure 12. Activity Diagram of Budget View</div>
+<div class="title">Figure 16. Activity Diagram of Budget View</div>
 </div>
 <div class="paragraph">
 <p>The implementation of setting the budget of the month is through the command
-format of <code>exp setbudget -a AMOUNT -ym YEAR_MONTH</code>. The process of how the command
-is parsed is shown below using an example, <code>exp setbudget -a 123 -ym 2020-04</code>.</p>
+format of <code>setbudget -a AMOUNT -ym YEAR_MONTH</code>. The process of how the command
+is parsed is shown below using an example, <code>setbudget -a 123 -ym 2020-04</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/BudgetSequenceDiagram.png" alt="BudgetSequenceDiagram">
 </div>
-<div class="title">Figure 13. Set Budget Sequence Diagram (UI and Logic)</div>
+<div class="title">Figure 17. Set Budget Sequence Diagram (UI and Logic)</div>
 </div>
 <div class="paragraph">
 <p>The above sequence diagram shows the interaction of the user and the UI. After entering
@@ -532,7 +663,7 @@ the <code>LogicManager</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The budget amount, e.g <code>$123.00</code></p>
+<p>The budget amount, e.g. <code>$123.00</code></p>
 </li>
 <li>
 <p>The total spending in <code>2020-04</code> (month)</p>
@@ -554,7 +685,7 @@ spending</p>
 <div class="content">
 <img src="images/SetBudgetSequenceDiagram.png" alt="SetBudgetSequenceDiagram">
 </div>
-<div class="title">Figure 14. Set Budget Sequence Diagram (Logic and Model)</div>
+<div class="title">Figure 18. Set Budget Sequence Diagram (Logic and Model)</div>
 </div>
 </div>
 <div class="sect3">
@@ -627,7 +758,7 @@ a chart.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="report-ng-xin-pei"><a class="link" href="#report-ng-xin-pei">4.5. Report (Ng Xin Pei)</a></h3>
+<h3 id="Report"><a class="link" href="#Report">4.5. Report (Ng Xinpei)</a></h3>
 <div class="paragraph">
 <p>Report is one of the main features in <code>$AVE IT</code>  and its purpose is to collate and
 show users their expenditure breakdowns.</p>
@@ -642,7 +773,7 @@ what they are spending on over this period of time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.2. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.5.2. Implementation</a></h4>
 <div class="paragraph">
 <p>The report feature can be accessed from 2 platforms either <strong>Main Window</strong> or <strong>Report Window</strong></p>
 </div>
@@ -655,22 +786,22 @@ what they are spending on over this period of time.</p>
 </div>
 <div class="paragraph">
 <p>The input from user is parsed using a specific command parser
-depending on which of 3 commands: <code>report view</code>, <code>report print</code> and <code>report export</code> were inputted by user.</p>
+depending on which of the 3 commands: <code>report view</code>, <code>report print</code> and <code>report export</code> were inputted by user.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ReportViewSquence.png" alt="ReportViewSquence">
+<img src="images/ReportViewCreation.png" alt="ReportViewCreation">
 </div>
-<div class="title">Figure 15. Sequence Diagram for Report View</div>
+<div class="title">Figure 19. Sequence Diagram for View Report Command Creation</div>
 </div>
 <div class="paragraph">
 <p>If a valid  <code>report view</code> command was input, the <em>ViewReportCommandParser</em> will parse the input and convert the Strings :
 start date, end date, graph type  and organisation into <em>Date</em> , <em>Report.GraphType</em> and <em>organisation(String)</em> object respectively.
-These objects are used to create <em>ViewReportCommand</em> object which will be executed. The result of the execution is popping out of  <em>ReportWindow</em> which will showcase a expenditure breakdown report.
-<strong>Figure 11</strong> provides a detailed execution flow for <code>report view</code> command.</p>
+These objects are used to create the  <em>ViewReportCommand</em> object. <strong>Figure 19</strong>  shows how the different objects interact to create
+<em>ViewReportCommand</em> object.</p>
 </div>
 <div class="paragraph">
-<p>As stated in <strong>Figure 11</strong>, when a user inputs a valid <code>report  view</code> command:</p>
+<p>As shown in <strong>Figure 19</strong>, when a user inputs a valid <code>report  view</code> command:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -680,6 +811,24 @@ These objects are used to create <em>ViewReportCommand</em> object which will be
 <li>
 <p>A new <em>ViewReportCommand</em> object containing the <em>Report</em> object will be created.</p>
 </li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReportViewExecution.png" alt="ReportViewExecution">
+</div>
+<div class="title">Figure 20. Sequence Diagram for View Report Command Execution</div>
+</div>
+<div class="paragraph">
+<p>The <em>ViewReportCommand</em> object will be executed.
+The result of the execution is popping out of  <em>ReportWindow</em> which will showcase a expenditure breakdown report.
+<strong>Figure 20</strong> shows how the objects interact to execute <em>ViewReportCommand</em> object.</p>
+</div>
+<div class="paragraph">
+<p>As shown in <strong>Figure 20</strong>,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>The <em>ViewReportCommand</em> object will be executed and a new <em>GenerateStats</em> object will be created.</p>
 </li>
@@ -691,9 +840,6 @@ These objects are used to create <em>ViewReportCommand</em> object which will be
 <p>A new <em>Pie</em> object will be created.</p>
 </li>
 <li>
-<p>The <em>Pie</em> object will construct a graph using statistics from <em>GenerateStats</em> object.</p>
-</li>
-<li>
 <p>A new <em>CommandResult</em> will be constructed and returned.</p>
 </li>
 <li>
@@ -703,13 +849,13 @@ These objects are used to create <em>ViewReportCommand</em> object which will be
 </div>
 <div class="paragraph">
 <p>If a valid <code>report print</code> command was input, the <em>PrintReportCommandParser</em>  will parse the input and convert the Strings :
-start date, end date, graph into <em>Date</em> , <em>Report.GraphType</em> and <em>organisation(String)</em> object respectively. These objects
+start date, end date, graph into <em>Date</em>, <em>Report.GraphType</em> and <em>organisation(String)</em> object respectively. These objects
 are used to create <em>PrintReportCommand</em> object which will be executed.
 The result of execution will be sending a print job to your printer, printing out the report.</p>
 </div>
 <div class="paragraph">
 <p>If a valid <code>report export</code> command was input, the <em>ExportReportCommandParser</em>  will parse the input and convert the Strings :
-tart date, end date, graph into <em>Date</em> , <em>Report.GraphType</em> , <em>organisation(String)</em> and <em>file name(String)</em> object respectively.
+tart date, end date, graph into <em>Date</em>, <em>Report.GraphType</em> , <em>organisation(String)</em> and <em>file name(String)</em> object respectively.
 These objects are used to create <em>ExportReportCommand</em> object which will be executed.
 The result of execution will be exporting a PNG version of the report into your computer with file name.</p>
 </div>
@@ -717,7 +863,7 @@ The result of execution will be exporting a PNG version of the report into your 
 <div class="content">
 <img src="images/Report_MainWindow_.png" alt="Report MainWindow ">
 </div>
-<div class="title">Figure 16. Activity Diagram for Report in Main Window</div>
+<div class="title">Figure 21. Activity Diagram for Report in Main Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram summarises what can happen when user
@@ -737,7 +883,7 @@ enter a <code>report</code> command in the <strong>Main Window</strong></p>
 <div class="content">
 <img src="images/Report_ReportWindow_.png" alt="Report ReportWindow ">
 </div>
-<div class="title">Figure 17. Activity Diagram for Report Window</div>
+<div class="title">Figure 22. Activity Diagram for Report Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram shows what can happen when users enter in a new command
@@ -774,7 +920,7 @@ we could introduce and showcase other smaller and useful features in
 the Main Window UI.</p>
 </li>
 <li>
-<p>Cons: It could be more different to implement</p>
+<p>Cons: It could be more complicated to implement</p>
 </li>
 </ul>
 </div>
@@ -797,7 +943,10 @@ hence it is recommended to users that Bar Chart should be used in such instances
 </li>
 <li>
 <p>While it is allowed for users to send multiple print jobs, users are recommended
-to only send one print job at a time to avoid unexpected results.</p>
+to avoid sending multiple print jobs in a short interval.</p>
+</li>
+<li>
+<p>Only months or tags with total spending of more than 0 dollars will be reported.</p>
 </li>
 </ol>
 </div>
@@ -814,7 +963,7 @@ the date of the expenditures the user is viewing as well as today.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-7"><a class="link" href="#implementation-7">4.6.2. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.6.2. Implementation</a></h4>
 <div class="paragraph">
 <p>The implementation of the above functions will be described separately in this section.</p>
 </div>
@@ -826,13 +975,13 @@ the days:<br>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows you how the <code>go YYYY-MM-DD</code>
-(E.g <code>go 2020-04-01</code>) command works.</p>
+(E.g. <code>go 2020-04-01</code>) command works.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/goSquenceDiagram.png" alt="goSquenceDiagram">
+<img src="images/goSequenceDiagram.png" alt="goSequenceDiagram">
 </div>
-<div class="title">Figure 18. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
+<div class="title">Figure 23. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
 </div>
 <div class="paragraph">
 <p>Upon completion of the above command, the calendar view will update the
@@ -849,7 +998,7 @@ user click on the dates.</p>
 <div class="content">
 <img src="images/calendarActivityDiagram.png" alt="calendarActivityDiagram">
 </div>
-<div class="title">Figure 19. Activity diagram showing what happen when user wants to navigate to other date</div>
+<div class="title">Figure 24. Activity diagram showing what happen when user wants to navigate to other date</div>
 </div>
 </div>
 <div class="sect3">
@@ -878,7 +1027,7 @@ user click on the dates.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This looks like excel sheet and users have to scroll all the way up if they want to view a date which is much earlier.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Make use of a calender view and only list out a given date&#8217;s expenditure record.
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Make use of a calendar view and only list out a given date&#8217;s expenditure record.
 This automatically helps user to organize the records according to date.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User can make use of the calendar view to navigate between the dates,
 this is much more convenient than scrolling through a list.<br>
@@ -892,9 +1041,9 @@ Especially helpful if there is lots of records.</p></td>
 <div class="sect3">
 <h4 id="note-2"><a class="link" href="#note-2">4.6.4. NOTE</a></h4>
 <div class="paragraph">
-<p>Dates with negative year are allowed. E.g <code>-1234-03-21</code> is allowed.<br>
+<p>Dates with negative year are allowed. E.g. <code>-1234-03-21</code> is allowed.<br>
 The developer team follows the range which is specified in the
-<a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate Api, released by Oracle</a>.</p>
+<a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate API, released by Oracle</a>.</p>
 </div>
 </div>
 </div>
@@ -912,7 +1061,7 @@ typing, this feature can be of great assistance and helps in efficiency.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-8"><a class="link" href="#implementation-8">4.7.2. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.7.2. Implementation</a></h4>
 <div class="paragraph">
 <p>The autocomplete feature is facilitated by <code>AutoCompleteTextField</code>.
 It extends the <code>TextField</code> component of JavaFx and provides a dropdown of
@@ -925,7 +1074,7 @@ possible commands using <code>ContextMenu</code>.</p>
 <div class="content">
 <img src="images/AutocompleteSequenceDiagram.png" alt="AutocompleteSequenceDiagram">
 </div>
-<div class="title">Figure 20. Autocomplete Sequence Diagram</div>
+<div class="title">Figure 25. Autocomplete Sequence Diagram</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -956,7 +1105,7 @@ autocomplete dropdown.</p>
 <div class="content">
 <img src="images/AutocompleteActivityDiagram.png" alt="AutocompleteActivityDiagram">
 </div>
-<div class="title">Figure 21. Autocomplete Activity Diagram</div>
+<div class="title">Figure 26. Autocomplete Activity Diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -1018,13 +1167,17 @@ autocomplete dropdown.</p>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>The current choice is chosen as the number of commands is not a lot, so high
+performance is not required.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+<p>Certain properties of the application can be controlled (e.g. user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
@@ -1361,7 +1514,7 @@ autocomplete dropdown.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to rename an account. Format: <code>acc rename OLD_NAME NEW_NAME</code></p>
+<p>User requests to rename an account. Format: <code>acc rename [OLD_NAME] NEW_NAME</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and state that the account has being renamed.</p>
@@ -1742,7 +1895,7 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>1c1. <code>$AVE IT</code> WILL request an valid and non empty date.</p>
+<p>1c1. <code>$AVE IT</code> WILL request a valid and non empty date.</p>
 </li>
 <li>
 <p>Use case resumes in step 1.</p>
@@ -1759,103 +1912,6 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 </li>
 <li>
 <p>Use case resumes in step 1.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
-</li>
-<li>
-<p>Use case resumes from step 1.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-exp-setbudget" class="discrete">Use case: Exp SetBudget</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to set an budget for a given month in the account which they are viewing right now.<br>
-Format: <code>exp setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
-</li>
-<li>
-<p><code>$AVE IT</code> will acknowledge.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
-</li>
-<li>
-<p>Use case resumes in step 1.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
-</li>
-<li>
-<p>Use case resumes from step 1.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1c. <code>$AVE IT</code> detects that date input is invalid.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1c1. <code>$AVE IT</code> WILL request an valid and non empty date.</p>
-</li>
-<li>
-<p>Use case resumes from step 1.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. <code>$AVE IT</code> detects that date is not specified.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>2a1. <code>$AVE IT</code> will add this expenditure record to the day which the calendar states.</p>
-</li>
-<li>
-<p>2a2. <code>$AVE IT</code> will acknowledge.</p>
-</li>
-<li>
-<p>use case end.</p>
 </li>
 </ul>
 </div>
@@ -1916,7 +1972,7 @@ Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD
 <div class="ulist">
 <ul>
 <li>
-<p>1c1. <code>$AVE IT</code> will request an valid and date.</p>
+<p>1c1. <code>$AVE IT</code> will request a valid end date.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -1955,7 +2011,7 @@ Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD
 </li>
 </ul>
 </div>
-<h3 id="use-case-repeat-delete-to-be-implemented" class="discrete">Use case: Repeat Delete [TO BE IMPLEMENTED]</h3>
+<h3 id="use-case-repeat-delete" class="discrete">Use case: Repeat Delete</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2060,7 +2116,7 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 <div class="ulist">
 <ul>
 <li>
-<p>1c1. <code>$AVE IT</code> will request an valid and date.</p>
+<p>1c1. <code>$AVE IT</code> will request a valid end date.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -2106,8 +2162,8 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to view an report of expenditure record in the account which they are viewing right now.<br>
-Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
+<p>User requests to view a report of expenditure record in the account which they are viewing right now.<br>
+Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISATION</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and pop up another window to show the relevant report.</p>
@@ -2158,31 +2214,11 @@ Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 <li>
 <p>Use case resumes from step 1.</p>
 </li>
-</ul>
-</div>
+<li>
+<p>1d. <code>$AVE IT</code> detects that organisation input is invalid.</p>
 </li>
 <li>
-<p>1d. <code>$AVE IT</code> detects that there is a report window showing and input is correct.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1d1. <code>$AVE IT</code> will reflect result of input in opened report window.</p>
-</li>
-<li>
-<p>1d2. <code>$AVE IT</code> will acknowledge.</p>
-</li>
-<li>
-<p>Use case ends.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1e. <code>$AVE IT</code> detects that there is a report window showing and input is wrong.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1e1. <code>$AVE IT</code> will reflect input is wrong.</p>
+<p>1d1. <code>$AVE IT</code> will request a valid organisation.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -2192,15 +2228,15 @@ Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-report-export-to-be-implemented" class="discrete">Use case: Report Export [TO BE IMPLEMENTED]</h3>
+<h3 id="use-case-report-export" class="discrete">Use case: Report Export</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to export an report of expenditure record in the account which they are viewing right now.<br>
-Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
+<p>User requests to export a report of expenditure record in the account which they are viewing right now.<br>
+Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISATION -f FILE_NAME</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and export the report to the folder which has same location as <code>$AVE IT</code>.</p>
@@ -2236,16 +2272,44 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will request an valid and date.</p>
+<p>1b1. <code>$AVE IT</code> will request a valid start and end date.</p>
 </li>
 <li>
-<p>1b2. <code>$AVE IT</code> will ensure that the <code>end date</code> is same or after the <code>start date</code>.</p>
-</li>
-<li>
-<p>1b3. Back to step 1.</p>
+<p>1b2. Back to step 1.</p>
 </li>
 <li>
 <p>use case end.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that graph type input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> will request a valid graph type.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that organisation input is invalid.</p>
+</li>
+<li>
+<p>1d1. <code>$AVE IT</code> will request a valid organisation.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that file name input is invalid.</p>
+</li>
+<li>
+<p>1d1. <code>$AVE IT</code> will request a valid file name.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
 </li>
 </ul>
 </div>
@@ -2275,9 +2339,12 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. <code>$AVE IT</code> detects input is in incorrect format.</p>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
 <div class="ulist">
 <ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
 <li>
 <p>Use case resumes from step 1.</p>
 </li>
@@ -2285,9 +2352,12 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects date input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
 <div class="ulist">
 <ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request a valid start and end date.</p>
+</li>
 <li>
 <p>Use case resumes from step 1.</p>
 </li>
@@ -2295,11 +2365,103 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE</code></p>
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects graph type input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that graph type input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
+<p>1c1. <code>$AVE IT</code> will request a valid graph type.</p>
+</li>
+<li>
 <p>Use case resumes from step 1.</p>
+</li>
+<li>
+<p>1d. <code>$AVE IT</code> detects that organisation input is invalid.</p>
+</li>
+<li>
+<p>1d1. <code>$AVE IT</code> will request a valid organisation.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-set-budget" class="discrete">Use case: Set Budget</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to set a budget for a given month in the account which they are viewing right now.<br>
+Format: <code>setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
+</li>
+<li>
+<p><code>$AVE IT</code> will acknowledge.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes in step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. <code>$AVE IT</code> detects that date input is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1c1. <code>$AVE IT</code> WILL request a valid and non empty date.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. <code>$AVE IT</code> detects that date is not specified.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. <code>$AVE IT</code> will add this expenditure record to the day which the calendar states.</p>
+</li>
+<li>
+<p>2a2. <code>$AVE IT</code> will acknowledge.</p>
+</li>
+<li>
+<p>use case end.</p>
 </li>
 </ul>
 </div>
@@ -2364,7 +2526,7 @@ Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> WILL request an valid and non empty date.</p>
+<p>1b1. <code>$AVE IT</code> WILL request a valid and non empty date.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -2408,9 +2570,6 @@ Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2446,49 +2605,18 @@ Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
+<dt class="hdlist1"><a id="mainstream-os"></a> Command Line Input</dt>
+<dd>
+<p>Command line interface (CLI) is a text-based interface that is used to operate software
+and operating systems while allowing the user to respond to visual prompts by typing
+single commands into the interface and receiving a reply in the same way.</p>
+</dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -2506,7 +2634,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2544,56 +2672,382 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-expenditure"><a class="link" href="#deleting-an-expenditure">G.2. Deleting an expenditure</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deleting an expenditure while all expenditure are listed</p>
+<h3 id="account-command-test"><a class="link" href="#account-command-test">F.2. Account command test</a></h3>
+<div class="sect3">
+<h4 id="add-a-new-account"><a class="link" href="#add-a-new-account">F.2.1. Add a new account</a></h4>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all expenditure using the <code>exp list</code> command. Multiple expenditure in the list.</p>
+<p>Prerequisites:<br>
+The <code>new account name</code> must not exist in the system.<br>
+Name must be a word(contains no space).</p>
 </li>
 <li>
-<p>Test case: <code>exp delete 1</code><br>
-Expected: First expenditure is deleted from the list. Details of the deleted expenditure shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>exp delete 0</code><br>
-Expected: No expenditure is deleted. Error details shown in the status message. Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>exp delete</code>, <code>exp delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
+<p>Test case: <code>acc add project-xyz</code><br>
+Expected: A new account named <code>project-xyz</code> is added to the account list.</p>
 </li>
 </ol>
 </div>
-</li>
-</ol>
 </div>
+<div class="sect3">
+<h4 id="view-all-account"><a class="link" href="#view-all-account">F.2.2. View all account</a></h4>
 <div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+<p>Test case: acc list.<br>
+Expected: All the account which you own, will be displayed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="rename-account"><a class="link" href="#rename-account">F.2.3. Rename account</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The account whose name you wanted to change, must exist in account list.<br>
+The new name must not be another account&#8217;s name.</p>
+</li>
+<li>
+<p>Test case: <code>acc rename projectXYZ projectABC</code><br>
+Expected: the account&#8217;s name with project-xyz change to project-abc.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="checkout-to-an-account"><a class="link" href="#checkout-to-an-account">F.2.4. Checkout to an account</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The account which you wanted to checkout to, must exist in account list.<br></p>
+</li>
+<li>
+<p>Test case acc checkout personal.<br>
+Expected: A response will be given to denote a change in account.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-account"><a class="link" href="#delete-account">F.2.5. Delete account</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The account which you want to delete, must exist in account list.<br></p>
+</li>
+<li>
+<p>Test case: <code>acc delete projectABC</code><br>
+Expected: the account will be deleted.<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Note:
+If that is the only account, a new default account will be auto generated.
+If you deleted the account which you are viewing on, you will be auto checked-out to another account after deletion.</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-data-of-an-account"><a class="link" href="#clear-data-of-an-account">F.2.6. Clear data of an account</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The active account will be the account whose data will be cleared.</p>
+</li>
+<li>
+<p>Test case: <code>acc clear</code><br>
+Expected: the current account&#8217;s data will be all cleared.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-input"><a class="link" href="#saving-input">G.3. Saving input</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
+<h3 id="expenditure-command-test"><a class="link" href="#expenditure-command-test">F.3. Expenditure command test</a></h3>
+<div class="sect3">
+<h4 id="add-a-new-expenditure"><a class="link" href="#add-a-new-expenditure">F.3.1. Add a new expenditure</a></h4>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites:<br>
+The command input must be in the right format.</p>
+</li>
+<li>
+<p>Test case: <code>exp add -i Chicken rice -a 3.50 -t Lunch</code><br>
+Expected: New expenditure added: Chicken rice Amount: 3.50 Date: 2020-04-12 Tag: lunch.
+This will be added to current date (For this test case: current date is set to 2020-04-12").</p>
+</li>
+<li>
+<p>Test case: <code>exp add -i Chicken rice -a 3.50 -t Lunch -d 2020-04-01</code><br>
+Expected: New expenditure added: Chicken rice Amount: 3.50 Date: 2020-04-01 Tag: lunch.</p>
 </li>
 </ol>
 </div>
+</div>
+<div class="sect3">
+<h4 id="delete-an-expenditure"><a class="link" href="#delete-an-expenditure">F.3.2. Delete an expenditure</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The index provided must be valid and it is an <code>expenditure</code> record.</p>
+</li>
+<li>
+<p>Test case: <code>exp delete 1</code><br>
+Expected: Deleted Expenditure: Chicken rice Amount: 3.50 Date: 2020-04-12 Tag: lunch.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect3">
+<h4 id="edit-an-expenditure"><a class="link" href="#edit-an-expenditure">F.3.3. Edit an expenditure</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The command input must be valid, index provided must refer to an <code>expenditure</code> record.</p>
+</li>
+<li>
+<p>Test case: <code>exp edit 1 -t meal</code><br>
+Expected: Edited Expenditure: Chicken rice Amount: 3.50 Date: 2020-04-01 Tag: meal.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="expenditure-list"><a class="link" href="#expenditure-list">F.3.4. Expenditure list</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>exp list</code><br>
+Expected: View all the expenditure records.</p>
+<div class="literalblock">
+<div class="content">
+<pre>Note:
+This is mainly used to exit the find mode.</pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:55:34 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="repeat-command-test"><a class="link" href="#repeat-command-test">F.4. Repeat command test</a></h3>
+<div class="sect3">
+<h4 id="add-a-new-repeat-expenditure"><a class="link" href="#add-a-new-repeat-expenditure">F.4.1. Add a new repeat expenditure</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The command input must be in the right format.<br>
+The end date must be equal or after the start date.</p>
+</li>
+<li>
+<p>Test case: <code>repeat add -i bus far -a 1.50 -sd 2020-01-01 -ed 2021-01-01 -p daily -t Transport</code><br>
+Expected: New repeat added: bus far Amount: 1.50 Start Date: 2020-01-01 End Date: 2021-01-01 Interval: daily Tags: Transport.
+will be added to current date (For this test case: current date is set to 2020-04-12").</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-repeat"><a class="link" href="#delete-a-repeat">F.4.2. Delete a repeat</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The index provided must be valid and it is an <code>repeat</code> record.</p>
+</li>
+<li>
+<p>Test case: <code>repeat delete 1</code>
+Expected: Deleted Repeat: bus far Amount: 1.50 Start Date: 2020-01-01 End Date: 2021-01-01 Interval: daily Tags: Transport.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-a-repeat"><a class="link" href="#edit-a-repeat">F.4.3. Edit a repeat</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The command input must be valid, index provided must be refer to an <code>repeat</code> record.</p>
+</li>
+<li>
+<p>Test case: <code>repeat edit 2 -sd 2020-04-01 -ed 2020-05-01</code><br>
+Expected: Edited Repeat: bus far Amount: 1.50 Start Date: 2020-04-01 End Date: 2020-05-01 Interval: daily Tags: Transport.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="report-command-test"><a class="link" href="#report-command-test">F.5. Report command test</a></h3>
+<div class="sect3">
+<h4 id="view-report"><a class="link" href="#view-report">F.5.1. View report</a></h4>
+<div class="sect4">
+<h5 id="main-window"><a class="link" href="#main-window">Main Window</a></h5>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: <br>
+The input parameters must be valid.</p>
+</li>
+<li>
+<p>Test case: <code>report view -sd 2020-04-01 -ed 2020-05-31 -g pie -o month</code><br>
+Expected: Pie chart with months where spending is not zero will be
+shown on the report window. If all months have zero dollar
+spending, then an empty Pie Chart will be created.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="report-window"><a class="link" href="#report-window">Report Window</a></h5>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: <br>
+The input parameters must be valid.</p>
+</li>
+<li>
+<p>Test case: <code>view 2020-04-01 2020-05-31 bar tag</code><br>
+Expected: Bar chart with spending categorised by tags will be
+shown on the report window. If there are no tags, then
+an empty Bar chart will be shown.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="export-report"><a class="link" href="#export-report">F.5.2. Export report</a></h4>
+<div class="sect4">
+<h5 id="main-window-2"><a class="link" href="#main-window-2">Main Window</a></h5>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The input parameters must be valid.</p>
+</li>
+<li>
+<p>Test case: <code>report export -sd 2020-04-01 -ed 2020-05-31 -g bar -o tag -f filename</code><br>
+Expected: Bar chart with spending categorised by tags will be
+exported to file with filename. If there are no tags, then
+an empty Bar chart will be exported.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="report-window-2"><a class="link" href="#report-window-2">Report Window</a></h5>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+There is a report generated and input parameters must be valid.</p>
+</li>
+<li>
+<p>Test case: <code>export filename</code>
+Expected: Exports the current graph shown in report window to file named filename.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="print-report"><a class="link" href="#print-report">F.5.3. Print report</a></h4>
+<div class="sect4">
+<h5 id="main-window-3"><a class="link" href="#main-window-3">Main Window</a></h5>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+There is a printer set up and input parameters must be valid.</p>
+</li>
+<li>
+<p>Test case: <code>report print -sd 2020-04-01 -ed 2020-05-31 -g pie -o month</code><br>
+Expected: Pie chart with months where spending is not zero will be
+printed. If all months have zero dollar
+spending, then an empty Pie Chart will be printed.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="report-window-3"><a class="link" href="#report-window-3">Report Window</a></h5>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+There is a report generated and a printer set up.</p>
+</li>
+<li>
+<p>Test case: <code>print</code><br>
+Expected: The current graph shown in report window will be printed.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="general-command-test"><a class="link" href="#general-command-test">F.6. General command test</a></h3>
+<div class="sect3">
+<h4 id="go"><a class="link" href="#go">F.6.1. Go</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:<br>
+The date input must be valid.</p>
+</li>
+<li>
+<p>Test case: <code>go 2020-03-11</code><br>
+Expected: We are at : 2020-03-11.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find"><a class="link" href="#find">F.6.2. Find</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: 'find rice'<br>
+Expected: Will enter find mode: Expenditure and repeat records which contain <code>rice</code> will be shown.<br></p>
+</li>
+<li>
+<p>Test case: 'find rice -t Food'<br>
+Expected: Will enter find mode: Expenditure and repeat records which contain <code>rice</code> and the tag <code>Food</code> will be shown.<br></p>
+</li>
+<li>
+<p>Test case: 'find -t Food'<br>
+Expected: Will enter find mode: Expenditure and repeat records which contain the tag <code>Food</code> will be shown.<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Note:
+Users have to make use of "exp list" to exit find mode.</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exit"><a class="link" href="#exit">F.6.3. Exit</a></h4>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>exit</code><br>
+Expected: <code>$AVEIT</code> will terminate.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:45:04 UTC</div></div></div></body></html>

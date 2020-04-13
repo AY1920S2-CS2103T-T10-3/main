@@ -247,7 +247,7 @@ To meet your budget, your balance have to be positive.
 <h4 id="viewing-budget-from-another-month"><a class="link" href="#viewing-budget-from-another-month">Viewing budget from another month</a></h4>
 <div class="paragraph">
 <p>To view budget from another month, you can use the <a href="#cmd-go"><code>go</code> command</a>, or
-the <a href="#Calendar">[Calendar]</a> feature to view any date of the month.</p>
+the <a href="#Calendar">Calendar</a> feature to view any date of the month.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -264,7 +264,7 @@ the <a href="#Calendar">[Calendar]</a> feature to view any date of the month.</p
 <h3 id="autocomplete-lim-feng-yue"><a class="link" href="#autocomplete-lim-feng-yue">Autocomplete (Lim Feng Yue)</a></h3>
 <div class="paragraph">
 <p>The <em>Autocomplete</em> feature allows you to complete the basic commands of the
-application. It matches the what you type into the command box and tries to
+application. It matches what you type into the command box and tries to
 complete the command.</p>
 </div>
 <div class="imageblock">
@@ -273,11 +273,11 @@ complete the command.</p>
 </div>
 <div class="title">Figure 7. Autocomplete feature</div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 If no dropdown appear, it means that either: the text does not match any commands,
@@ -289,6 +289,32 @@ or the dropdown is hidden after clicking away.
 <div class="paragraph">
 <p>You can use the <kbd>Up</kbd> or <kbd>Down</kbd> arrow keys to navigate the dropdown, then
 press <kbd>Enter</kbd> to select the command you want to complete.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The existence of the dropdown menu may require you to press <kbd>Enter</kbd> 2 times
+before the command is executed, due to how the autocompletion works.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When pressing <kbd>Down</kbd> arrow key does not allow you to select the commands, it
+means that the text box is not focused. Clear all texts and try again.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -338,8 +364,8 @@ displays the budget details when a command is entered.</p>
 </div>
 <div class="paragraph">
 <p>The implementation of setting the budget of the month is through the command
-format of <code>exp setbudget -a AMOUNT -ym YEAR_MONTH</code>. The process of how the command
-is parsed is shown below using an example, <code>exp setbudget -a 123 -ym 2020-04</code>.</p>
+format of <code>setbudget -a AMOUNT -ym YEAR_MONTH</code>. The process of how the command
+is parsed is shown below using an example, <code>setbudget -a 123 -ym 2020-04</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -358,7 +384,7 @@ the <code>LogicManager</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The budget amount, e.g <code>$123.00</code></p>
+<p>The budget amount, e.g. <code>$123.00</code></p>
 </li>
 <li>
 <p>The total spending in <code>2020-04</code> (month)</p>
@@ -572,8 +598,12 @@ autocomplete dropdown.</p>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>The current choice is chosen as the number of commands is not a lot, so high
+performance is not required.</p>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:55:34 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:45:04 UTC</div></div></div></body></html>

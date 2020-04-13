@@ -20,29 +20,53 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the disjoint accounts feature</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: The disjoint accounts feature allows the user to better organise their expenditures in multiple accounts.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: As the user may have taken on multiple roles/project that require them to manage expenses, they can create one account for each of their roles/projects, in addition to one for their personal expenses. This way, they can track all of their expenditures in this one application, while keep them organised in disjoint accounts.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature required major changed to the backend Storage package as the structure of the Model classes has changed significantly.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>It was challenging to ensure that this feature works seamlessly with the UI. For example, when a different account is checked-out, multiple UI components are updated.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: improved the <code>find</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to search for multiple keywords, a tag, or both together.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Minor enhancement</strong>: improved the <code>ExpenditureListPanel</code> UI component</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Used polymorphism to allow expenditures and repeats to be displayed in the same list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=JJiahui&amp;tabRepo=AY1920S2-CS2103T-T10-3%2Fmain%5Bmaster%5D">RepoSense</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +77,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.1</code> - <code>v1.4</code> (3 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -63,10 +87,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Updated error messages of commands to be more informative and helpful to the user.</p>
 </li>
 </ul>
 </div>
@@ -76,7 +97,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Added documentation for <code>Account</code> and <code>Expenditure</code> to the User Guide and Developer Guide</p>
 </li>
 </ul>
 </div>
@@ -86,29 +107,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed: <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/6">#6</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/8">#8</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/pull/15">#15</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/JJiahui/ped/issues/1">#1</a>, <a href="https://github.com/JJiahui/ped/issues/2">#2</a>, <a href="https://github.com/JJiahui/ped/issues/3">#3</a>)</p>
 </li>
 </ul>
 </div>
@@ -117,9 +119,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +135,63 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="disjoint-accounts-jiang-jiahui"><a class="link" href="#disjoint-accounts-jiang-jiahui">Disjoint Accounts (Jiang Jiahui)</a></h3>
+<div class="paragraph">
+<p>This feature aims to help you better organise your expenditures by allowing you to separate them into disjoint accounts.<br></p>
+</div>
+<div class="paragraph">
+<p>You can add any many accounts as you like:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/acc_add.png" alt="acc add">
+</div>
+<div class="title">Figure 1. Add account</div>
+</div>
+<div class="paragraph">
+<p>View your list of accounts using the command <code>acc list</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/acc_listed.png" alt="acc listed">
+</div>
+<div class="title">Figure 2. List all accounts</div>
+</div>
+<div class="paragraph">
+<p>Switch to a different account using the command, <code>acc checkout ACCOUNT</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/acc_checkout_CCA.png" alt="acc checkout CCA">
+</div>
+<div class="title">Figure 3. Switch account to <code>CCA</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/acc_checkout_Home.png" alt="acc checkout Home">
+</div>
+<div class="title">Figure 4. Switch account to <code>Home</code></div>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#Account commands">Account Commands</a> for more details on commands, including renaming, deletion and clearing of data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="expenditures-jiang-jiahui"><a class="link" href="#expenditures-jiang-jiahui">Expenditures (Jiang Jiahui)</a></h3>
+<div class="paragraph">
+<p>This feature forms the basis of our application. Use it to track your daily expenses!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/exp_list.png" alt="exp list">
+</div>
+<div class="title">Figure 5. Example list of expenditures</div>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#Expenditure commands">Expenditure Commands</a> for more details on how to add, edit, and delete expenditures.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,5 +207,156 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="disjoint-account-jiang-jiahui"><a class="link" href="#disjoint-account-jiang-jiahui">Disjoint Account (Jiang Jiahui)</a></h3>
+<div class="paragraph">
+<p>The disjoint accounts feature aims to help users better organise their expenditures by allowing them to separate the expenditures into different accounts.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:55:34 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="rationale"><a class="link" href="#rationale">Rationale</a></h4>
+<div class="paragraph">
+<p>The user may be involved in different projects or have different roles which require expenditure tracking. Disjoint accounts aim to provide a higher degree of organization than just organising by date or tag.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>Below is a simplified class diagram that shows how the Account class relates to other classes (interfaces not shown).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AccountClassDiagram.png" alt="AccountClassDiagram">
+</div>
+<div class="title">Figure 6. Simplified Account class diagram</div>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#Expenditure-Implementation">Expenditure Implementation</a> and <a href="#Repeat-Implementation">Repeat Implementation</a> for more details on these classes.</p>
+</div>
+<div class="paragraph">
+<p>There are many commands that allow the user to add, delete, rename accounts and so on.
+Below is a sequence diagram that shows how a command to rename an account takes place.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AccountRenameSequenceDiagram.png" alt="AccountRenameSequenceDiagram">
+</div>
+<div class="title">Figure 7. Sequence Diagram for execution of <code>acc rename</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<div class="paragraph">
+<p>This section contains some of our design considerations for the account feature.</p>
+</div>
+<div class="paragraph">
+<p><strong>Consideration:</strong> Storage of expenditures and repeats.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Store expenditures and repeats in the same list.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fewer methods, since we can use the same method to add, edit or delete an expenditure/repeat.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Worse time complexity for some tasks which need to differentiate between expenditures and repeats.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Store expenditures and repeats in separate lists.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Better time complexity for tasks such as calculation of total spending.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There needs to be double the number of getters, setters, methods to add, edit &amp; delete the items.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Consideration:</strong> What to use for the backing list of the ListView UI component.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exposing the repeat and expenditure lists in the accounts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less troublesome when a repeat or expenditure command is executed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More difficult to implement. Every time the active account is changed, the ListView has to be replaced as the backing list cannot be changed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> Maintain a single list in the AccountList class as a backing list of the ListView.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is no ambiguity as to which list is currently being displayed. This is safer as the lists in the accounts cannot be directly modified outside the Account class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More troublesome when a repeat or expenditure command is executed, since both the active account and the list has to be updated.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="expenditure-jiang-jiahui"><a class="link" href="#expenditure-jiang-jiahui">Expenditure (Jiang Jiahui)</a></h3>
+<div class="paragraph">
+<p>This is the most essential and basic feature of the application.</p>
+</div>
+<div class="sect3">
+<h4 id="rationale-2"><a class="link" href="#rationale-2">Rationale</a></h4>
+<div class="paragraph">
+<p>The user can create expenditures to keep track of what they spend on, how much they have spent, and when it happens.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="Expenditure-Implementation"><a class="link" href="#Expenditure-Implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>Below is a class diagram that shows the Expenditure class and how it relates to other classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExpenditureClassDiagram.png" alt="ExpenditureClassDiagram">
+</div>
+<div class="title">Figure 8. Expenditure class diagram</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h4>
+<div class="paragraph">
+<p><strong>Consideration:</strong> Number of tags an expenditure can have</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternatives</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One expenditure can have multiple tags.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More flexibility for the user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More difficult to implement. This also makes it impossible to calculate total spendings for each tag due to possible overlapping.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2. <strong>[current choice]</strong> An expenditure has exactly one tag.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This makes it possible for the user to see total spendings per tag using the <a href="#Report">Report</a> feature.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less flexibility for the user.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:45:04 UTC</div></div></div></body></html>

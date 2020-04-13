@@ -23,7 +23,7 @@
 <li><a href="#repeat-zheng-shaopeng">3.3. Repeat (Zheng Shaopeng)</a></li>
 <li><a href="#budget-lim-feng-yue">3.4. Budget (Lim Feng Yue)</a></li>
 <li><a href="#report-ng-xin-pei">3.5. Report (Ng Xin Pei)</a></li>
-<li><a href="#calendar-zheng-shaopeng">3.6. Calendar (Zheng Shaopeng)</a></li>
+<li><a href="#Calendar">3.6. Calendar (Zheng Shaopeng)</a></li>
 <li><a href="#autocomplete-lim-feng-yue">3.7. Autocomplete (Lim Feng Yue)</a></li>
 <li><a href="#saving-the-data">3.8. Saving the data</a></li>
 </ul>
@@ -36,8 +36,8 @@
 <li><a href="#expenditure-commands">4.4. Expenditure commands</a></li>
 <li><a href="#repeat-commands">4.5. Repeat commands</a></li>
 <li><a href="#setbudget">4.6. Budget setting command: <code>setbudget</code></a></li>
-<li><a href="#cmd-find">4.7. Locating both repeats and normal expenditures by keyword: <code>find</code></a></li>
-<li><a href="#report-commands">4.8. Report commands</a></li>
+<li><a href="#cmd-find">4.7. Search by keyword or tag: <code>find</code></a></li>
+<li><a href="#Report-command">4.8. Report commands</a></li>
 <li><a href="#cmd-exit">4.9. Exiting the program: <code>exit</code></a></li>
 </ul>
 </li>
@@ -46,7 +46,8 @@
 <li><a href="#report-cmd-view">5.1. Viewing expenditures report</a></li>
 <li><a href="#report-cmd-export">5.2. Exporting report: <code>export</code></a></li>
 <li><a href="#report-cmd-print">5.3. Printing report: <code>print</code></a></li>
-<li><a href="#report-cmd-exit">5.4. Exiting the report window: <code>exit</code></a></li>
+<li><a href="#report-cmd-help">5.4. Help: <code>help</code></a></li>
+<li><a href="#report-cmd-exit">5.5. Exiting the report window: <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -138,7 +139,7 @@ autocomplete and auto-saving of data.</p>
 <p>This feature aims to help you better organise your expenditures by allowing you to separate them into disjoint accounts.<br></p>
 </div>
 <div class="paragraph">
-<p>You can add any many accounts as you like:</p>
+<p>You can add any many accounts as you like:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -343,7 +344,7 @@ To meet your budget, your balance have to be positive.
 <h4 id="viewing-budget-from-another-month"><a class="link" href="#viewing-budget-from-another-month">3.4.2. Viewing budget from another month</a></h4>
 <div class="paragraph">
 <p>To view budget from another month, you can use the <a href="#cmd-go"><code>go</code> command</a>, or
-the <a href="#Calendar">[Calendar]</a> feature to view any date of the month.</p>
+the <a href="#Calendar">Calendar</a> feature to view any date of the month.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -393,13 +394,13 @@ in a similar fashion.</p>
 tags.</p>
 </div>
 <div class="paragraph">
-<p>If you are interested to find out more, you can explore <a href="#Report command">Report Command</a>
+<p>If you are interested to find out more, you can explore <a href="#Report-command">Report Command</a>
 to find out how to generate these graphs.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-zheng-shaopeng"><a class="link" href="#calendar-zheng-shaopeng">3.6. Calendar (Zheng Shaopeng)</a></h3>
+<h3 id="Calendar"><a class="link" href="#Calendar">3.6. Calendar (Zheng Shaopeng)</a></h3>
 <div class="paragraph">
 <p>The <em>calendar</em> feature aims to ease users' navigation experience.<br></p>
 </div>
@@ -494,7 +495,7 @@ which is way before or after. Thus, we have integrate the <code>calendar</code> 
 <h3 id="autocomplete-lim-feng-yue"><a class="link" href="#autocomplete-lim-feng-yue">3.7. Autocomplete (Lim Feng Yue)</a></h3>
 <div class="paragraph">
 <p>The <em>Autocomplete</em> feature allows you to complete the basic commands of the
-application. It matches the what you type into the command box and tries to
+application. It matches what you type into the command box and tries to
 complete the command.</p>
 </div>
 <div class="imageblock">
@@ -503,11 +504,11 @@ complete the command.</p>
 </div>
 <div class="title">Figure 25. Autocomplete feature</div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 If no dropdown appear, it means that either: the text does not match any commands,
@@ -519,6 +520,32 @@ or the dropdown is hidden after clicking away.
 <div class="paragraph">
 <p>You can use the <kbd>Up</kbd> or <kbd>Down</kbd> arrow keys to navigate the dropdown, then
 press <kbd>Enter</kbd> to select the command you want to complete.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The existence of the dropdown menu may require you to press <kbd>Enter</kbd> 2 times
+before the command is executed, due to how the autocompletion works.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When pressing <kbd>Down</kbd> arrow key does not allow you to select the commands, it
+means that the text box is not focused. Clear all texts and try again.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -760,7 +787,7 @@ Format: <code>acc rename [OLD_NAME] NEW_NAME</code></p>
 <p><code>OLD_NAME</code> is the name of an already existing account.</p>
 </li>
 <li>
-<p>if <code>OLD_NAME</code> is not specified, the current account will be renamed.</p>
+<p>If <code>OLD_NAME</code> is not specified, the current account will be renamed.</p>
 </li>
 <li>
 <p><code>NEW_NAME</code> should not be the name of an existing account.</p>
@@ -1038,8 +1065,10 @@ Use this command after <code>find</code> to return back to normal daily view.
 <h4 id="repeat-add"><a class="link" href="#repeat-add">4.5.1. Adding a repeated expenditure: <code>repeat add</code></a></h4>
 <div class="paragraph">
 <p>Adds an expenditure that can be repeated.<br>
-Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code><br>
-<strong>Do note that duplicate <code>repeat</code> records are allowed</strong>.</p>
+Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code><br></p>
+</div>
+<div class="paragraph">
+<p><strong>Do note that duplicate <code>repeat</code> records are allowed</strong>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1215,10 +1244,10 @@ Sets the budget of $1000 for the month of March in 2020.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="cmd-find"><a class="link" href="#cmd-find">4.7. Locating both repeats and normal expenditures by keyword: <code>find</code></a></h3>
+<h3 id="cmd-find"><a class="link" href="#cmd-find">4.7. Search by keyword or tag: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Find expenditures (both single and repeated) which contain the keyword(s).<br>
-Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
+<p>Find expenditures (both single and repeated) which contain the keyword(s) <strong>and</strong> the specified tag (if present).<br>
+Format: <code>find [KEYWORD&#8230;&#8203;] [-t TAG]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1259,40 +1288,47 @@ Use <code>exp list</code> to exit from the search results.
 <ul>
 <li>
 <p><code>find rice</code><br>
-Returns <code>Chicken rice</code> and <code>Veg Rice</code>.</p>
+Returns any expenditures or repeats containing <code>rice</code>, e.g. <code>Chicken rice</code> and <code>Veg Rice</code>.</p>
 </li>
 <li>
 <p><code>find Spicy Chicken Rice</code><br>
-Returns any expenditures or repeats having names <code>Spicy</code>, <code>Chicken</code>, or <code>Rice</code>.</p>
+Returns any expenditures or repeats that contains <strong>any one</strong> of the keywords <code>Spicy</code>, <code>Chicken</code>, or <code>Rice</code>.</p>
+</li>
+<li>
+<p><code>find -t Food</code><br>
+Returns all expenditures and repeats with the tag <code>Food</code></p>
+</li>
+<li>
+<p><code>find rice -t Food</code><br>
+Returns all expenditures and repeats that contains the keyword <code>rice</code> <strong>and</strong> has the tag <code>Food</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="report-commands"><a class="link" href="#report-commands">4.8. Report commands</a></h3>
+<h3 id="Report-command"><a class="link" href="#Report-command">4.8. Report commands</a></h3>
 <div class="paragraph">
-<p>This section will talk about how to use the report feature. Before we begin
-with the details of the command, here are some things to note :</p>
+<p>This section will talk about how you can use report feature. Before we begin
+with the details of the command, here are some tips:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Before beginning this section, you can refer to <a href="#Report">Report Feature</a> to look
+<p>Before beginning this section, you can refer to <a href="#report-ng-xin-pei">Report</a> to look
 at how the reports will look like and how to read it.</p>
 </li>
 <li>
-<p>If there is huge difference in expenditure amount, using a Bar chart
+<p>If there is a huge difference in expenditure amounts, using a Bar chart
 will be better as overlaps might occur for Pie chart.</p>
 </li>
 <li>
 <p>For best usage, keep start date and end date to be <strong>within 12 months</strong> for reports generated by months.
-Similarly, keep number of tags to be <strong>within 12</strong> for reports generated by tags.  As it is possible that not all months or
+Similarly, keep number of tags to be <strong>within 12</strong> for reports generated by tags. It is possible that not all months or
 tags will be displayed, if start and end date exceeds
 12 months or tags exceed 12.</p>
 </li>
 <li>
-<p>For best usage, send report for printing only after the previous print job is done. As
-sending multiple print jobs in a short period of time can cause print jobs to be lost.</p>
+<p>Do read the NOTE section in the command, if any.</p>
 </li>
 </ol>
 </div>
@@ -1319,12 +1355,31 @@ start date to end date.</p>
 <p><code>END_DATE</code> is the date from which the report will stop generating.</p>
 </li>
 <li>
-<p><code>GRAPH_TYPE</code> is the type of the graph you want to generate. It can be either
-<code>bar</code> or <code>pie</code>. They represent a bar chart and a pie
-chart respectively.</p>
+<p><code>GRAPH_TYPE</code> is the type of the graph you want to generate. Possible values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bar</code>: bar graph</p>
 </li>
 <li>
-<p><code>ORGANISATION</code> is how the expenditures will be grouped when generating the graph.</p>
+<p><code>pie</code>: pie chart</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>ORGANISATION</code> is how the expenditures will be grouped when generating the graph.
+Possible values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag</code>: organised by tags</p>
+</li>
+<li>
+<p><code>month</code>: organised by months</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1358,7 +1413,7 @@ chart respectively.</p>
 <ul>
 <li>
 <p>Exports the report of a graph type populated with expenditure data from
-start date to end date into Report folder with the file&#8217;s name specified by user.</p>
+start date to end date into Report folder with file&#8217;s name being FILE_NAME.</p>
 </li>
 <li>
 <p><code>START_DATE</code> is the date from which the report will start generating from.</p>
@@ -1367,19 +1422,52 @@ start date to end date into Report folder with the file&#8217;s name specified b
 <p><code>END_DATE</code> is the date from which the report will stop generating.</p>
 </li>
 <li>
-<p><code>GRAPH_TYPE</code> is the type of the graph you want to generate. It can be either
-<code>bar</code> or <code>pie</code>. They represent a bar chart and a pie
-chart respectively.</p>
+<p><code>GRAPH_TYPE</code> is the type of the graph you want to generate. Possible values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bar</code>: bar graph</p>
 </li>
 <li>
-<p><code>ORGANISATION</code> is how the expenditures will be grouped when generating the graph.</p>
+<p><code>pie</code>: pie chart</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><code>FILE_NAME</code> is the name of exported file. File name should not contain whitespace.</p>
+<p><code>ORGANISATION</code> is how the expenditures will be grouped when generating the graph.
+Possible values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag</code>: organised by tags</p>
+</li>
+<li>
+<p><code>month</code>: organised by months</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>FILE_NAME</code> will be the name of the file.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The exported file will be located at the same directory of the application, under
+the <code>Report</code> folder. The file can be identified by <code>FILE_NAME.png</code> whereby
+<code>FILE_NAME</code> is specified by your input in the command.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1387,7 +1475,7 @@ chart respectively.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>report export -sd 2020-03-01 -ed 2020-03-31 -g pie -o tag -f Hello</code></p>
+<p><code>report export -sd 2020-03-01 -ed 2020-03-31 -g pie -o tag -f hello</code></p>
 </li>
 <li>
 <p><code>report export -sd 2020-03-01 -ed 2020-03-31 -g bar -o month -f report</code></p>
@@ -1418,6 +1506,19 @@ start date to an end date.</p>
 </div>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For best usage, avoid sending multiple print jobs in short period of time. This prevents
+the print jobs from getting lost.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -1446,7 +1547,29 @@ Format: <code>exit</code></p>
 <h2 id="report-commands"><a class="link" href="#report-commands">5. Report Window Commands</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>These are the commands to be executed in the report window.</p>
+<p>These are the commands to be executed in the report window. Before we begin
+with the details of the command, here are some tips:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Before beginning this section, you can refer to <a href="#report-ng-xin-pei">Report</a> to look
+at how the reports will look like and how to read it.</p>
+</li>
+<li>
+<p>If there is huge difference in expenditure amount, using a Bar chart
+will be better as overlaps might occur for Pie chart.</p>
+</li>
+<li>
+<p>For best usage, keep start date and end date to be <strong>within 12 months</strong> for reports generated by months.
+Similarly, keep number of tags to be <strong>within 12</strong> for reports generated by tags. It is possible that not all months or
+tags will be displayed, if start and end date exceeds
+12 months or tags exceed 12.</p>
+</li>
+<li>
+<p>Do read the NOTE section in the command, if any.</p>
+</li>
+</ol>
 </div>
 <div class="sect2">
 <h3 id="report-cmd-view"><a class="link" href="#report-cmd-view">5.1. Viewing expenditures report</a></h3>
@@ -1481,12 +1604,31 @@ a start date to an end date.</p>
 <p><code>END_DATE</code> is the date from which the report will stop generating.</p>
 </li>
 <li>
-<p><code>GRAPH_TYPE</code> is the type of the graph you want to generate. It can be either
-<code>bar</code> or <code>pie</code>. They represent a bar chart and a pie
-char respectively.</p>
+<p><code>GRAPH_TYPE</code> is the type of the graph you want to generate. Possible values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bar</code>: bar graph</p>
 </li>
 <li>
-<p><code>ORGANISATION</code> is how the expenditures will be grouped when generating the graph.</p>
+<p><code>pie</code>: pie chart</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>ORGANISATION</code> is how the expenditures will be grouped when generating the graph.
+Possible values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag</code>: organised by tags</p>
+</li>
+<li>
+<p><code>month</code>: organised by months</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1510,7 +1652,7 @@ char respectively.</p>
 <h3 id="report-cmd-export"><a class="link" href="#report-cmd-export">5.2. Exporting report: <code>export</code></a></h3>
 <div class="paragraph">
 <p>Exports the current report shown in the report window.<br>
-Format: `export FILE_NAME `</p>
+Format: <code>export FILE_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1520,11 +1662,25 @@ Format: `export FILE_NAME `</p>
 <p>Exports the report to Report folder with file&#8217;s name specified by user</p>
 </li>
 <li>
-<p><code>FILE_NAME</code> is the name of exported file. File name should not contain whitespace.</p>
+<p><code>FILE_NAME</code>  will be the name of the file.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The exported file will be located at the same directory of the application, under
+the <code>Report</code> folder. The file can be identified by <code>FILE_NAME.png</code> whereby
+<code>FILE_NAME</code> is specified by your input in the command.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1533,9 +1689,29 @@ Format: `export FILE_NAME `</p>
 <p>Prints the current report shown on the report window.<br>
 Format: <code>print</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For best usage, avoid sending multiple print jobs in short period of time. This prevents
+the print jobs from getting lost.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="report-cmd-exit"><a class="link" href="#report-cmd-exit">5.4. Exiting the report window: <code>exit</code></a></h3>
+<h3 id="report-cmd-help"><a class="link" href="#report-cmd-help">5.4. Help: <code>help</code></a></h3>
+<div class="paragraph">
+<p>Shows the user the commands they can enter.<br>
+Format" <code>help</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="report-cmd-exit"><a class="link" href="#report-cmd-exit">5.5. Exiting the report window: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the report window.<br>
 Format: <code>exit</code></p>
@@ -1626,8 +1802,12 @@ Format: <code>exit</code></p>
 e.g <code>go 2020-04-01</code></p>
 </li>
 <li>
-<p><a href="#cmd-find"><strong>find</strong></a> : <code>find [KEYWORD&#8230;&#8203;]</code><br>
+<p><a href="#cmd-find"><strong>find</strong></a> : <code>find [KEYWORD&#8230;&#8203;] [-t TAG]</code><br>
 e.g. <code>find chicken rice</code></p>
+</li>
+<li>
+<p><a href="#setbudget"><strong>setbudget</strong></a> : <code>setbudget -a AMOUNT [-ym YEAR_MONTH]</code><br>
+e.g <code>setbudget -a 1000 -ym 2020-04</code></p>
 </li>
 <li>
 <p><a href="#cmd-exit"><strong>exit</strong></a> : <code>exit</code></p>
@@ -1647,7 +1827,7 @@ e.g. <code>acc add Personal</code></p>
 <p><a href="#acc-list"><strong>acc list</strong></a> : <code>acc list</code><br></p>
 </li>
 <li>
-<p><a href="#acc-rename"><strong>acc rename</strong></a> : <code>acc rename OLD_NAME NEW_NAME</code><br>
+<p><a href="#acc-rename"><strong>acc rename</strong></a> : <code>acc rename [OLD_NAME] NEW_NAME</code><br>
 e.g. <code>acc rename Personal non-personal</code></p>
 </li>
 <li>
@@ -1668,10 +1848,6 @@ e.g. <code>acc delete Personal</code></p>
 <h3 id="expenditure-operations"><a class="link" href="#expenditure-operations">7.4. Expenditure Operations</a></h3>
 <div class="ulist">
 <ul>
-<li>
-<p><a href="#exp-setbudget"><strong>exp setbudget</strong></a> : <code>exp setbudget -a AMOUNT [-ym YEAR_MONTH]</code><br>
-e.g <code>setbudget -a 1000 -ym 2020-04</code></p>
-</li>
 <li>
 <p><a href="#exp-add"><strong>exp add</strong></a> : <code>exp add -i INFO -a AMOUNT [-t TAG] [-d DATE]</code><br>
 e.g <code>exp add -i chicken rice -a 3.50 -t meal -d 2020-04-01</code></p>
@@ -1705,6 +1881,11 @@ e.g <code>repeat edit 2 -a 1.20 -ed 2020-04-02</code></p>
 <li>
 <p><a href="#repeat-delete"><strong>repeat delete</strong></a> : <code>repeat delete INDEX</code><br>
 e.g <code>repeat delete INDEX</code></p>
+<div class="literalblock">
+<div class="content">
+<pre>Note: PERIOD = daily | weekly | monthly | annually</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -1723,7 +1904,14 @@ e.g. <code>report export -sd 2020-03-01 -ed 2020-03-31 -g pie -o month -f hello<
 </li>
 <li>
 <p><a href="#report-print"><strong>report print</strong></a> : <code>report print -sd START_DATE -ed END_DATE -g GRAPH_TYPE -o ORGANISATION</code><br>
-e.g. <code>report export -sd 2020-03-01 -ed 2020-03-31 -g bar -o tag</code></p>
+e.g. <code>report print -sd 2020-03-01 -ed 2020-03-31 -g bar -o tag</code></p>
+<div class="literalblock">
+<div class="content">
+<pre>Note:
+GRAPH_TYPE = pie | bar
+ORGANISATION = tag | month</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -1743,6 +1931,13 @@ e.g. <code>export hello</code></p>
 <li>
 <p><a href="#report-cmd-print"><strong>report print <em>equivalence</em></strong></a> : <code>print</code><br>
 e.g. <code>print</code></p>
+<div class="literalblock">
+<div class="content">
+<pre>Note:
+GRAPH_TYPE = pie | bar
+ORGANISATION = tag | month</pre>
+</div>
+</div>
 </li>
 <li>
 <p><a href="#report-cmd-exit"><strong>exit</strong></a> : <code>exit</code><br>
@@ -1752,4 +1947,4 @@ e.g. <code>exit</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:55:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:45:04 UTC</div></div></div></body></html>

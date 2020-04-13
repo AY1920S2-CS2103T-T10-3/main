@@ -694,6 +694,31 @@ Format: <code>exit</code></p>
 </tr>
 </tbody>
 </table>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReportUIClassDiagram.png" alt="ReportUIClassDiagram">
+</div>
+<div class="title">Figure 3. Structure of the Report UI Component</div>
+</div>
+<div class="paragraph">
+<p>The Report UI consists of a <code>ReportWindow</code> that is made up of parts e.g. <code>ReportCommandBox</code> and <code>Result Display</code> etc.
+The <code>ReportWindow</code> and <code>ReportCommandBox</code>, inherit from abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Report UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu/saveit/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/saveit/ui"><code>ReportWindow.java</code></a>.
+Layout of <code>ReportCommandBox</code> is defined in the matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder.
+For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/saveit/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="{repoURL}https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Report UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+</ul>
+</div>
 <div class="sect2">
 <h3 id="report-ng-xinpei"><a class="link" href="#report-ng-xinpei">Report (Ng Xinpei)</a></h3>
 <div class="paragraph">
@@ -729,7 +754,7 @@ depending on which of the 3 commands: <code>report view</code>, <code>report pri
 <div class="content">
 <img src="../images/ReportViewCreation.png" alt="ReportViewCreation">
 </div>
-<div class="title">Figure 3. Sequence Diagram for View Report Command Creation</div>
+<div class="title">Figure 4. Sequence Diagram for View Report Command Creation</div>
 </div>
 <div class="paragraph">
 <p>If a valid  <code>report view</code> command was input, the <em>ViewReportCommandParser</em> will parse the input and convert the Strings :
@@ -754,7 +779,7 @@ These objects are used to create the  <em>ViewReportCommand</em> object. The fig
 <div class="content">
 <img src="../images/ReportViewExecution.png" alt="ReportViewExecution">
 </div>
-<div class="title">Figure 4. Sequence Diagram for View Report Command Execution</div>
+<div class="title">Figure 5. Sequence Diagram for View Report Command Execution</div>
 </div>
 <div class="paragraph">
 <p>The <em>ViewReportCommand</em> object will be executed.
@@ -800,7 +825,7 @@ The result of execution will be exporting a PNG version of the report into your 
 <div class="content">
 <img src="../images/Report_MainWindow_.png" alt="Report MainWindow ">
 </div>
-<div class="title">Figure 5. Activity Diagram for Report in Main Window</div>
+<div class="title">Figure 6. Activity Diagram for Report in Main Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram summarises what can happen when user
@@ -820,7 +845,7 @@ enter a <code>report</code> command in the <strong>Main Window</strong></p>
 <div class="content">
 <img src="../images/Report_ReportWindow_.png" alt="Report ReportWindow ">
 </div>
-<div class="title">Figure 6. Activity Diagram for Report Window</div>
+<div class="title">Figure 7. Activity Diagram for Report Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram shows what can happen when users enter in a new command
@@ -890,32 +915,7 @@ to avoid sending multiple print jobs in a short interval.</p>
 </li>
 </ol>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ReportUIClassDiagram.png" alt="ReportUIClassDiagram">
-</div>
-<div class="title">Figure 7. Structure of the Report UI Component</div>
-</div>
-<div class="paragraph">
-<p>The Report UI consists of a <code>ReportWindow</code> that is made up of parts e.g. <code>ReportCommandBox</code> and <code>Result Display</code> etc.
-The <code>ReportWindow</code> and <code>ReportCommandBox</code>, inherit from abstract <code>UiPart</code> class.</p>
-</div>
-<div class="paragraph">
-<p>The <code>Report UI</code> component uses JavaFx UI framework. Layout of <code>ReportWindow</code> is defined in <code>.java</code> file that is in the <code>src/main/java/seedu/saveit/ui</code> folder. For example the layout of <code>ReportWindow</code> is specified in <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/tree/v1.3/src/main/java/seedu/saveit/ui"><code>ReportWindow.java</code></a>.
-Layout of <code>ReportCommandBox</code> is defined in the matching <code>.fxml</code> file that is in the <code>src/main/resources/view</code> folder.
-For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/java/seedu/saveit/ui/ReportCommandBox.java"><code>ReportCommandBox</code></a> is specified in <a href="{repoURL}https://github.com/AY1920S2-CS2103T-T10-3/main/blob/v1.3/src/main/resources/view/ReportCommandBox.fxml"><code>ReportCommandBox.fxml</code></a>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>Report UI</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:16:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:23:09 UTC</div></div></div></body></html>

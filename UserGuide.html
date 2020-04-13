@@ -50,18 +50,18 @@
 <li><a href="#report-cmd-exit">5.5. Exiting the report window: <code>exit</code></a></li>
 </ul>
 </li>
-<li><a href="#faq">6. FAQ</a></li>
-<li><a href="#command-summary">7. Command Summary</a>
+<li><a href="#command-summary">6. Command Summary</a>
 <ul class="sectlevel2">
-<li><a href="#prefix-notation">7.1. Prefix Notation</a></li>
-<li><a href="#general-operations">7.2. General Operations</a></li>
-<li><a href="#account-operations">7.3. Account Operations</a></li>
-<li><a href="#expenditure-operations">7.4. Expenditure Operations</a></li>
-<li><a href="#repeat-operations">7.5. Repeat Operations</a></li>
-<li><a href="#report-main-window-operations">7.6. Report (Main Window) Operations</a></li>
-<li><a href="#report-report-window-operations">7.7. Report (Report Window) Operations</a></li>
+<li><a href="#prefix-notation">6.1. Prefix Notation</a></li>
+<li><a href="#general-operations">6.2. General Operations</a></li>
+<li><a href="#account-operations">6.3. Account Operations</a></li>
+<li><a href="#expenditure-operations">6.4. Expenditure Operations</a></li>
+<li><a href="#repeat-operations">6.5. Repeat Operations</a></li>
+<li><a href="#report-main-window-operations">6.6. Report (Main Window) Operations</a></li>
+<li><a href="#report-report-window-operations">6.7. Report (Report Window) Operations</a></li>
 </ul>
 </li>
+<li><a href="#faq">7. FAQ</a></li>
 </ul>
 </div>
 </div>
@@ -593,7 +593,10 @@ commands have options, an example is deleting an expenditure, <code>exp delete 1
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Refer to <a href="#prefix-notation">Section 7.1, &#8220;Prefix Notation&#8221;</a> for what each prefix means.
+Refer to <a href="#prefix-notation">Section 6.1, &#8220;Prefix Notation&#8221;</a> for what each prefix means.
+Only the last valid prefix will be taken into account.
+E.g. <code>exp add -i chicken rice -a 3.5 -a 4.0</code>. The new expenditure record will have an amount fo 4.0 instead of 3.5.
+<strong>This applies to all other command</strong>.
 </td>
 </tr>
 </table>
@@ -1159,6 +1162,10 @@ Edits the information of the repeated expenditure with index <code>2</code> to <
 Edits the interval for the repeated expenditure with index <code>3</code> to weekly and
 ends at 2 July 2020.</p>
 </li>
+<li>
+<p>`repeat edit 3 -ed 2021-07-3"
+Edit the end date for the repeated expenditure, this allows user to extend or shorten the whole duration.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -1720,19 +1727,10 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">6. FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous $AVE IT folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">7. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="prefix-notation"><a class="link" href="#prefix-notation">7.1. Prefix Notation</a></h3>
+<h3 id="prefix-notation"><a class="link" href="#prefix-notation">6.1. Prefix Notation</a></h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 50%;">
@@ -1791,7 +1789,7 @@ Format: <code>exit</code></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="general-operations"><a class="link" href="#general-operations">7.2. General Operations</a></h3>
+<h3 id="general-operations"><a class="link" href="#general-operations">6.2. General Operations</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1816,7 +1814,7 @@ e.g <code>setbudget -a 1000 -ym 2020-04</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="account-operations"><a class="link" href="#account-operations">7.3. Account Operations</a></h3>
+<h3 id="account-operations"><a class="link" href="#account-operations">6.3. Account Operations</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1845,7 +1843,7 @@ e.g. <code>acc delete Personal</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="expenditure-operations"><a class="link" href="#expenditure-operations">7.4. Expenditure Operations</a></h3>
+<h3 id="expenditure-operations"><a class="link" href="#expenditure-operations">6.4. Expenditure Operations</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1867,7 +1865,7 @@ e.g <code>exp delete 1</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="repeat-operations"><a class="link" href="#repeat-operations">7.5. Repeat Operations</a></h3>
+<h3 id="repeat-operations"><a class="link" href="#repeat-operations">6.5. Repeat Operations</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1891,7 +1889,7 @@ e.g <code>repeat delete INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="report-main-window-operations"><a class="link" href="#report-main-window-operations">7.6. Report (Main Window) Operations</a></h3>
+<h3 id="report-main-window-operations"><a class="link" href="#report-main-window-operations">6.6. Report (Main Window) Operations</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1917,7 +1915,7 @@ ORGANISATION = tag | month</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="report-report-window-operations"><a class="link" href="#report-report-window-operations">7.7. Report (Report Window) Operations</a></h3>
+<h3 id="report-report-window-operations"><a class="link" href="#report-report-window-operations">6.7. Report (Report Window) Operations</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1947,4 +1945,13 @@ e.g. <code>exit</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:54:21 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">7. FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous $AVE IT folder.</p>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:11:35 UTC</div></div></div></body></html>

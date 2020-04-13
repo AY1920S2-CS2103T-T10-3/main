@@ -62,6 +62,14 @@
 <li><a href="#general-command-test">F.6. General command test</a></li>
 </ul>
 </li>
+<li><a href="#effort-ng-xinpei">Appendix G: Effort (Ng Xinpei)</a>
+<ul class="sectlevel2">
+<li><a href="#entities">G.1. Entities</a></li>
+<li><a href="#ui">G.2. UI</a></li>
+<li><a href="#features">G.3. Features</a></li>
+<li><a href="#others">G.4. Others</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -3064,4 +3072,52 @@ Expected: <code>$AVEIT</code> will terminate.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:14:09 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="effort-ng-xinpei"><a class="link" href="#effort-ng-xinpei">Appendix G: Effort (Ng Xinpei)</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To date, our application has 13kLOC combined. This meant that
+much coordination was needed between all of the team members.
+The COVID-19 situation has made communication tougher, however we
+managed to do online Skype calls routinely which improved coordination
+efforts.</p>
+</div>
+<div class="sect2">
+<h3 id="entities"><a class="link" href="#entities">G.1. Entities</a></h3>
+<div class="paragraph">
+<p><code>AB3</code> contains and deals mainly with the <code>Person</code> entity only. However,
+in <code>$AVE IT</code>, there are multiple entities such as <code>Expenditure</code>, <code>Repeat</code>
+<code>Account</code> and <code>Report</code> that are required. While we managed to refactor some code
+from <code>AB3</code> , for example changing <code>Person</code> from <code>AB3</code> to <code>Expenditure</code> in <code>$AVE It</code> we
+had to create the other entities from scratch.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ui"><a class="link" href="#ui">G.2. UI</a></h3>
+<div class="paragraph">
+<p><code>AB3</code> only has one list panel view whereas <code>$AVE UT</code> boosts a calendar view and budget
+view on top of the list panel. Furthermore, an additional pop out window, Report Window is
+also added. This meant that much work was required to change <code>AB3</code> 's UI to the current UI
+we have. On top of that, we also needed in new UI components that are not present in <code>AB3</code>
+such as the <code>calendar</code> UI. Our UI is time sensitive ,meaning that when users open the app
+it will automatically show today&#8217;s date as well list panel of expenditures. This made implementation
+more challenging as we had to ensure that our UI responds to changes in timing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features"><a class="link" href="#features">G.3. Features</a></h3>
+<div class="paragraph">
+<p>On top of <code>AB3&#8217;s feature such as `adding</code> and <code>editing</code> an entity, we have implemented
+additional features such as <code>acc checkout</code> , <code>report export</code> and <code>go today</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="others"><a class="link" href="#others">G.4. Others</a></h3>
+<div class="paragraph">
+<p>Throughout the whole process, the team has ensured that we maintained
+high level of code quality through the usage of CI.</p>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:02:06 UTC</div></div></div></body></html>

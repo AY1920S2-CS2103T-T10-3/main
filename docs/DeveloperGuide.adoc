@@ -1115,7 +1115,7 @@ Use case ends.
 
 1.  User requests to set a budget for a given month in the account which they are viewing right now. +
 Format: `setbudget -a AMOUNT [-ym YEAR_MONTH]`
-2.  `$AVE IT` will acknowledge, budget view will be updated correspondingly.
+2.  `$AVE IT` will acknowledge.
 +
 
 Use case ends.
@@ -1413,15 +1413,6 @@ The date input must be valid.
 .. Test case: `go 2020-03-11` +
 Expected: We are at : 2020-03-11.
 
-==== Set Budget
-.. Test case: `setbudget -a 1000` +
-Assuming the active date is `2020-04-01` +
-Expected: The budget for the April 2020 will be set to 1000. The budget view will be updated with
-correspond values.
-.. Test case: `setbudget -a 1000 -ym 2020-01` +
-Expected: The budget for the January 2020 will be set to 1000. The budget view will be updated with
-correspond values.
-
 ==== Find
 .. Test case: 'find rice' +
 Expected: Will enter find mode: Expenditure and repeat records which contain `rice` will be shown. +
@@ -1440,7 +1431,7 @@ Expected: `$AVEIT` will terminate.
 [appendix]
 == Effort (Ng Xinpei)
 
-To date, our application has about 13kLOC. This meant that
+To date, our application has 13kLOC combined. This meant that
 much coordination was needed between all of the team members.
 The COVID-19 situation has made communication tougher, however we
 managed to do online Skype calls routinely which improved coordination
@@ -1468,8 +1459,7 @@ additional features such as `acc checkout` , `report export` and `go today`.
 
 === Others
 Throughout the whole process, the team has ensured that we maintained
-high level of code quality through the usage of Continuous Integration(CI) tools such as
-Travis.
+high level of code quality through the usage of CI.
 
 
 

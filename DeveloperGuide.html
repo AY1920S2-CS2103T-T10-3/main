@@ -2872,8 +2872,8 @@ The command input must be in the right format.<br>
 The end date must be equal or after the start date.</p>
 </li>
 <li>
-<p>Test case: <code>repeat add -i bus far -a 1.50 -sd 2020-01-01 -ed 2021-01-01 -p daily -t Transport</code><br>
-Expected: New repeat added: bus far Amount: 1.50 Start Date: 2020-01-01 End Date: 2021-01-01 Interval: daily Tags: Transport.
+<p>Test case: <code>repeat add -i bus fare -a 1.50 -sd 2020-01-01 -ed 2021-01-01 -p daily -t Transport</code><br>
+Expected: New repeat added: bus fare Amount: 1.50 Start Date: 2020-01-01 End Date: 2021-01-01 Interval: daily Tags: Transport.
 will be added to current date (For this test case: current date is set to 2020-04-12").</p>
 </li>
 </ol>
@@ -2889,7 +2889,7 @@ The index provided must be valid and it is an <code>repeat</code> record.</p>
 </li>
 <li>
 <p>Test case: <code>repeat delete 1</code>
-Expected: Deleted Repeat: bus far Amount: 1.50 Start Date: 2020-01-01 End Date: 2021-01-01 Interval: daily Tags: Transport.</p>
+Expected: Deleted Repeat: bus fare Amount: 1.50 Start Date: 2020-01-01 End Date: 2021-01-01 Interval: daily Tags: Transport.</p>
 </li>
 </ol>
 </div>
@@ -2904,7 +2904,7 @@ The command input must be valid, index provided must be refer to an <code>repeat
 </li>
 <li>
 <p>Test case: <code>repeat edit 2 -sd 2020-04-01 -ed 2020-05-01</code><br>
-Expected: Edited Repeat: bus far Amount: 1.50 Start Date: 2020-04-01 End Date: 2020-05-01 Interval: daily Tags: Transport.</p>
+Expected: Edited Repeat: bus fare Amount: 1.50 Start Date: 2020-04-01 End Date: 2020-05-01 Interval: daily Tags: Transport.</p>
 </li>
 </ol>
 </div>
@@ -3001,6 +3001,20 @@ printed. If all months have zero dollar
 spending, then an empty Pie Chart will be printed.</p>
 </li>
 </ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The window may be unresponsive if the default printer is not set up,
+this will last for a few seconds. Eventually, a response stating "Set available printer as default printer before printing"
+will be given.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
@@ -3142,4 +3156,4 @@ Travis.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:04:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:16:25 UTC</div></div></div></body></html>

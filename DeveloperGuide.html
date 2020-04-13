@@ -1256,7 +1256,7 @@ performance is not required.</p>
 <p>has a need to manage expenditure</p>
 </li>
 <li>
-<p>prefer desktop apps over other types</p>
+<p>prefers desktop apps over other types</p>
 </li>
 <li>
 <p>can type fast</p>
@@ -1270,7 +1270,8 @@ performance is not required.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage expenditure faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: manage expenditures faster than a typical mouse/GUI driven app<br>
+&amp; better organise them using disjoint accounts.</p>
 </div>
 </div>
 </div>
@@ -1543,7 +1544,7 @@ performance is not required.</p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that account is non-existent.</p>
+<p>1b. <code>$AVE IT</code> detects that the account with <code>OLD_NAME</code> is non-existent.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1556,11 +1557,11 @@ performance is not required.</p>
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects existence of account with "new name".</p>
+<p>1c. <code>$AVE IT</code> detects existence of account with <code>NEW_NAME</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1c1. <code>$AVE IT</code> will state that duplicate account name detected. Unable to add.</p>
+<p>1c1. <code>$AVE IT</code> will state that a duplicate account was detected. Unable to add.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -1577,7 +1578,7 @@ performance is not required.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to check out to another account. Format: <code>acc checkout ACCOUNT</code></p>
+<p>User requests to check out another account. Format: <code>acc checkout ACCOUNT</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and state that the target account is checked out.</p>
@@ -1606,7 +1607,7 @@ performance is not required.</p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that account is non-existent.</p>
+<p>1b. <code>$AVE IT</code> detects that the account is non-existent.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1667,7 +1668,7 @@ performance is not required.</p>
 <p>User requests to clear all data in an account. Format: <code>acc clear</code></p>
 </li>
 <li>
-<p><code>$AVE IT</code> will acknowledge and state that the account&#8217;s data has been cleared'.</p>
+<p><code>$AVE IT</code> will acknowledge and state that the account&#8217;s data has been cleared.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1685,19 +1686,6 @@ performance is not required.</p>
 <ul>
 <li>
 <p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
-</li>
-<li>
-<p>Use case resumes in step 1.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1b. <code>$AVE IT</code> detects that account is non-existent.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1b1. <code>$AVE IT</code> will state that the account with the specified name was not found.</p>
 </li>
 <li>
 <p>Use case resumes in step 1.</p>
@@ -1744,11 +1732,11 @@ Format: <code>exp add -i INFO -a AMOUNT [-t TAG] [-d DATE]</code></p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the amount input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+<p>1b1. <code>$AVE IT</code> will request for the amount to be a double.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -1757,7 +1745,7 @@ Format: <code>exp add -i INFO -a AMOUNT [-t TAG] [-d DATE]</code></p>
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that tag is not specified.</p>
+<p>1c. <code>$AVE IT</code> detects that the tag is not specified.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1827,7 +1815,7 @@ Format: <code>exp delete INDEX</code></p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that index provided is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the index provided is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1878,11 +1866,11 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the amount input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+<p>1b1. <code>$AVE IT</code> will request for the amount to be a double.</p>
 </li>
 <li>
 <p>Use case resumes in step 1.</p>
@@ -1891,7 +1879,7 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that date input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that the date input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1904,7 +1892,7 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 </div>
 </li>
 <li>
-<p>1d. <code>$AVE IT</code> detects that index provided is invalid.</p>
+<p>1d. <code>$AVE IT</code> detects that the index provided is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1929,7 +1917,7 @@ Format: <code>exp edit INDEX [-i INFO] [-a AMOUNT] [-t TAG] [-d DATE]</code></p>
 Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD [-t TAG]</code></p>
 </li>
 <li>
-<p><code>$AVE IT</code> will acknowledge.</p>
+<p><code>$AVE IT</code> will acknowledge that a new repeat has been added and show the details of the added repeat.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1955,11 +1943,11 @@ Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the amount input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+<p>1b1. <code>$AVE IT</code> will request for the amount to be a double.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -1968,7 +1956,7 @@ Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that the start date or end date input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1981,11 +1969,11 @@ Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD
 </div>
 </li>
 <li>
-<p>1d. <code>$AVE IT</code> detects that period input is invalid.</p>
+<p>1d. <code>$AVE IT</code> detects that the period input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1d1. <code>$AVE IT</code> will request period to be <code>daily</code>, <code>weekly</code>, <code>monthly</code> and <code>annually</code>.</p>
+<p>1d1. <code>$AVE IT</code> will request for the period to be <code>daily</code>, <code>weekly</code>, <code>monthly</code> or <code>annually</code>.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -1994,14 +1982,14 @@ Format: <code>repeat add -i INFO -a AMOUNT -sd START_DATE -ed END_DATE -p PERIOD
 </div>
 </li>
 <li>
-<p>1e. <code>$AVE IT</code> detects that tag input is unspecified.</p>
+<p>1e. <code>$AVE IT</code> detects that the tag is not specified.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>1e1. <code>$AVE IT</code> will auto assign it to be <code>Others</code></p>
 </li>
 <li>
-<p>1e2. <code>$AVE IT</code> will acknowledge.</p>
+<p>1e2. <code>$AVE IT</code> will acknowledge that a new repeat has been added and show the details of the added repeat.</p>
 </li>
 <li>
 <p>Use case ends.</p>
@@ -2048,11 +2036,11 @@ Format: <code>repeat delete INDEX</code></p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that index input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the index input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will state that the expenditure index provided is invalid.</p>
+<p>1b1. <code>$AVE IT</code> will state that the repeat index provided is invalid.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -2099,11 +2087,11 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the amount input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+<p>1b1. <code>$AVE IT</code> will request for the amount to be a double.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -2112,7 +2100,7 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that the start date or end date input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2125,11 +2113,11 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 </div>
 </li>
 <li>
-<p>1d. <code>$AVE IT</code> detects that period input is invalid.</p>
+<p>1d. <code>$AVE IT</code> detects that the period input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1d1. <code>$AVE IT</code> will request period to be <code>daily</code>, <code>weekly</code>, <code>monthly</code> and <code>annually</code>.</p>
+<p>1d1. <code>$AVE IT</code> will request for the period to be <code>daily</code>, <code>weekly</code>, <code>monthly</code> and <code>annually</code>.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -2138,17 +2126,17 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 </div>
 </li>
 <li>
-<p>1e. <code>$AVE IT</code> detects that index input is invalid.</p>
+<p>1e. <code>$AVE IT</code> detects that the index input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1e1. <code>$AVE IT</code> will state that the expenditure index provided is invalid.</p>
+<p>1e1. <code>$AVE IT</code> will state that the repeat index provided is invalid.</p>
 </li>
 <li>
 <p>1e2. Back to step 1.</p>
 </li>
 <li>
-<p>use case end.</p>
+<p>Use case ends.</p>
 </li>
 </ul>
 </div>
@@ -2162,8 +2150,8 @@ Format: <code>repeat edit INDEX [-i INFO] [-a AMOUNT] [-sd START_DATE] [-ed END_
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to view a report of expenditure record in the account which they are viewing right now.<br>
-Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISATION</code></p>
+<p>User requests to view a report of expenditure records in the account which they are viewing right now.<br>
+Format: <code>report view -sd START_DATE -ed END_DATE -g GRAPH_TYPE -o ORGANISATION</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and pop up another window to show the relevant report.</p>
@@ -2192,7 +2180,7 @@ Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISAT
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the start date or end date input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2205,7 +2193,7 @@ Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISAT
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that graph type input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that the graph type input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2215,7 +2203,7 @@ Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISAT
 <p>Use case resumes from step 1.</p>
 </li>
 <li>
-<p>1d. <code>$AVE IT</code> detects that organisation input is invalid.</p>
+<p>1d. <code>$AVE IT</code> detects that the organisation input is invalid.</p>
 </li>
 <li>
 <p>1d1. <code>$AVE IT</code> will request a valid organisation.</p>
@@ -2235,8 +2223,8 @@ Format: <code>report view -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISAT
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to export a report of expenditure record in the account which they are viewing right now.<br>
-Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANISATION -f FILE_NAME</code></p>
+<p>User requests to export a report of expenditure records in the account which they are viewing right now.<br>
+Format: <code>report export -sd START_DATE -ed END_DATE -g GRAPH_TYPE -o ORGANISATION -f FILE_NAME</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and export the report to the folder which has same location as <code>$AVE IT</code>.</p>
@@ -2284,7 +2272,7 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANIS
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that graph type input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that the graph type input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2294,7 +2282,7 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANIS
 <p>Use case resumes from step 1.</p>
 </li>
 <li>
-<p>1d. <code>$AVE IT</code> detects that organisation input is invalid.</p>
+<p>1d. <code>$AVE IT</code> detects that the organisation input is invalid.</p>
 </li>
 <li>
 <p>1d1. <code>$AVE IT</code> will request a valid organisation.</p>
@@ -2352,7 +2340,7 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANIS
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that start date or end date input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the start date or end date input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2365,7 +2353,7 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANIS
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that graph type input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that the graph type input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2375,7 +2363,7 @@ Format: <code>report export -g GRAPH_TYPE -sd START_DATE -ed END_DATE -o ORGANIS
 <p>Use case resumes from step 1.</p>
 </li>
 <li>
-<p>1d. <code>$AVE IT</code> detects that organisation input is invalid.</p>
+<p>1d. <code>$AVE IT</code> detects that the organisation input is invalid.</p>
 </li>
 <li>
 <p>1d1. <code>$AVE IT</code> will request a valid organisation.</p>
@@ -2425,11 +2413,11 @@ Format: <code>setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that amount input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the amount input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. <code>$AVE IT</code> will request for amount to be a double.</p>
+<p>1b1. <code>$AVE IT</code> will request for the amount to be a double.</p>
 </li>
 <li>
 <p>Use case resumes from step 1.</p>
@@ -2438,7 +2426,7 @@ Format: <code>setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
 </div>
 </li>
 <li>
-<p>1c. <code>$AVE IT</code> detects that date input is invalid.</p>
+<p>1c. <code>$AVE IT</code> detects that the date input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2476,7 +2464,7 @@ Format: <code>setbudget -a AMOUNT [-ym YEAR_MONTH]</code></p>
 <ol class="arabic">
 <li>
 <p>User requests to find expenditure &amp; repeat records with certain <code>keyword</code>(s) in the account which they are viewing right now.<br>
-Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
+Format: <code>find [KEYWORD&#8230;&#8203;] [-t TAG]</code></p>
 </li>
 <li>
 <p><code>$AVE IT</code> will acknowledge and output a list of relevant records.</p>
@@ -2485,6 +2473,26 @@ Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. <code>$AVE IT</code> detects that input is in wrong format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. <code>$AVE IT</code> will request for correct input format.</p>
+</li>
+<li>
+<p>Use case resumes from step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <h3 id="use-case-go" class="discrete">Use case: Go</h3>
 <div class="paragraph">
@@ -2522,7 +2530,7 @@ Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 </div>
 </li>
 <li>
-<p>1b. <code>$AVE IT</code> detects that date input is invalid.</p>
+<p>1b. <code>$AVE IT</code> detects that the date input is invalid.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2591,9 +2599,6 @@ Format: <code>find [KEYWORD&#8230;&#8203;]</code></p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2646,7 +2651,7 @@ These instructions only provide a starting point for testers to work on; testers
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+Expected: Shows the GUI with a set of sample expenditures &amp; repeats in a few accounts. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
@@ -2667,9 +2672,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="account-command-test"><a class="link" href="#account-command-test">F.2. Account command test</a></h3>
@@ -2679,8 +2681,8 @@ Expected: The most recent window size and location is retained.</p>
 <ol class="loweralpha" type="a">
 <li>
 <p>Prerequisites:<br>
-The <code>new account name</code> must not exist in the system.<br>
-Name must be a word(contains no space).</p>
+The new <code>ACCOUNT_NAME</code> must not exist in the system.<br>
+Name must be a word (contains no space).</p>
 </li>
 <li>
 <p>Test case: <code>acc add project-xyz</code><br>
@@ -2690,10 +2692,10 @@ Expected: A new account named <code>project-xyz</code> is added to the account l
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-all-account"><a class="link" href="#view-all-account">F.2.2. View all account</a></h4>
+<h4 id="view-all-accounts"><a class="link" href="#view-all-accounts">F.2.2. View all accounts</a></h4>
 <div class="paragraph">
-<p>Test case: acc list.<br>
-Expected: All the account which you own, will be displayed.</p>
+<p>Test case: <code>acc list</code><br>
+Expected: All the accounts in the application will be displayed.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2702,8 +2704,8 @@ Expected: All the account which you own, will be displayed.</p>
 <ol class="loweralpha" type="a">
 <li>
 <p>Prerequisites:<br>
-The account whose name you wanted to change, must exist in account list.<br>
-The new name must not be another account&#8217;s name.</p>
+The account whose name you want to change, must exist in the system.<br>
+The new name must not be an existing account&#8217;s name.</p>
 </li>
 <li>
 <p>Test case: <code>acc rename projectXYZ projectABC</code><br>
@@ -2713,15 +2715,15 @@ Expected: the account&#8217;s name with project-xyz change to project-abc.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="checkout-to-an-account"><a class="link" href="#checkout-to-an-account">F.2.4. Checkout to an account</a></h4>
+<h4 id="checkout-an-account"><a class="link" href="#checkout-an-account">F.2.4. Checkout an account</a></h4>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
 <p>Prerequisites:<br>
-The account which you wanted to checkout to, must exist in account list.<br></p>
+The account which you want to checkout to, must exist in the system.<br></p>
 </li>
 <li>
-<p>Test case acc checkout personal.<br>
+<p>Test case <code>acc checkout personal</code><br>
 Expected: A response will be given to denote a change in account.</p>
 </li>
 </ol>
@@ -2733,7 +2735,7 @@ Expected: A response will be given to denote a change in account.</p>
 <ol class="loweralpha" type="a">
 <li>
 <p>Prerequisites:<br>
-The account which you want to delete, must exist in account list.<br></p>
+The account which you want to delete, must exist in the system.<br></p>
 </li>
 <li>
 <p>Test case: <code>acc delete projectABC</code><br>
@@ -2952,7 +2954,7 @@ an empty Bar chart will be exported.</p>
 There is a report generated and input parameters must be valid.</p>
 </li>
 <li>
-<p>Test case: <code>export filename</code>
+<p>Test case: <code>export filename</code><br>
 Expected: Exports the current graph shown in report window to file named filename.</p>
 </li>
 </ol>
@@ -3050,4 +3052,4 @@ Expected: <code>$AVEIT</code> will terminate.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:45:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:54:21 UTC</div></div></div></body></html>

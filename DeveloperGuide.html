@@ -511,6 +511,15 @@ Below is a sequence diagram that shows how a command to rename an account takes 
 </div>
 <div class="title">Figure 13. Expenditure class diagram</div>
 </div>
+<div class="paragraph">
+<p>The activity diagram below shows what happens when the user enters an expenditure add command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExpenditureActivityDiagram.png" alt="ExpenditureActivityDiagram">
+</div>
+<div class="title">Figure 14. Expenditure add activity diagram</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">4.2.3. Design Consideration</a></h4>
@@ -568,7 +577,7 @@ commuting expenses.</p>
 <div class="content">
 <img src="images/repeatClassDiagram.png" alt="repeatClassDiagram">
 </div>
-<div class="title">Figure 14. Class diagram for showing what <code>Repeat</code> consist.</div>
+<div class="title">Figure 15. Class diagram for showing what <code>Repeat</code> consist.</div>
 </div>
 <div class="paragraph">
 <p>For each account, it has its own <code>list</code> which all the <code>Repeat</code> objects are stored.
@@ -579,7 +588,7 @@ The following activity diagram shows what how a <code>Repeat</code> can be added
 <div class="content">
 <img src="images/repeatActivityDiagram.png" alt="repeatActivityDiagram">
 </div>
-<div class="title">Figure 15. Activity diagram for <code>repeat add</code></div>
+<div class="title">Figure 16. Activity diagram for <code>repeat add</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -639,7 +648,7 @@ displays the budget details when a command is entered.</p>
 <div class="content">
 <img src="images/BudgetActivityDiagram.png" alt="BudgetActivityDiagram">
 </div>
-<div class="title">Figure 16. Activity Diagram of Budget View</div>
+<div class="title">Figure 17. Activity Diagram of Budget View</div>
 </div>
 <div class="paragraph">
 <p>The implementation of setting the budget of the month is through the command
@@ -650,7 +659,7 @@ is parsed is shown below using an example, <code>setbudget -a 123 -ym 2020-04</c
 <div class="content">
 <img src="images/BudgetSequenceDiagram.png" alt="BudgetSequenceDiagram">
 </div>
-<div class="title">Figure 17. Set Budget Sequence Diagram (UI and Logic)</div>
+<div class="title">Figure 18. Set Budget Sequence Diagram (UI and Logic)</div>
 </div>
 <div class="paragraph">
 <p>The above sequence diagram shows the interaction of the user and the UI. After entering
@@ -685,7 +694,7 @@ spending</p>
 <div class="content">
 <img src="images/SetBudgetSequenceDiagram.png" alt="SetBudgetSequenceDiagram">
 </div>
-<div class="title">Figure 18. Set Budget Sequence Diagram (Logic and Model)</div>
+<div class="title">Figure 19. Set Budget Sequence Diagram (Logic and Model)</div>
 </div>
 </div>
 <div class="sect3">
@@ -792,7 +801,7 @@ depending on which of the 3 commands: <code>report view</code>, <code>report pri
 <div class="content">
 <img src="images/ReportViewCreation.png" alt="ReportViewCreation">
 </div>
-<div class="title">Figure 19. Sequence Diagram for View Report Command Creation</div>
+<div class="title">Figure 20. Sequence Diagram for View Report Command Creation</div>
 </div>
 <div class="paragraph">
 <p>If a valid  <code>report view</code> command was input, the <em>ViewReportCommandParser</em> will parse the input and convert the Strings :
@@ -817,7 +826,7 @@ These objects are used to create the  <em>ViewReportCommand</em> object. <strong
 <div class="content">
 <img src="images/ReportViewExecution.png" alt="ReportViewExecution">
 </div>
-<div class="title">Figure 20. Sequence Diagram for View Report Command Execution</div>
+<div class="title">Figure 21. Sequence Diagram for View Report Command Execution</div>
 </div>
 <div class="paragraph">
 <p>The <em>ViewReportCommand</em> object will be executed.
@@ -863,7 +872,7 @@ The result of execution will be exporting a PNG version of the report into your 
 <div class="content">
 <img src="images/Report_MainWindow_.png" alt="Report MainWindow ">
 </div>
-<div class="title">Figure 21. Activity Diagram for Report in Main Window</div>
+<div class="title">Figure 22. Activity Diagram for Report in Main Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram summarises what can happen when user
@@ -883,7 +892,7 @@ enter a <code>report</code> command in the <strong>Main Window</strong></p>
 <div class="content">
 <img src="images/Report_ReportWindow_.png" alt="Report ReportWindow ">
 </div>
-<div class="title">Figure 22. Activity Diagram for Report Window</div>
+<div class="title">Figure 23. Activity Diagram for Report Window</div>
 </div>
 <div class="paragraph">
 <p>The activity diagram shows what can happen when users enter in a new command
@@ -981,7 +990,7 @@ the days:<br>
 <div class="content">
 <img src="images/goSequenceDiagram.png" alt="goSequenceDiagram">
 </div>
-<div class="title">Figure 23. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
+<div class="title">Figure 24. <code>UI</code> and <code>LOGIC</code>  component for the <code>go 2020-04-01</code> command</div>
 </div>
 <div class="paragraph">
 <p>Upon completion of the above command, the calendar view will update the
@@ -998,7 +1007,7 @@ user click on the dates.</p>
 <div class="content">
 <img src="images/calendarActivityDiagram.png" alt="calendarActivityDiagram">
 </div>
-<div class="title">Figure 24. Activity diagram showing what happen when user wants to navigate to other date</div>
+<div class="title">Figure 25. Activity diagram showing what happen when user wants to navigate to other date</div>
 </div>
 </div>
 <div class="sect3">
@@ -1074,7 +1083,7 @@ possible commands using <code>ContextMenu</code>.</p>
 <div class="content">
 <img src="images/AutocompleteSequenceDiagram.png" alt="AutocompleteSequenceDiagram">
 </div>
-<div class="title">Figure 25. Autocomplete Sequence Diagram</div>
+<div class="title">Figure 26. Autocomplete Sequence Diagram</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1105,7 +1114,7 @@ autocomplete dropdown.</p>
 <div class="content">
 <img src="images/AutocompleteActivityDiagram.png" alt="AutocompleteActivityDiagram">
 </div>
-<div class="title">Figure 26. Autocomplete Activity Diagram</div>
+<div class="title">Figure 27. Autocomplete Activity Diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -3055,4 +3064,4 @@ Expected: <code>$AVEIT</code> will terminate.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:11:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:14:09 UTC</div></div></div></body></html>
